@@ -66,6 +66,7 @@ nav img {
   height: 3.2rem;
   /* background-color: #fff; */
   /* border-radius: 1rem; */
+  cursor: pointer;
 }
 .light-theme {
   background-color: rgb(255, 255, 255, 0.3);
