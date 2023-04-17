@@ -12,23 +12,46 @@ const state = reactive({
     { name: "Portfolio", open: false },
     { name: "Contact", open: false },
   ],
+  menu: true,
 });
 
 const handleClick = (item) => {
+  const lists = document.querySelector(".lists");
+  lists.classList.add("hide");
+  lists.classList.remove("show");
+  state.menu = !state.menu;
   state.nav.forEach((ele) => (ele.open = false));
   item.open = true;
+};
+
+const menuClick = () => {
+  state.menu = !state.menu;
+  const lists = document.querySelector(".lists");
+  if (state.menu) {
+    lists.classList.add("hide");
+    lists.classList.remove("show");
+  } else {
+    lists.classList.add("show");
+    lists.classList.remove("hide");
+  }
 };
 </script>
 <template>
   <nav
     :class="`${themeStore.theme === 'light' ? 'light-theme' : 'dark-theme'}`"
   >
-    <ion-icon name="menu" class="menu"></ion-icon>
+    <ion-icon
+      name="menu"
+      class="menu"
+      v-if="state.menu"
+      @click="menuClick"
+    ></ion-icon>
+    <ion-icon name="close" class="close" @click="menuClick" v-else></ion-icon>
     <div class="logo">
       <img src="../assets/linkden.png" alt="linkden logo" />
       <img src="../assets/github.png" alt="linkden logo" />
     </div>
-    <ul>
+    <ul class="lists">
       <li
         v-for="item in state.nav"
         :key="item"
@@ -65,14 +88,17 @@ nav {
   gap: 12rem;
   padding: 0 2.6rem;
 }
-.menu {
+.menu,
+.close {
   display: none;
   transition: all 0.3s;
 }
-.menu:hover {
+.menu:hover,
+.close:hover {
   transform: scale(1.1);
 }
-.menu:active {
+.menu:active,
+.close:active {
   transform: scale(1);
 }
 
@@ -182,14 +208,31 @@ a {
     justify-content: right;
     gap: 3rem;
   }
-  .menu {
+  .menu,
+  .close {
     cursor: pointer;
     font-size: 3rem;
     display: block;
     margin-right: auto;
   }
   nav ul {
+    position: absolute;
+    top: var(--navHeight);
+    left: 0;
     display: none;
+    width: 100%;
+  }
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+  .light-theme ul {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .dark-theme ul {
+    background-color: rgb(0, 0, 0, 0.9);
   }
 }
 </style>

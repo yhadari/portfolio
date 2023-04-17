@@ -141,7 +141,7 @@ for (let i = 0; i < 260; i++) {
     transform: translate3d(-4px, 4px, 4px);
   }
   60% {
-    transform: translate3d(4px, -4px, 4px);
+    transform: translate3d(6px, -6px, 6px);
   }
   80% {
     transform: translate3d(-4px, 4px, 4px);
@@ -158,7 +158,7 @@ for (let i = 0; i < 260; i++) {
     transform: translate3d(-4px, 4px, 4px);
   }
   40% {
-    transform: translate3d(4px, 4px, -4px);
+    transform: translate3d(6px, 6px, -6px);
   }
   60% {
     transform: translate3d(-4px, 4px, 4px);
@@ -185,7 +185,7 @@ for (let i = 0; i < 260; i++) {
     transform: translate3d(4px, 4px, -4px);
   }
   80% {
-    transform: translate3d(-4px, 4px, 4px);
+    transform: translate3d(-6px, 6px, 6px);
   }
   100% {
     transform: translate3d(0, 0, 0);
@@ -195,7 +195,7 @@ for (let i = 0; i < 260; i++) {
 .circle,
 .square,
 .pentagon {
-  animation-duration: 1.6s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
