@@ -30,7 +30,7 @@ const xOff = 0.00125;
 const yOff = 0.00125;
 const zOff = 0.0005;
 const darkBackgroundColor = "hsla(0,0%,0%)";
-const lightBackgroundColor = "hsla(200, 100%, 96%)";
+const lightBackgroundColor = "hsla(0, 100%, 100%)";
 
 let container;
 let canvas;

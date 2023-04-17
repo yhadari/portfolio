@@ -130,7 +130,7 @@ a {
   box-shadow: inset calc(var(--toggleSize) * 0.33)
     calc(var(--toggleSize) * -0.25) 0;
   border-radius: 999px;
-  color: hsl(240, 100%, 95%);
+  color: rgba(255, 255, 255, 0.8);
 
   transition: all 400ms;
 }
@@ -141,7 +141,7 @@ a {
   --offset-diagonal: calc(var(--toggleSize) * 0.45);
 
   transform: scale(0.75);
-  color: hsl(40, 100%, 50%);
+  color: rgba(0, 0, 0, 0.8);
   box-shadow: inset 0 0 0 var(--toggleSize),
     calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
     var(--offset-orthogonal) 0 0 var(--ray-size),
