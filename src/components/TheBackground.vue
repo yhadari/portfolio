@@ -65,7 +65,7 @@ for (let i = 0; i < 260; i++) {
 <template>
   <div
     :class="`container ${
-      themeStore.light_theme ? 'light-theme' : 'dark-theme'
+      themeStore.theme === 'light' ? 'light-theme' : 'dark-theme'
     }`"
   >
     <div v-for="shape in shapes" :key="shape.type + shape.x + shape.y">

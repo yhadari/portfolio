@@ -3,12 +3,14 @@ import { defineStore } from "pinia";
 export const useThemeStore = defineStore("theme", {
   state: () => {
     return {
-      light_theme: true,
+      theme: localStorage.getItem("theme") || "light",
     };
   },
   actions: {
     changeTheme() {
-      this.light_theme = !this.light_theme;
+      console.log(this.theme);
+      this.theme = this.theme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", this.theme);
     },
   },
 });

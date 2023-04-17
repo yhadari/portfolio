@@ -20,7 +20,10 @@ const handleClick = (item) => {
 };
 </script>
 <template>
-  <nav :class="`${themeStore.light_theme ? 'light-theme' : 'dark-theme'}`">
+  <nav
+    :class="`${themeStore.theme === 'light' ? 'light-theme' : 'dark-theme'}`"
+  >
+    <ion-icon name="menu" class="menu"></ion-icon>
     <div class="logo">
       <img src="../assets/linkden.png" alt="linkden logo" />
       <img src="../assets/github.png" alt="linkden logo" />
@@ -39,7 +42,7 @@ const handleClick = (item) => {
       @click="themeStore.changeTheme"
       class="toggle"
       type="checkbox"
-      checked
+      :checked="themeStore.theme === 'light'"
     />
   </nav>
 </template>
@@ -53,30 +56,52 @@ nav {
   z-index: 100;
   font-size: 1.5rem;
   font-weight: 600;
-  backdrop-filter: blur(0.4rem);
+  backdrop-filter: blur(0.6rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   color: var(--navListColor);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14rem;
+  gap: 12rem;
+  padding: 0 2.6rem;
 }
+.menu {
+  display: none;
+  transition: all 0.3s;
+}
+.menu:hover {
+  transform: scale(1.1);
+}
+.menu:active {
+  transform: scale(1);
+}
+
 nav img {
   width: 3.2rem;
   height: 3.2rem;
   cursor: pointer;
+  transition: all 0.3s;
+}
+nav img:hover {
+  transform: scale(1.1);
+}
+nav img:active {
+  transform: scale(1);
 }
 .light-theme {
   background-color: rgb(255, 255, 255, 0.3);
   color: #000;
 }
 .dark-theme {
-  background-color: rgba(63, 63, 63, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
 }
 .logo {
   display: flex;
   gap: 2.2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 0.4rem 2.4rem;
 }
 ul {
   list-style: none;
@@ -150,5 +175,21 @@ a {
     var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
     calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
     var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+}
+
+@media screen and (max-width: 950px) {
+  nav {
+    justify-content: right;
+    gap: 3rem;
+  }
+  .menu {
+    cursor: pointer;
+    font-size: 3rem;
+    display: block;
+    margin-right: auto;
+  }
+  nav ul {
+    display: none;
+  }
 }
 </style>
