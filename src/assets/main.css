@@ -7,10 +7,8 @@
 }
 
 html {
-  --imageBorderRadius: 8px;
-  --footerHeight: 32.4rem;
   --navHeight: 7rem;
-  --toggleSize: 3rem;
+  --toggleSize: 2.8rem;
 
   font-size: 62.5%;
 }

@@ -1,12 +1,10 @@
 <script setup>
-import TheBackground from "./components/TheBackground.vue";
 import TheNavBar from "./components/TheNavBar.vue";
-import Test from "./components/Test.vue";
+import TheBackground from "./components/TheBackground.vue";
 </script>
 <template>
   <div>
-    <!-- <TheBackground /> -->
-    <Test />
+    <TheBackground />
     <TheNavBar />
   </div>
 </template>

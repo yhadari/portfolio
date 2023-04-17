@@ -64,8 +64,6 @@ nav {
 nav img {
   width: 3.2rem;
   height: 3.2rem;
-  /* background-color: #fff; */
-  /* border-radius: 1rem; */
   cursor: pointer;
 }
 .light-theme {
@@ -132,7 +130,7 @@ a {
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.8);
 
-  transition: all 400ms;
+  transition: all 300ms;
 }
 
 .toggle:checked {
@@ -141,7 +139,7 @@ a {
   --offset-diagonal: calc(var(--toggleSize) * 0.45);
 
   transform: scale(0.75);
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.7);
   box-shadow: inset 0 0 0 var(--toggleSize),
     calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
     var(--offset-orthogonal) 0 0 var(--ray-size),

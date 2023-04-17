@@ -1,249 +1,211 @@
 <script setup>
-import "../background/js/noise.min.js";
-import {
-  rand,
-  randRange,
-  fadeInOut,
-  lerp,
-  cos,
-  sin,
-  TAU,
-} from "../background/js/util";
+import { ref } from "vue";
 import { useThemeStore } from "../stores/Theme";
 
 const themeStore = useThemeStore();
 
-const particleCount = 700;
-const particlePropCount = 9;
-const particlePropsLength = particleCount * particlePropCount;
-const rangeY = 700;
-const baseTTL = 50;
-const rangeTTL = 150;
-const baseSpeed = 0.2;
-const rangeSpeed = 2.2;
-const baseRadius = 0.5;
-const rangeRadius = 4;
-const baseHue = 250;
-const rangeHue = 110;
-const noiseSteps = 5;
-const xOff = 0.00125;
-const yOff = 0.00125;
-const zOff = 0.0005;
-const darkBackgroundColor = "hsla(0,0%,0%)";
-const lightBackgroundColor = "hsla(0, 100%, 100%)";
+const shapes = ref([]);
 
-let container;
-let canvas;
-let ctx;
-let center;
-let gradient;
-let tick;
-let simplex;
-let particleProps;
-let positions;
-let velocities;
-let lifeSpans;
-let speeds;
-let sizes;
-let hues;
-
-function setup() {
-  createCanvas();
-  resize();
-  initParticles();
-  draw();
+function scaleUp(shape) {
+  shape.size *= 2.2;
 }
 
-function initParticles() {
-  tick = 0;
-  simplex = new SimplexNoise();
-  particleProps = new Float32Array(particlePropsLength);
+function scaleDown(shape) {
+  shape.size /= 2.2;
+}
 
-  let i;
+function generateDelay() {
+  return Math.floor(Math.random() * 10) / 10;
+}
 
-  for (i = 0; i < particlePropsLength; i += particlePropCount) {
-    initParticle(i);
+for (let i = 0; i < 260; i++) {
+  const shapeType = Math.floor(Math.random() * 3);
+  const shapeSize = Math.floor(Math.random() * 8) + 5;
+  const x = Math.floor(Math.random() * 98);
+  const y = Math.floor(Math.random() * 98);
+  const delay = generateDelay();
+
+  let shape;
+  switch (shapeType) {
+    case 0:
+      shape = {
+        type: "circle",
+        size: shapeSize,
+        x,
+        y,
+        delay,
+      };
+      break;
+    case 1:
+      shape = {
+        type: "square",
+        size: shapeSize,
+        x,
+        y,
+        delay,
+      };
+      break;
+    case 2:
+      shape = {
+        type: "pentagon",
+        size: shapeSize,
+        x,
+        y,
+        delay,
+      };
+      break;
+    default:
+      break;
   }
+
+  shapes.value.push(shape);
 }
-
-function initParticle(i) {
-  let x, y, vx, vy, life, ttl, speed, radius, hue;
-
-  x = rand(canvas.a.width);
-  y = center[1] + randRange(rangeY);
-  vx = 0;
-  vy = 0;
-  life = 0;
-  ttl = baseTTL + rand(rangeTTL);
-  speed = baseSpeed + rand(rangeSpeed);
-  radius = baseRadius + rand(rangeRadius);
-  hue = baseHue + rand(rangeHue);
-
-  particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
-}
-
-function drawParticles() {
-  let i;
-
-  for (i = 0; i < particlePropsLength; i += particlePropCount) {
-    updateParticle(i);
-  }
-}
-
-function updateParticle(i) {
-  let i2 = 1 + i,
-    i3 = 2 + i,
-    i4 = 3 + i,
-    i5 = 4 + i,
-    i6 = 5 + i,
-    i7 = 6 + i,
-    i8 = 7 + i,
-    i9 = 8 + i;
-  let n, x, y, vx, vy, life, ttl, speed, x2, y2, radius, hue;
-
-  x = particleProps[i];
-  y = particleProps[i2];
-  n = simplex.noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
-  vx = lerp(particleProps[i3], cos(n), 0.5);
-  vy = lerp(particleProps[i4], sin(n), 0.5);
-  life = particleProps[i5];
-  ttl = particleProps[i6];
-  speed = particleProps[i7];
-  x2 = x + vx * speed;
-  y2 = y + vy * speed;
-  radius = particleProps[i8];
-  hue = particleProps[i9];
-
-  drawParticle(x, y, x2, y2, life, ttl, radius, hue);
-
-  life++;
-
-  particleProps[i] = x2;
-  particleProps[i2] = y2;
-  particleProps[i3] = vx;
-  particleProps[i4] = vy;
-  particleProps[i5] = life;
-  (checkBounds(x, y) || life > ttl) && initParticle(i);
-}
-
-function drawParticle(x, y, x2, y2, life, ttl, radius, hue) {
-  ctx.a.save();
-  ctx.a.lineCap = "round";
-  ctx.a.lineWidth = radius;
-  ctx.a.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
-  ctx.a.beginPath();
-  ctx.a.moveTo(x, y);
-  ctx.a.lineTo(x2, y2);
-  ctx.a.stroke();
-  ctx.a.closePath();
-  ctx.a.restore();
-}
-
-function checkBounds(x, y) {
-  return x > canvas.a.width || x < 0 || y > canvas.a.height || y < 0;
-}
-
-function createCanvas() {
-  container = document.querySelector(".content--canvas");
-  canvas = {
-    a: document.createElement("canvas"),
-    b: document.createElement("canvas"),
-  };
-  canvas.b.style = `
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	`;
-  container.appendChild(canvas.b);
-  ctx = {
-    a: canvas.a.getContext("2d"),
-    b: canvas.b.getContext("2d"),
-  };
-  center = [];
-}
-
-function resize() {
-  const { innerWidth, innerHeight } = window;
-
-  canvas.a.width = innerWidth;
-  canvas.a.height = innerHeight;
-
-  ctx.a.drawImage(canvas.b, 0, 0);
-
-  canvas.b.width = innerWidth;
-  canvas.b.height = innerHeight;
-
-  ctx.b.drawImage(canvas.a, 0, 0);
-
-  center[0] = 0.5 * canvas.a.width;
-  center[1] = 0.5 * canvas.a.height;
-}
-
-function renderGlow() {
-  ctx.b.save();
-  ctx.b.filter = "blur(8px) brightness(200%)";
-  ctx.b.globalCompositeOperation = "lighter";
-  ctx.b.drawImage(canvas.a, 0, 0);
-  ctx.b.restore();
-
-  ctx.b.save();
-  ctx.b.filter = "blur(4px) brightness(200%)";
-  ctx.b.globalCompositeOperation = "lighter";
-  ctx.b.drawImage(canvas.a, 0, 0);
-  ctx.b.restore();
-}
-
-function renderToScreen() {
-  ctx.b.save();
-  ctx.b.globalCompositeOperation = "lighter";
-  ctx.b.drawImage(canvas.a, 0, 0);
-  ctx.b.restore();
-}
-
-function draw() {
-  tick++;
-
-  ctx.a.clearRect(0, 0, canvas.a.width, canvas.a.height);
-
-  ctx.b.fillStyle = themeStore.light_theme
-    ? lightBackgroundColor
-    : darkBackgroundColor;
-  ctx.b.fillRect(0, 0, canvas.a.width, canvas.a.height);
-
-  drawParticles();
-  renderGlow();
-  renderToScreen();
-
-  window.requestAnimationFrame(draw);
-}
-
-window.addEventListener("load", setup);
-window.addEventListener("resize", resize);
-
-document.documentElement.className = "js";
-var supportsCssVars = function () {
-  var e,
-    t = document.createElement("style");
-  return (
-    (t.innerHTML = "root: { --tmp-var: bold; }"),
-    document.head.appendChild(t),
-    (e = !!(
-      window.CSS &&
-      window.CSS.supports &&
-      window.CSS.supports("font-weight", "var(--tmp-var)")
-    )),
-    t.parentNode.removeChild(t),
-    e
-  );
-};
-supportsCssVars() ||
-  alert(
-    "Please view this demo in a modern browser that supports CSS Variables."
-  );
 </script>
+
 <template>
-  <div class="content content--canvas"></div>
+  <div
+    :class="`container ${
+      themeStore.light_theme ? 'light-theme' : 'dark-theme'
+    }`"
+  >
+    <div v-for="shape in shapes" :key="shape.type + shape.x + shape.y">
+      <div
+        :class="`shape ${shape.type}`"
+        :style="{
+          width: `${shape.size}px`,
+          height: `${shape.size}px`,
+          left: `${shape.x}%`,
+          top: `${shape.y}%`,
+          animationDelay: `${shape.delay}s`,
+        }"
+        @mouseover="scaleUp(shape)"
+        @mouseleave="scaleDown(shape)"
+      ></div>
+    </div>
+  </div>
 </template>
-<style scoped></style>
+
+<style scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+}
+.light-theme {
+  background-color: #fff;
+}
+.dark-theme {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.shape {
+  position: absolute;
+  opacity: 0.8;
+  will-change: transform;
+  transition: all 0.3s;
+}
+
+.light-theme .circle {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.dark-theme .circle {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.light-theme .square {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.dark-theme .square {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.light-theme .pentagon {
+  border-style: solid;
+  border-width: 0 6.25px 10px 6.25px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.4) transparent;
+}
+.dark-theme .pentagon {
+  border-style: solid;
+  border-width: 0 6.25px 10px 6.25px;
+  border-color: transparent transparent rgba(255, 255, 255, 0.4) transparent;
+}
+
+@keyframes _circle {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(4px, 4px, -4px);
+  }
+  40% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  60% {
+    transform: translate3d(4px, -4px, 4px);
+  }
+  80% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes _square {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  40% {
+    transform: translate3d(4px, 4px, -4px);
+  }
+  60% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  80% {
+    transform: translate3d(4px, -4px, 4px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _pentagon {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(4px, -4px, 4px);
+  }
+  40% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  60% {
+    transform: translate3d(4px, 4px, -4px);
+  }
+  80% {
+    transform: translate3d(-4px, 4px, 4px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.circle,
+.square,
+.pentagon {
+  animation-duration: 1.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.circle {
+  animation-name: _circle;
+}
+.square {
+  animation-name: _square;
+}
+.pentagon {
+  animation-name: _pentagon;
+}
+</style>
