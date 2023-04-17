@@ -19,7 +19,7 @@ const handleClick = (item) => {
   const lists = document.querySelector(".lists");
   lists.classList.add("hide");
   lists.classList.remove("show");
-  state.menu = !state.menu;
+  state.menu = true;
   state.nav.forEach((ele) => (ele.open = false));
   item.open = true;
 };
@@ -48,8 +48,12 @@ const menuClick = () => {
     ></ion-icon>
     <ion-icon name="close" class="close" @click="menuClick" v-else></ion-icon>
     <div class="logo">
-      <img src="../assets/linkden.png" alt="linkden logo" />
-      <img src="../assets/github.png" alt="linkden logo" />
+      <a href="https://www.linkedin.com/in/yacinehadari/" target="_blank">
+        <img src="../assets/linkden.png" alt="linkden logo" />
+      </a>
+      <a href="https://github.com/yhadari" target="_blank">
+        <img src="../assets/github.png" alt="linkden logo" />
+      </a>
     </div>
     <ul class="lists">
       <li
@@ -233,6 +237,15 @@ a {
   }
   .dark-theme ul {
     background-color: rgb(0, 0, 0, 0.9);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  ul {
+    font-size: 1.6rem;
+  }
+  li {
+    padding: 0.8rem 1.6rem;
   }
 }
 </style>
