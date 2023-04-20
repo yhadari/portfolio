@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 import { useThemeStore } from "../stores/Theme";
 import buttonSfx from "../assets/btnSound.mp3";
+import lightSwitch from "../assets/lightSwitch.mp3";
 
 const themeStore = useThemeStore();
 
@@ -36,6 +37,12 @@ const menuClick = () => {
     lists.classList.add("show");
     lists.classList.remove("hide");
   }
+};
+
+const changeTheme = () => {
+  playSound(lightSwitch);
+  themeStore.theme = themeStore.theme === "light" ? "dark" : "light";
+  localStorage.setItem("theme", themeStore.theme);
 };
 
 const playSound = (sound) => {
@@ -75,7 +82,7 @@ const playSound = (sound) => {
       </li>
     </ul>
     <input
-      @click="themeStore.changeTheme"
+      @click="changeTheme"
       class="toggle"
       type="checkbox"
       :checked="themeStore.theme === 'light'"
