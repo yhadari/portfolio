@@ -3,20 +3,19 @@ import { ref } from "vue";
 import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 
-// Define an array of texts for the typewriter effect
 const texts = ["Software Engineer", "Web Developer"];
-let currentIndex = ref(0); // Initialize index for current text
-// Function to update the current text index
+let currentIndex = ref(0);
+
 const updateText = () => {
   currentIndex.value++;
 };
-// Computed property to get the current text for the typewriter effect
+
 const currentText = () => {
   return texts[currentIndex.value % texts.length];
 };
 
-// i want to update the current text index every 2 seconds
-setInterval(updateText, 6000);
+// i want to update the current text index every 5 seconds
+setInterval(updateText, 5000);
 </script>
 
 <template>
@@ -94,9 +93,10 @@ h2 {
   width: 35rem;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.8rem solid rgb(255, 169, 65);
+  border-right: 0.4rem solid rgb(255, 169, 65);
+  /* you need to change in the Interval ft if you change in text time*/
   animation: cursor 10s step-start infinite,
-    text 3s steps(40) alternate infinite;
+    text 2.5s steps(40) alternate infinite;
   color: rgb(255, 185, 100);
 }
 
@@ -116,52 +116,40 @@ h2 {
   }
 }
 
-.light-theme .preview {
+.preview {
   font-size: 1.8rem;
   font-weight: 600;
-  background-color: rgb(255, 216, 168);
   width: fit-content;
   border-radius: 2rem;
-  color: #222;
   padding: 0.8rem 2.2rem;
   display: flex;
   align-items: center;
   cursor: pointer;
   gap: 1rem;
-  transition: all 0.2s ease-in-out;
-}
-.light-theme .preview:hover {
-  transform: scale(1.05);
-  background-color: rgb(255, 226, 190);
+  transition: all 0.2s;
 }
 
-.light-theme .star {
-  font-size: 2.2rem;
-  padding: 0.4rem;
-  border-radius: 50%;
-  color: rgb(255, 169, 65);
-  background-color: #fff;
+.light-theme .preview {
+  background-color: rgb(255, 216, 168);
+  color: #222;
 }
 .dark-theme .preview {
-  font-size: 1.8rem;
-  font-weight: 600;
   background-color: #000;
-  width: fit-content;
-  border-radius: 2rem;
   color: #fff;
-  padding: 0.8rem 2.2rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  gap: 1rem;
-  transition: all 0.3s ease-in-out;
+}
+.light-theme .preview:hover {
+  transform: scale(1.03);
+  background-color: rgb(255, 226, 190);
 }
 .dark-theme .preview:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #111;
 }
-
-.dark-theme .star {
+.light-theme .preview:active,
+.dark-theme .preview:active {
+  transform: scale(1);
+}
+.star {
   font-size: 2.2rem;
   padding: 0.4rem;
   border-radius: 50%;

@@ -1,13 +1,15 @@
 <script setup>
 import TheNavBar from "./components/TheNavBar.vue";
 import TheBackground from "./components/TheBackground.vue";
-import helloSection from "./components/helloSection.vue";
+import LandingView from "./views/LandingView.vue";
+import AboutView from "./views/AboutView.vue";
 </script>
 <template>
   <div>
     <TheBackground />
     <TheNavBar />
-    <helloSection />
+    <LandingView />
+    <AboutView />
   </div>
 </template>
 

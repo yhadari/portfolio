@@ -2,7 +2,8 @@
 import { reactive } from "vue";
 import { useThemeStore } from "../stores/Theme";
 import buttonSfx from "../assets/btnSound.mp3";
-import lightSwitch from "../assets/lightSwitch.mp3";
+import lightSwitch1 from "../assets/lightSwitch1.mp3";
+import lightSwitch2 from "../assets/lightSwitch2.mp3";
 
 const themeStore = useThemeStore();
 
@@ -40,7 +41,11 @@ const menuClick = () => {
 };
 
 const changeTheme = () => {
-  playSound(lightSwitch);
+  if (themeStore.theme === "light") {
+    playSound(lightSwitch1);
+  } else if (themeStore.theme === "dark") {
+    playSound(lightSwitch2);
+  }
   themeStore.theme = themeStore.theme === "light" ? "dark" : "light";
   localStorage.setItem("theme", themeStore.theme);
 };
@@ -64,10 +69,14 @@ const playSound = (sound) => {
     ></ion-icon>
     <ion-icon name="close" class="close" @click="menuClick" v-else></ion-icon>
     <div class="logo">
-      <a href="https://www.linkedin.com/in/yacinehadari/" target="_blank">
+      <a
+        class="linkden"
+        href="https://www.linkedin.com/in/yacinehadari/"
+        target="_blank"
+      >
         <img src="../assets/linkden.png" alt="linkden logo" />
       </a>
-      <a href="https://github.com/yhadari" target="_blank">
+      <a class="github" href="https://github.com/yhadari" target="_blank">
         <img src="../assets/github.png" alt="linkden logo" />
       </a>
     </div>
@@ -144,10 +153,16 @@ nav img:active {
 }
 .logo {
   display: flex;
-  gap: 2.2rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 1rem;
-  padding: 0.4rem 2.4rem;
+  gap: 2.4rem;
+}
+.logo img {
+  background-color: #fff;
+}
+.logo .github img {
+  border-radius: 50%;
+}
+.logo .linkden img {
+  border-radius: 10%;
 }
 ul {
   list-style: none;
