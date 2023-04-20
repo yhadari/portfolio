@@ -21,8 +21,8 @@ function generateDelay() {
 for (let i = 0; i < 260; i++) {
   const shapeType = Math.floor(Math.random() * 3);
   const shapeSize = Math.floor(Math.random() * 8) + 5;
-  const x = Math.floor(Math.random() * 98);
-  const y = Math.floor(Math.random() * 98);
+  const x = Math.floor(Math.random() * 96);
+  const y = Math.floor(Math.random() * 96);
   const delay = generateDelay();
 
   let shape;
@@ -89,6 +89,10 @@ for (let i = 0; i < 260; i++) {
 .container {
   width: 100%;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 .light-theme {
   background-color: #fff;

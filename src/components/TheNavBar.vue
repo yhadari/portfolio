@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { useThemeStore } from "../stores/Theme";
+import buttonSfx from "../assets/btnSound.mp3";
 
 const themeStore = useThemeStore();
 
@@ -16,6 +17,7 @@ const state = reactive({
 });
 
 const handleClick = (item) => {
+  playSound(buttonSfx);
   const lists = document.querySelector(".lists");
   lists.classList.add("hide");
   lists.classList.remove("show");
@@ -33,6 +35,13 @@ const menuClick = () => {
   } else {
     lists.classList.add("show");
     lists.classList.remove("hide");
+  }
+};
+
+const playSound = (sound) => {
+  if (sound) {
+    const audio = new Audio(sound);
+    audio.play();
   }
 };
 </script>
