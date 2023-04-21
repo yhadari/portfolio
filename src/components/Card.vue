@@ -22,6 +22,7 @@ const props = defineProps({
       height: props.height,
       backgroundColor: props.bgColor,
     }"
-  ></div>
+  >
+    <slot></slot>
+  </div>
 </template>
-<style scoped></style>

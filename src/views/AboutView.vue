@@ -1,180 +1,91 @@
 <script setup>
 import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
+import Title from "../components/Title.vue";
+import Toggle from "../components/Toggle.vue";
 
 const themeStore = useThemeStore();
 
-const bgColor = () => {
-  if (themeStore.theme === "light") {
-    return "rgb(255, 232, 204)";
-  } else {
-    return "rgb(255, 236, 153)";
-  }
-};
+const primaryBgColor = () =>
+  themeStore.theme === "light" ? "rgb(255, 232, 204)" : "rgb(255, 236, 153)";
+
+const secondaryBgColor = () =>
+  themeStore.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
+
+const codeBgColor = () =>
+  themeStore.theme === "light" ? "rgb(248, 248, 248)" : "rgb(30, 30, 30)";
+
+const titleColor = () =>
+  themeStore.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
+
+const toggleColor = () =>
+  themeStore.theme === "light" ? "rgb(253, 126, 20)" : "rgb(232, 89, 12)";
+
+const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
 </script>
+
 <template>
   <section>
-    <Card :bgColor="bgColor()">
-      <Card width="84rem" height="100%" bgColor="#ddd"></Card>
-    </Card>
-    <!-- <div class="container">
-      <div class="title">
-        <h1>Let me introduce myself</h1>
-        <div class="toggle">
-          <input type="checkbox" id="switch" />
-          <label for="switch"
-            ><span class="codeSlashIcon codeIcon"></span
-          ></label>
-          <h2 class="text">Dev view</h2>
+    <Card class="cr primary" :bgColor="primaryBgColor()">
+      <Card
+        class="cr secondary"
+        width="84rem"
+        height="100%"
+        :bgColor="secondaryBgColor()"
+      >
+        <div class="titleBox">
+          <Title
+            fontSize="3.4rem"
+            :color="titleColor()"
+            text="Let me introduce myself"
+          />
+          <div>
+            <Toggle :bgColor="toggleColor()" :theme="themeStore.theme" />
+            <h3 :style="{ color: textColor() }">Dev view</h3>
+          </div>
         </div>
-      </div>
-      <div class="code">
-        <p></p>
-      </div>
-    </div> -->
+        <Card
+          class="cr code"
+          width="100%"
+          height="100%"
+          :bgColor="codeBgColor()"
+        />
+      </Card>
+    </Card>
   </section>
 </template>
 <style scoped>
 section {
   width: 100%;
   height: 100vh;
-  /* padding: 3.4rem; */
   letter-spacing: 0.8px;
 }
-/* .light-theme {
-  background-color: rgb(255, 232, 204);
+.cr.primary {
+  padding: 3.2rem;
 }
-.dark-theme {
-  background-color: rgb(255, 236, 153);
-}
-.container {
-  width: 84rem;
-  height: 100%;
-  margin: 0 auto;
+.cr.secondary {
   padding: 2.6rem;
-  padding-top: 2.8rem;
+  border-radius: 1rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  border-radius: 0.8rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.light-theme .container {
-  background-color: #fff;
+.cr.code {
+  border-radius: 1rem;
 }
-.dark-theme .container {
-  background-color: rgb(44, 46, 51);
-}
-
-.title {
+.titleBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  padding-bottom: 2.8rem;
-  color: #ddd;
+  padding-bottom: 2.6rem;
   font-size: 1.2rem;
 }
-.title h1 {
-  font-size: 3.4rem;
-}
-.light-theme .title h1 {
-  color: rgb(255, 146, 43);
-}
-.dark-theme .title h1 {
-  color: rgb(252, 196, 25);
-}
-.light-theme .text {
-  color: #333;
-}
-.dark-theme .text {
-  color: #ddd;
-}
-.code {
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-}
-.light-theme .code {
-  background-color: #f8f8f8;
-}
-.dark-theme .code {
-  background-color: rgb(30, 30, 30);
-}
-.toggle {
+.titleBox div {
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 2rem;
 }
-input[type="checkbox"] {
-  height: 0;
-  width: 0;
-  visibility: hidden;
-}
-
-label {
-  cursor: pointer;
-  text-indent: -9999px;
-  width: 62px;
-  height: 30px;
-  display: block;
-  border-radius: 100px;
-  position: relative;
-  rotate: 180deg;
-}
-.light-theme label {
-  background-color: rgb(253, 126, 20);
-}
-.dark-theme label {
-  background-color: rgb(232, 89, 12);
-}
-
-label::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-.codeSlashIcon::before,
-.codeIcon::after {
-  width: 1.8rem;
-  height: 1.8rem;
-  content: "";
-  background-size: cover;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.codeSlashIcon::before {
-  background: url("../assets/codeSlash.svg");
-  right: -0.2rem;
-}
-
-.codeIcon::after {
-  background: url("../assets/code.svg");
-  left: 1.8rem;
-}
-
-.light-theme input:checked + label {
-  background-color: rgb(182, 182, 182);
-}
-.dark-theme input:checked + label {
-  background-color: rgb(30, 30, 30);
-}
-
-input:checked + label:after {
-  left: calc(63% - 5px);
-  transform: translateX(-100%);
-  transform: translateY(-50%);
-}
-
-label:active:after {
-  width: 30px;
-} */
 </style>
