@@ -1,13 +1,23 @@
 <script setup>
 import { useThemeStore } from "../stores/Theme";
+import Card from "../components/Card.vue";
 
 const themeStore = useThemeStore();
+
+const bgColor = () => {
+  if (themeStore.theme === "light") {
+    return "rgb(255, 232, 204)";
+  } else {
+    return "rgb(255, 236, 153)";
+  }
+};
 </script>
 <template>
-  <section
-    :class="`${themeStore.theme === 'light' ? 'light-theme' : 'dark-theme'}`"
-  >
-    <div class="container">
+  <section>
+    <Card :bgColor="bgColor()">
+      <Card width="84rem" height="100%" bgColor="#ddd"></Card>
+    </Card>
+    <!-- <div class="container">
       <div class="title">
         <h1>Let me introduce myself</h1>
         <div class="toggle">
@@ -21,17 +31,17 @@ const themeStore = useThemeStore();
       <div class="code">
         <p></p>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 <style scoped>
 section {
   width: 100%;
   height: 100vh;
-  padding: 3.4rem;
+  /* padding: 3.4rem; */
   letter-spacing: 0.8px;
 }
-.light-theme {
+/* .light-theme {
   background-color: rgb(255, 232, 204);
 }
 .dark-theme {
@@ -166,5 +176,5 @@ input:checked + label:after {
 
 label:active:after {
   width: 30px;
-}
+} */
 </style>
