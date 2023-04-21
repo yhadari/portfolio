@@ -12,7 +12,9 @@
           <h2 class="text">Dev view</h2>
         </div>
       </div>
-      <div class="code"></div>
+      <div class="code">
+        <p></p>
+      </div>
     </div>
   </section>
 </template>
