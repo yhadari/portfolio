@@ -42,7 +42,6 @@ section {
   flex-direction: column;
   justify-content: center;
   gap: 2.4rem;
-  /* border: 1px solid red; */
 }
 h2 {
   color: rgb(255, 169, 65);
