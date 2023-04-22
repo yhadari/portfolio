@@ -131,18 +131,6 @@ nav {
   transform: scale(1);
 }
 
-nav img {
-  width: 3.2rem;
-  height: 3.2rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-nav img:hover {
-  transform: scale(1.1);
-}
-nav img:active {
-  transform: scale(1);
-}
 .light-theme {
   background-color: rgb(255, 255, 255, 0.3);
   color: #000;
@@ -156,13 +144,25 @@ nav img:active {
   gap: 2.4rem;
 }
 .logo img {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
   background-color: #fff;
+  border: 1px solid #fff;
+  transition: all 0.3s;
 }
 .logo .github img {
   border-radius: 50%;
 }
 .logo .linkden img {
   border-radius: 10%;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+.logo img:active {
+  transform: scale(1);
 }
 ul {
   list-style: none;

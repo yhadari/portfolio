@@ -17,11 +17,6 @@ const childBgColor = () =>
 
 const titleColor = () =>
   themeStore.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
-
-const toggleColor = () =>
-  themeStore.theme === "light" ? "rgb(253, 126, 20)" : "rgb(232, 89, 12)";
-
-const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
 </script>
 
 <template>
@@ -29,25 +24,31 @@ const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
     <Card class="cr cardContainer" :bgColor="bgColor()">
       <Card
         class="cr parentCard"
-        width="84rem"
-        height="100%"
+        width="110rem"
+        height="76%"
         :bgColor="parentBgColor()"
       >
-        <div class="titleBox">
-          <Title
-            fontSize="3.4rem"
-            :color="titleColor()"
-            text="Let me introduce myself"
-          />
-          <div>
-            <Toggle :bgColor="toggleColor()" :theme="themeStore.theme" />
-            <h3 :style="{ color: textColor() }">Dev view</h3>
-          </div>
-        </div>
+        <Title
+          fontSize="3.4rem"
+          :color="titleColor()"
+          text="GitHub profile details"
+        />
         <Card
           class="cr childCard"
           width="100%"
-          height="100%"
+          height="18rem"
+          :bgColor="childBgColor()"
+        />
+
+        <Title
+          fontSize="3.4rem"
+          :color="titleColor()"
+          text="Contribution graph"
+        />
+        <Card
+          class="cr childCard"
+          width="100%"
+          height="22rem"
           :bgColor="childBgColor()"
         />
       </Card>
@@ -62,6 +63,8 @@ section {
 }
 .cr.cardContainer {
   padding: 3.2rem;
+  display: flex;
+  align-items: center;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -69,6 +72,7 @@ section {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 .cr.childCard {
   border-radius: 1rem;

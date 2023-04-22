@@ -21,6 +21,7 @@ const props = defineProps({
       width: props.width,
       height: props.height,
       backgroundColor: props.bgColor,
+      boxShadow: '0 0 1rem rgba(0, 0, 0, 0.2)',
     }"
   >
     <slot></slot>
