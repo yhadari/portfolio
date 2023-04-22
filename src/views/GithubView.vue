@@ -2,7 +2,6 @@
 import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
-import Toggle from "../components/Toggle.vue";
 
 const themeStore = useThemeStore();
 
@@ -76,19 +75,5 @@ section {
 }
 .cr.childCard {
   border-radius: 1rem;
-}
-.titleBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding-bottom: 2.6rem;
-  font-size: 1.2rem;
-}
-.titleBox div {
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
 }
 </style>
