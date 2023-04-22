@@ -4,51 +4,39 @@ import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
 const themeStore = useThemeStore();
-
-const bgColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 232, 204)" : "rgb(255, 236, 153)";
-
-const parentBgColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
-
-const childBgColor = () =>
-  themeStore.theme === "light" ? "rgb(248, 248, 248)" : "rgb(30, 30, 30)";
-
-const titleColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
 </script>
 
 <template>
   <section>
-    <Card class="cr cardContainer" :bgColor="bgColor()">
+    <Card class="cr cardContainer" :bgColor="themeStore.bgColor()">
       <Card
         class="cr parentCard"
         width="110rem"
         height="66rem"
-        :bgColor="parentBgColor()"
+        :bgColor="themeStore.parentBgColor()"
       >
         <Title
           fontSize="3.4rem"
-          :color="titleColor()"
+          :color="themeStore.titleColor()"
           text="GitHub profile details"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="19.2rem"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
 
         <Title
           fontSize="3.4rem"
-          :color="titleColor()"
+          :color="themeStore.titleColor()"
           text="Contribution graph"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="22rem"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
       </Card>
     </Card>

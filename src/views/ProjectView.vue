@@ -4,15 +4,6 @@ import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
 const themeStore = useThemeStore();
-
-const parentBgColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
-
-const childBgColor = () =>
-  themeStore.theme === "light" ? "rgb(248, 248, 248)" : "rgb(30, 30, 30)";
-
-const titleColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
 </script>
 
 <template>
@@ -21,45 +12,49 @@ const titleColor = () =>
       class="cr parentCard"
       width="110rem"
       height="50rem"
-      :bgColor="parentBgColor()"
+      :bgColor="themeStore.parentBgColor()"
     >
-      <Title fontSize="3.4rem" :color="titleColor()" text="Projects" />
+      <Title
+        fontSize="3.4rem"
+        :color="themeStore.titleColor()"
+        text="Projects"
+      />
       <div class="cardBox">
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
         <Card
           class="cr childCard"
           width="100%"
           height="100%"
-          :bgColor="childBgColor()"
+          :bgColor="themeStore.childBgColor()"
         />
       </div>
     </Card>

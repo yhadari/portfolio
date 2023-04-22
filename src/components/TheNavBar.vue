@@ -4,6 +4,7 @@ import { useThemeStore } from "../stores/Theme";
 import buttonSfx from "../assets/btnSound.mp3";
 import lightSwitch1 from "../assets/lightSwitch1.mp3";
 import lightSwitch2 from "../assets/lightSwitch2.mp3";
+import Counts from "./Counts.vue";
 
 const themeStore = useThemeStore();
 
@@ -68,18 +69,7 @@ const playSound = (sound) => {
       @click="menuClick"
     ></ion-icon>
     <ion-icon name="close" class="close" @click="menuClick" v-else></ion-icon>
-    <div class="logo">
-      <a class="github" href="https://github.com/yhadari" target="_blank">
-        <img src="../assets/GitHub-Mark.png" alt="linkden logo" />
-      </a>
-      <a
-        class="linkden"
-        href="https://www.linkedin.com/in/yacinehadari/"
-        target="_blank"
-      >
-        <img src="../assets/Linkedin.jpg" alt="linkden logo" />
-      </a>
-    </div>
+    <Counts />
     <ul class="lists">
       <li
         v-for="item in state.nav"
@@ -138,24 +128,6 @@ nav {
 .dark-theme {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
-}
-.logo {
-  display: flex;
-  gap: 1.6rem;
-}
-.logo img {
-  width: 3.6rem;
-  height: 3.6rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 50%;
-}
-
-.logo img:hover {
-  transform: scale(1.1);
-}
-.logo img:active {
-  transform: scale(1);
 }
 ul {
   list-style: none;

@@ -3,12 +3,6 @@ import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
-const parentBgColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
-
-const titleColor = () =>
-  themeStore.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
-
 const themeStore = useThemeStore();
 </script>
 <template>
@@ -17,11 +11,11 @@ const themeStore = useThemeStore();
       class="cr parentCard"
       width="110rem"
       height="56rem"
-      :bgColor="parentBgColor()"
+      :bgColor="themeStore.parentBgColor()"
     >
       <Title
         fontSize="3.4rem"
-        :color="titleColor()"
+        :color="themeStore.titleColor()"
         text="Technologies & Tools"
       />
     </Card>

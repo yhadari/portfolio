@@ -6,6 +6,7 @@ import AboutView from "./views/AboutView.vue";
 import SkillsView from "./views/SkillsView.vue";
 import GithubView from "./views/GithubView.vue";
 import ProjectView from "./views/ProjectView.vue";
+import Footer from "./components/Footer.vue";
 </script>
 <template>
   <div>
@@ -16,6 +17,7 @@ import ProjectView from "./views/ProjectView.vue";
     <SkillsView />
     <GithubView />
     <ProjectView />
+    <Footer />
   </div>
 </template>
 
