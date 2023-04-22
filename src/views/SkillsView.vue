@@ -16,7 +16,7 @@ const themeStore = useThemeStore();
     <Card
       class="cr parentCard"
       width="110rem"
-      height="60%"
+      height="56rem"
       :bgColor="parentBgColor()"
     >
       <Title

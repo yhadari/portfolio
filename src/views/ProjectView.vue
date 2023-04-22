@@ -20,7 +20,7 @@ const titleColor = () =>
     <Card
       class="cr parentCard"
       width="110rem"
-      height="50%"
+      height="50rem"
       :bgColor="parentBgColor()"
     >
       <Title fontSize="3.4rem" :color="titleColor()" text="Projects" />

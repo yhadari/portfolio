@@ -24,7 +24,7 @@ const titleColor = () =>
       <Card
         class="cr parentCard"
         width="110rem"
-        height="76%"
+        height="66rem"
         :bgColor="parentBgColor()"
       >
         <Title
@@ -35,7 +35,7 @@ const titleColor = () =>
         <Card
           class="cr childCard"
           width="100%"
-          height="18rem"
+          height="19.2rem"
           :bgColor="childBgColor()"
         />
 

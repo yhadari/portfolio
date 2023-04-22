@@ -30,7 +30,7 @@ const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
       <Card
         class="cr parentCard"
         width="84rem"
-        height="100%"
+        height="88rem"
         :bgColor="parentBgColor()"
       >
         <div class="titleBox">
@@ -41,7 +41,7 @@ const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
           />
           <div>
             <Toggle :bgColor="toggleColor()" :theme="themeStore.theme" />
-            <h3 :style="{ color: textColor() }">Dev view</h3>
+            <h3 class="text" :style="{ color: textColor() }">Dev view</h3>
           </div>
         </div>
         <Card
@@ -58,10 +58,12 @@ const textColor = () => (themeStore.theme === "light" ? "#333" : "#ddd");
 section {
   width: 100%;
   height: 100vh;
-  letter-spacing: 0.8px;
+  /* letter-spacing: 0.8px; */
 }
 .cr.cardContainer {
-  padding: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -79,12 +81,14 @@ section {
   align-items: center;
   gap: 2rem;
   padding-bottom: 2.6rem;
-  font-size: 1.2rem;
 }
 .titleBox div {
-  font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+.text {
+  font-size: 2rem;
+  font-weight: 400;
 }
 </style>

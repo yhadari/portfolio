@@ -69,15 +69,15 @@ const playSound = (sound) => {
     ></ion-icon>
     <ion-icon name="close" class="close" @click="menuClick" v-else></ion-icon>
     <div class="logo">
+      <a class="github" href="https://github.com/yhadari" target="_blank">
+        <img src="../assets/GitHub-Mark.png" alt="linkden logo" />
+      </a>
       <a
         class="linkden"
         href="https://www.linkedin.com/in/yacinehadari/"
         target="_blank"
       >
-        <img src="../assets/linkden.png" alt="linkden logo" />
-      </a>
-      <a class="github" href="https://github.com/yhadari" target="_blank">
-        <img src="../assets/github.png" alt="linkden logo" />
+        <img src="../assets/Linkedin.jpg" alt="linkden logo" />
       </a>
     </div>
     <ul class="lists">
@@ -141,21 +141,14 @@ nav {
 }
 .logo {
   display: flex;
-  gap: 2.4rem;
+  gap: 1.6rem;
 }
 .logo img {
-  width: 3rem;
-  height: 3rem;
+  width: 3.6rem;
+  height: 3.6rem;
   cursor: pointer;
-  background-color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s;
-}
-.logo .github img {
   border-radius: 50%;
-}
-.logo .linkden img {
-  border-radius: 10%;
 }
 
 .logo img:hover {
