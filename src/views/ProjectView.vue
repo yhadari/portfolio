@@ -3,6 +3,7 @@ import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
+const projectNumber = 6;
 const themeStore = useThemeStore();
 </script>
 
@@ -21,36 +22,8 @@ const themeStore = useThemeStore();
       />
       <div class="cardBox">
         <Card
-          class="cr childCard"
-          width="100%"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-        />
-        <Card
-          class="cr childCard"
-          width="100%"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-        />
-        <Card
-          class="cr childCard"
-          width="100%"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-        />
-        <Card
-          class="cr childCard"
-          width="100%"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-        />
-        <Card
-          class="cr childCard"
-          width="100%"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-        />
-        <Card
+          v-for="i in projectNumber"
+          :key="i"
           class="cr childCard"
           width="100%"
           height="100%"

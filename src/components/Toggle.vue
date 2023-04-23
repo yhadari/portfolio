@@ -96,8 +96,4 @@ input:checked + label:after {
   transform: translateX(-100%);
   transform: translateY(-50%);
 }
-
-label:active:after {
-  width: 30px;
-}
 </style>

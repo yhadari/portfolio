@@ -19,13 +19,22 @@ setInterval(updateText, 5000);
 </script>
 
 <template>
-  <section
-    :class="`${themeStore.theme === 'light' ? 'light-theme' : 'dark-theme'}`"
-  >
+  <section>
     <h2>Hello, I'm</h2>
-    <h3 class="animate-charcter">Yacine Hadari</h3>
+    <h3
+      class="animate-charcter"
+      :style="{ backgroundImage: themeStore.heroBgColor() }"
+    >
+      Yacine Hadari
+    </h3>
     <div class="typewriter">{{ currentText() }}</div>
-    <div class="preview">
+    <div
+      class="btn previewBtn"
+      :style="{
+        color: themeStore.previewColor(),
+        backgroundColor: themeStore.previewBgColor(),
+      }"
+    >
       <p>Preview on Github</p>
       <ion-icon name="star" class="star"></ion-icon>
     </div>
@@ -48,25 +57,6 @@ h2 {
   font-size: 4.6rem;
 }
 
-.light-theme .animate-charcter {
-  background-image: linear-gradient(
-    -225deg,
-    #212529 0%,
-    #343a40 29%,
-    #495057 67%,
-    #868e96 100%
-  );
-}
-
-.dark-theme .animate-charcter {
-  background-image: linear-gradient(
-    -225deg,
-    #adb5bd 0%,
-    #ced4da 29%,
-    #dee2e6 67%,
-    #e9ecef 100%
-  );
-}
 .animate-charcter {
   background-size: auto auto;
   background-clip: border-box;
@@ -115,7 +105,7 @@ h2 {
   }
 }
 
-.preview {
+.previewBtn {
   font-size: 1.8rem;
   font-weight: 600;
   width: fit-content;
@@ -128,24 +118,12 @@ h2 {
   transition: all 0.2s;
 }
 
-.light-theme .preview {
-  background-color: rgb(255, 216, 168);
-  color: #222;
-}
-.dark-theme .preview {
-  background-color: #000;
-  color: #fff;
-}
-.light-theme .preview:hover {
+.previewBtn:hover {
   transform: scale(1.03);
-  background-color: rgb(255, 226, 190);
+  background-color: v-bind("themeStore.previewHoverBgColor()") !important;
 }
-.dark-theme .preview:hover {
-  transform: scale(1.03);
-  background-color: #111;
-}
-.light-theme .preview:active,
-.dark-theme .preview:active {
+
+.previewBtn:active {
   transform: scale(1);
 }
 .star {

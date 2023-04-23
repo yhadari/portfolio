@@ -1,6 +1,6 @@
 <script setup>
 import TheBackground from "../components/TheBackground.vue";
-import LandingView from "./LandingView.vue";
+import HeroSectionView from "./HeroSectionView.vue";
 import AboutView from "./AboutView.vue";
 import SkillsView from "./SkillsView.vue";
 import GithubView from "./GithubView.vue";
@@ -9,7 +9,7 @@ import ProjectView from "./ProjectView.vue";
 <template>
   <div>
     <TheBackground />
-    <LandingView />
+    <HeroSectionView />
     <AboutView />
     <SkillsView />
     <GithubView />

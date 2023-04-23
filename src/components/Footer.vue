@@ -21,7 +21,7 @@ const themeStore = useThemeStore();
 footer {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   height: var(--footerHeight);
   backdrop-filter: blur(0.6rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
