@@ -82,7 +82,8 @@ section {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  column-gap: 2rem;
+  row-gap: 3.4rem;
 }
 .cr.childCard {
   border-radius: 2rem;

@@ -100,7 +100,6 @@ nav {
   font-weight: 600;
   backdrop-filter: blur(0.6rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  color: var(--navListColor);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +122,7 @@ nav {
 
 .light-theme {
   background-color: rgb(255, 255, 255, 0.3);
-  color: #000;
+  color: #333;
 }
 .dark-theme {
   background-color: rgba(0, 0, 0, 0.4);
@@ -150,7 +149,7 @@ li {
   background-color: rgb(250, 176, 5);
 }
 .open {
-  color: #000;
+  color: #333;
 }
 .light-theme li:hover {
   background-color: rgb(255, 232, 204);

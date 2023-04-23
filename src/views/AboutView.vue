@@ -9,7 +9,11 @@ const themeStore = useThemeStore();
 
 <template>
   <section>
-    <Card class="cr cardContainer" :bgColor="themeStore.bgColor()">
+    <Card
+      class="cr cardContainer"
+      :bgColor="themeStore.bgColor()"
+      :shadow="false"
+    >
       <Card
         class="cr parentCard"
         width="84rem"
@@ -37,6 +41,7 @@ const themeStore = useThemeStore();
           width="100%"
           height="100%"
           :bgColor="themeStore.childBgColor()"
+          :shadow="false"
         />
       </Card>
     </Card>
