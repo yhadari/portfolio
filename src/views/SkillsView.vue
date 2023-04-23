@@ -25,6 +25,7 @@ const themeStore = useThemeStore();
 section {
   width: 100%;
   height: 100vh;
+  min-height: 64rem;
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;

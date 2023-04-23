@@ -10,6 +10,7 @@ html {
   --navHeight: 7rem;
   --footerHeight: 8rem;
   --toggleSize: 2.8rem;
+  --viewHeight: 95rem;
 
   font-size: 62.5%;
 }

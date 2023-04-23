@@ -25,7 +25,6 @@ const themeStore = useThemeStore();
           v-for="i in projectNumber"
           :key="i"
           class="cr childCard"
-          width="100%"
           height="100%"
           :bgColor="themeStore.childBgColor()"
         />
@@ -37,6 +36,7 @@ const themeStore = useThemeStore();
 section {
   width: 100%;
   height: 100vh;
+  min-height: 58rem;
   letter-spacing: 0.8px;
   display: flex;
   justify-content: center;

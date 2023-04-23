@@ -26,7 +26,6 @@ const themeStore = useThemeStore();
         />
         <Card
           class="cr childCard"
-          width="100%"
           height="19.2rem"
           :bgColor="themeStore.childBgColor()"
         />
@@ -37,7 +36,6 @@ const themeStore = useThemeStore();
         />
         <Card
           class="cr childCard"
-          width="100%"
           height="22rem"
           :bgColor="themeStore.childBgColor()"
         />
@@ -49,10 +47,10 @@ const themeStore = useThemeStore();
 section {
   width: 100%;
   height: 100vh;
+  min-height: 74rem;
   letter-spacing: 0.8px;
 }
 .cr.cardContainer {
-  padding: 3.2rem;
   display: flex;
   align-items: center;
 }

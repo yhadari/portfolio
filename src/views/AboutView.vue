@@ -13,11 +13,12 @@ const themeStore = useThemeStore();
       class="cr cardContainer"
       :bgColor="themeStore.bgColor()"
       :shadow="false"
+      height="95rem"
     >
       <Card
         class="cr parentCard"
         width="84rem"
-        height="88rem"
+        height="87rem"
         :bgColor="themeStore.parentBgColor()"
       >
         <div class="titleBox">
@@ -44,10 +45,6 @@ const themeStore = useThemeStore();
   </section>
 </template>
 <style scoped>
-section {
-  width: 100%;
-  height: 100vh;
-}
 .cr.cardContainer {
   display: flex;
   justify-content: center;
