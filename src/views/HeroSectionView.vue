@@ -14,43 +14,51 @@ const currentText = () => {
   return texts[currentIndex.value % texts.length];
 };
 
-// i want to update the current text index every 5 seconds
-setInterval(updateText, 5000);
+// i want to update the current text index every 6 seconds
+setInterval(updateText, 6000);
 </script>
 
 <template>
   <section>
-    <h2>Hello, I'm</h2>
-    <h3
-      class="animate-charcter"
-      :style="{ backgroundImage: themeStore.heroBgColor() }"
-    >
-      Yacine Hadari
-    </h3>
-    <div class="typewriter">{{ currentText() }}</div>
-    <div
-      class="btn previewBtn"
-      :style="{
-        color: themeStore.previewColor(),
-        backgroundColor: themeStore.previewBgColor(),
-      }"
-    >
-      <p>Preview on Github</p>
-      <ion-icon name="star" class="star"></ion-icon>
+    <div class="textBox">
+      <h2>Hello, I'm</h2>
+      <h2 class="animate-charcter">Yacine Hadari</h2>
+      <div class="typewriter">{{ currentText() }}</div>
+      <div class="previewBtn">
+        <p>Preview on Github</p>
+        <ion-icon name="star" class="star"></ion-icon>
+      </div>
     </div>
+    <div class="avatarBox"></div>
   </section>
 </template>
+
 <style scoped>
 section {
-  width: 50%;
+  width: 100%;
   height: calc(100vh - var(--navHeight));
-  margin: 0 auto;
   margin-top: var(--navHeight);
-  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  padding: 2rem 4rem;
+}
+
+.textBox {
+  width: 52rem;
+  height: 52rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2.4rem;
+}
+.avatarBox {
+  width: 40rem;
+  height: 48rem;
+  background-color: black;
+  border-radius: 1rem;
+  opacity: 0.5;
 }
 h2 {
   color: rgb(255, 169, 65);
@@ -67,7 +75,8 @@ h2 {
   -webkit-text-fill-color: transparent;
   animation: textclip 4s linear infinite;
   display: inline-block;
-  font-size: 9rem;
+  font-size: 7.8rem;
+  background-image: v-bind("themeStore.heroBgColor()");
 }
 
 @keyframes textclip {
@@ -83,10 +92,11 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.4rem solid rgb(255, 169, 65);
+  color: rgb(255, 185, 100);
+
   /* you need to change in the Interval ft if you change in text time*/
   animation: cursor 10s step-start infinite,
-    text 2.5s steps(40) alternate infinite;
-  color: rgb(255, 185, 100);
+    text 3s steps(40) alternate infinite;
 }
 
 @keyframes cursor {
@@ -106,7 +116,7 @@ h2 {
 }
 
 .previewBtn {
-  font-size: 1.8rem;
+  font-size: 1.68rem;
   font-weight: 600;
   width: fit-content;
   border-radius: 2rem;
@@ -116,6 +126,8 @@ h2 {
   cursor: pointer;
   gap: 1rem;
   transition: all 0.2s;
+  color: v-bind("themeStore.previewColor()");
+  background-color: v-bind("themeStore.previewBgColor()");
 }
 
 .previewBtn:hover {
@@ -126,11 +138,22 @@ h2 {
 .previewBtn:active {
   transform: scale(1);
 }
+
 .star {
   font-size: 2.2rem;
   padding: 0.4rem;
   border-radius: 50%;
   background-color: rgb(255, 169, 65);
   color: #fff;
+}
+
+@media screen and (max-width: 950px) {
+  section {
+    flex-direction: column;
+    height: 110vh;
+  }
+  .textBox {
+    gap: 1.6rem;
+  }
 }
 </style>

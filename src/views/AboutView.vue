@@ -31,15 +31,11 @@ const themeStore = useThemeStore();
               :bgColor="themeStore.toggleColor()"
               :theme="themeStore.theme"
             />
-            <h3 class="text" :style="{ color: themeStore.textColor() }">
-              Dev view
-            </h3>
+            <h3 class="text">Dev view</h3>
           </div>
         </div>
         <Card
           class="cr childCard"
-          width="100%"
-          height="100%"
           :bgColor="themeStore.childBgColor()"
           :shadow="false"
         />
@@ -82,5 +78,6 @@ section {
 .text {
   font-size: 2rem;
   font-weight: 400;
+  color: v-bind("themeStore.textColor()");
 }
 </style>

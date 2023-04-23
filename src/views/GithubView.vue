@@ -30,7 +30,6 @@ const themeStore = useThemeStore();
           height="19.2rem"
           :bgColor="themeStore.childBgColor()"
         />
-
         <Title
           fontSize="3.4rem"
           :color="themeStore.titleColor()"
