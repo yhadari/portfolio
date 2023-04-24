@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from "vue";
 import { ref } from "vue";
 import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
@@ -14,12 +15,28 @@ const currentText = () => {
   return texts[currentIndex.value % texts.length];
 };
 
-// i want to update the current text index every 6 seconds
-setInterval(updateText, 6000);
+const observe = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+});
+
+onMounted(() => {
+  const hiddenElement = document.querySelectorAll(".hidden");
+  hiddenElement.forEach((element) => {
+    observe.observe(element);
+  });
+  // i want to update the current text index every 6 seconds
+  setInterval(updateText, 6000);
+});
 </script>
 
 <template>
-  <section>
+  <section class="hidden">
     <div class="textBox">
       <h2>Hello, I'm</h2>
       <h2 class="animate-charcter">Yacine Hadari</h2>
@@ -34,6 +51,17 @@ setInterval(updateText, 6000);
 </template>
 
 <style scoped>
+.hidden {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
 section {
   width: 100%;
   height: calc(100vh - var(--navHeight));
