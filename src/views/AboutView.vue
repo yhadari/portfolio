@@ -13,7 +13,6 @@ const themeStore = useThemeStore();
       class="cr cardContainer"
       :bgColor="themeStore.bgColor()"
       :shadow="false"
-      height="95rem"
     >
       <Card
         class="cr parentCard"
@@ -45,10 +44,17 @@ const themeStore = useThemeStore();
   </section>
 </template>
 <style scoped>
+section {
+  width: 100%;
+  height: 100vh;
+  min-height: 95rem;
+  letter-spacing: 0.8px;
+}
 .cr.cardContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;

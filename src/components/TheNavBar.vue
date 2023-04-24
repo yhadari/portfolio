@@ -90,21 +90,19 @@ const playSound = (sound) => {
 </template>
 <style scoped>
 nav {
-  width: 100vw;
+  width: 100%;
   height: var(--navHeight);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   backdrop-filter: blur(0.6rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12rem;
-  padding: 0 2.6rem;
 }
 .menu,
 .close {
@@ -205,7 +203,8 @@ a {
 @media screen and (max-width: 950px) {
   nav {
     justify-content: right;
-    gap: 3rem;
+    gap: 4.6rem;
+    padding: 0 2.8rem;
   }
   .menu,
   .close {

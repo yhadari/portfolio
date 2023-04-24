@@ -53,6 +53,7 @@ section {
 .cr.cardContainer {
   display: flex;
   align-items: center;
+  padding: 0 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;

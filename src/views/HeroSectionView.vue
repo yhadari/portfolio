@@ -37,6 +37,7 @@ setInterval(updateText, 6000);
 section {
   width: 100%;
   height: calc(100vh - var(--navHeight));
+  min-height: 56rem;
   margin-top: var(--navHeight);
   display: flex;
   align-items: center;

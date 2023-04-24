@@ -41,6 +41,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -48,17 +49,22 @@ section {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3.2rem;
 }
 .cardBox {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 2rem;
-  row-gap: 3.4rem;
+  gap: 2rem;
 }
 .cr.childCard {
   border-radius: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
