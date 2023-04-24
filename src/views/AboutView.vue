@@ -1,10 +1,28 @@
 <script setup>
+import { onMounted } from "vue";
 import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 import Toggle from "../components/Toggle.vue";
 
 const themeStore = useThemeStore();
+
+const observe = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+});
+
+onMounted(() => {
+  const hiddenElement = document.querySelectorAll(".hidden");
+  hiddenElement.forEach((element) => {
+    observe.observe(element);
+  });
+});
 </script>
 
 <template>
@@ -15,7 +33,7 @@ const themeStore = useThemeStore();
       :shadow="false"
     >
       <Card
-        class="cr parentCard"
+        class="cr parentCard hidden"
         width="84rem"
         height="87rem"
         :bgColor="themeStore.parentBgColor()"
@@ -49,6 +67,7 @@ section {
   height: 100vh;
   min-height: 95rem;
   letter-spacing: 0.8px;
+  overflow-x: hidden;
 }
 .cr.cardContainer {
   display: flex;
@@ -82,5 +101,17 @@ section {
   font-size: 2rem;
   font-weight: 400;
   color: v-bind("themeStore.textColor()");
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateX(100%);
+  transition: all 0.8s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 </style>

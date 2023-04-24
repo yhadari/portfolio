@@ -1,16 +1,34 @@
 <script setup>
+import { onMounted } from "vue";
 import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
 const projectNumber = 6;
 const themeStore = useThemeStore();
+
+const observe = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+});
+
+onMounted(() => {
+  const hiddenElement = document.querySelectorAll(".hidden");
+  hiddenElement.forEach((element) => {
+    observe.observe(element);
+  });
+});
 </script>
 
 <template>
   <section>
     <Card
-      class="cr parentCard"
+      class="cr parentCard hidden"
       width="110rem"
       height="50rem"
       :bgColor="themeStore.parentBgColor()"
@@ -60,6 +78,18 @@ section {
 }
 .cr.childCard {
   border-radius: 2rem;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateX(-100%);
+  transition: all 0.8s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 
 @media screen and (max-width: 1200px) {

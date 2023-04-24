@@ -51,17 +51,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.hidden {
-  opacity: 0;
-  filter: blur(6px);
-  transform: translateX(-100%);
-  transition: all 1s;
-}
-.show {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(0);
-}
 section {
   width: 100%;
   height: calc(100vh - var(--navHeight));
@@ -174,6 +163,17 @@ h2 {
   border-radius: 50%;
   background-color: rgb(255, 169, 65);
   color: #fff;
+}
+.hidden {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateX(-100%);
+  transition: all 0.8s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 
 @media screen and (max-width: 950px) {
