@@ -168,7 +168,7 @@ h2 {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(-100%);
-  transition: all 0.8s;
+  transition: all 0.5s;
 }
 .show {
   opacity: 1;

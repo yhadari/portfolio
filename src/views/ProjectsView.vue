@@ -45,6 +45,7 @@ onMounted(() => {
           class="cr childCard"
           height="100%"
           :bgColor="themeStore.childBgColor()"
+          :shadow="false"
         />
       </div>
     </Card>
@@ -78,13 +79,14 @@ section {
 }
 .cr.childCard {
   border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .hidden {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(-100%);
-  transition: all 0.8s;
+  transition: all 0.5s;
 }
 .show {
   opacity: 1;

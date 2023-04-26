@@ -1,12 +1,13 @@
 <script setup>
 import TheNavBar from "./components/TheNavBar.vue";
 import Footer from "./components/Footer.vue";
-import Views from "./views/Views.vue";
+import TheBackground from "./components/TheBackground.vue";
 </script>
 <template>
   <div>
     <TheNavBar />
-    <Views />
+    <TheBackground />
+    <RouterView />
     <Footer />
   </div>
 </template>

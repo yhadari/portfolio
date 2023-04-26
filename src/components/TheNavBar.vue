@@ -2,19 +2,19 @@
 import { reactive } from "vue";
 import { useThemeStore } from "../stores/Theme";
 import buttonSfx from "../assets/btnSound.mp3";
-import lightSwitch1 from "../assets/lightSwitch1.mp3";
-import lightSwitch2 from "../assets/lightSwitch2.mp3";
+import lightSwitchOn from "../assets/lightSwitchOn.mp3";
+import lightSwitchOff from "../assets/lightSwitchOff.mp3";
 import Counts from "./Counts.vue";
 
 const themeStore = useThemeStore();
 
 const state = reactive({
   nav: [
-    { name: "Landing", open: true },
-    { name: "About", open: false },
-    { name: "Skills", open: false },
-    { name: "Portfolio", open: false },
-    { name: "Contact", open: false },
+    { name: "Landing", route: "/", open: true },
+    { name: "About", route: "/about", open: false },
+    { name: "Skills", route: "/skills", open: false },
+    { name: "Projects", route: "/projects", open: false },
+    { name: "Contact", route: "/contact", open: false },
   ],
   menu: true,
 });
@@ -41,21 +41,22 @@ const menuClick = () => {
   }
 };
 
-const changeTheme = () => {
-  if (themeStore.theme === "light") {
-    playSound(lightSwitch1);
-  } else if (themeStore.theme === "dark") {
-    playSound(lightSwitch2);
-  }
-  themeStore.theme = themeStore.theme === "light" ? "dark" : "light";
-  localStorage.setItem("theme", themeStore.theme);
-};
-
 const playSound = (sound) => {
   if (sound) {
     const audio = new Audio(sound);
+    audio.volume = 0.3;
     audio.play();
   }
+};
+
+const changeTheme = () => {
+  if (themeStore.theme === "light") {
+    playSound(lightSwitchOn);
+  } else if (themeStore.theme === "dark") {
+    playSound(lightSwitchOff);
+  }
+  themeStore.theme = themeStore.theme === "light" ? "dark" : "light";
+  localStorage.setItem("theme", themeStore.theme);
 };
 </script>
 <template>
@@ -77,7 +78,7 @@ const playSound = (sound) => {
         @click="handleClick(item)"
         :class="`${item.open ? 'open' : ''}`"
       >
-        <a href="#">{{ item.name }}</a>
+        <router-link :to="item.route">{{ item.name }}</router-link>
       </li>
     </ul>
     <input

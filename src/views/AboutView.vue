@@ -4,9 +4,10 @@ import { useThemeStore } from "../stores/Theme";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 import Toggle from "../components/Toggle.vue";
+import router from "../router";
 
 const themeStore = useThemeStore();
-
+const route = router.currentRoute.value.path;
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -29,7 +30,7 @@ onMounted(() => {
   <section>
     <Card
       class="cr cardContainer"
-      :bgColor="themeStore.bgColor()"
+      :bgColor="route === '/' && themeStore.bgColor()"
       :shadow="false"
     >
       <Card
@@ -107,7 +108,7 @@ section {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(100%);
-  transition: all 0.8s;
+  transition: all 0.5s;
 }
 .show {
   opacity: 1;
