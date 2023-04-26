@@ -8,6 +8,7 @@ import router from "../router";
 
 const themeStore = useThemeStore();
 const route = router.currentRoute.value.path;
+
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -27,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section>
+  <section :class="route === '/about' && 'aboutPage'">
     <Card
       class="cr cardContainer"
       :bgColor="route === '/' && themeStore.bgColor()"
@@ -69,6 +70,9 @@ section {
   min-height: 95rem;
   letter-spacing: 0.8px;
   overflow-x: hidden;
+}
+.aboutPage {
+  margin: 16rem 0 6rem 0;
 }
 .cr.cardContainer {
   display: flex;

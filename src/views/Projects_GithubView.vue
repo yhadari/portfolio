@@ -3,9 +3,13 @@ import ProjectsView from "./ProjectsView.vue";
 import GithubView from "./GithubView.vue";
 </script>
 <template>
-  <div>
+  <section>
     <GithubView />
     <ProjectsView />
-  </div>
+  </section>
 </template>
-<style scoped></style>
+<style scoped>
+section {
+  margin-top: 6rem;
+}
+</style>

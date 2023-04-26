@@ -5,6 +5,7 @@ import buttonSfx from "../assets/btnSound.mp3";
 import lightSwitchOn from "../assets/lightSwitchOn.mp3";
 import lightSwitchOff from "../assets/lightSwitchOff.mp3";
 import Counts from "./Counts.vue";
+import router from "../router";
 
 const themeStore = useThemeStore();
 
@@ -27,6 +28,7 @@ const handleClick = (item) => {
   state.menu = true;
   state.nav.forEach((ele) => (ele.open = false));
   item.open = true;
+  router.push(item.route);
 };
 
 const menuClick = () => {
@@ -78,7 +80,7 @@ const changeTheme = () => {
         @click="handleClick(item)"
         :class="`${item.open ? 'open' : ''}`"
       >
-        <router-link :to="item.route">{{ item.name }}</router-link>
+        {{ item.name }}
       </li>
     </ul>
     <input
@@ -96,7 +98,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   z-index: 1;
   font-weight: 700;
   backdrop-filter: blur(0.6rem);
@@ -136,10 +138,10 @@ ul {
   gap: 3.2rem;
 }
 li {
-  padding: 0.4rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
 }
 
 .light-theme .open {
@@ -162,10 +164,6 @@ li:hover {
 }
 li:active {
   transform: scale(0.8);
-}
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 .toggle {
