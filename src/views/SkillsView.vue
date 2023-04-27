@@ -24,19 +24,21 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section class="hidden">
-    <Card
-      class="cr parentCard"
-      width="110rem"
-      height="56rem"
-      :bgColor="themeStore.parentBgColor()"
-    >
-      <Title
-        fontSize="3.4rem"
-        :color="themeStore.titleColor()"
-        text="Technologies & Tools"
-      />
-    </Card>
+  <section>
+    <div class="hidden">
+      <Card
+        class="cr parentCard"
+        width="110rem"
+        height="56rem"
+        :bgColor="themeStore.parentBgColor()"
+      >
+        <Title
+          fontSize="3.4rem"
+          :color="themeStore.titleColor()"
+          text="Technologies & Tools"
+        />
+      </Card>
+    </div>
   </section>
 </template>
 <style scoped>
@@ -47,6 +49,7 @@ section {
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 2.4rem;
 }
 .cr.parentCard {

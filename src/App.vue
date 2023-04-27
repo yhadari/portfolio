@@ -11,11 +11,11 @@ setTimeout(() => {
 }, 1000);
 </script>
 <template>
-  <div class="container">
+  <div>
     <TheNavBar />
     <TheBackground />
     <Spinner v-if="spinner" />
     <router-view />
-    <Footer class="footer" />
+    <Footer />
   </div>
 </template>

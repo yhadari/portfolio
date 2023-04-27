@@ -26,29 +26,31 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="hidden">
-    <Card
-      class="cr parentCard"
-      width="110rem"
-      height="50rem"
-      :bgColor="themeStore.parentBgColor()"
-    >
-      <Title
-        fontSize="3.4rem"
-        :color="themeStore.titleColor()"
-        text="Projects"
-      />
-      <div class="cardBox">
-        <Card
-          v-for="i in projectNumber"
-          :key="i"
-          class="cr childCard"
-          height="100%"
-          :bgColor="themeStore.childBgColor()"
-          :shadow="false"
+  <section>
+    <div class="hidden">
+      <Card
+        class="cr parentCard"
+        width="110rem"
+        height="50rem"
+        :bgColor="themeStore.parentBgColor()"
+      >
+        <Title
+          fontSize="3.4rem"
+          :color="themeStore.titleColor()"
+          text="Projects"
         />
-      </div>
-    </Card>
+        <div class="cardBox">
+          <Card
+            v-for="i in projectNumber"
+            :key="i"
+            class="cr childCard"
+            height="100%"
+            :bgColor="themeStore.childBgColor()"
+            :shadow="false"
+          />
+        </div>
+      </Card>
+    </div>
   </section>
 </template>
 <style scoped>

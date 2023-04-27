@@ -17,7 +17,7 @@ const themeStore = useThemeStore();
 .spinnerBox {
   width: 100%;
   height: 100vh;
-  background-color: v-bind("themeStore.spinnerBgColor()");
+  /* background-color: v-bind("themeStore.spinnerBgColor()"); */
   display: flex;
 }
 .spinner {
