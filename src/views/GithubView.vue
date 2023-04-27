@@ -33,35 +33,37 @@ onMounted(() => {
       :bgColor="route === '/' && themeStore.bgColor()"
       :shadow="false"
     >
-      <Card
-        class="cr parentCard hidden"
-        width="110rem"
-        height="66rem"
-        :bgColor="themeStore.parentBgColor()"
-      >
-        <Title
-          fontSize="3.4rem"
-          :color="themeStore.titleColor()"
-          text="GitHub profile details"
-        />
+      <div class="hidden">
         <Card
-          class="cr childCard"
-          height="19.2rem"
-          :bgColor="themeStore.childBgColor()"
-          :shadow="false"
-        />
-        <Title
-          fontSize="3.4rem"
-          :color="themeStore.titleColor()"
-          text="Contribution graph"
-        />
-        <Card
-          class="cr childCard"
-          height="22rem"
-          :bgColor="themeStore.childBgColor()"
-          :shadow="false"
-        />
-      </Card>
+          class="cr parentCard"
+          width="110rem"
+          height="66rem"
+          :bgColor="themeStore.parentBgColor()"
+        >
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.titleColor()"
+            text="GitHub profile details"
+          />
+          <Card
+            class="cr childCard"
+            height="19.2rem"
+            :bgColor="themeStore.childBgColor()"
+            :shadow="false"
+          />
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.titleColor()"
+            text="Contribution graph"
+          />
+          <Card
+            class="cr childCard"
+            height="22rem"
+            :bgColor="themeStore.childBgColor()"
+            :shadow="false"
+          />
+        </Card>
+      </div>
     </Card>
   </section>
 </template>
@@ -75,6 +77,7 @@ section {
 }
 .cr.cardContainer {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 0 2.4rem;
 }

@@ -101,7 +101,7 @@ nav {
   font-size: 1.4rem;
   z-index: 1;
   font-weight: 700;
-  backdrop-filter: blur(0.6rem);
+  backdrop-filter: blur(0.8rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: flex;
   justify-content: center;

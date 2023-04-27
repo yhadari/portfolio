@@ -18,7 +18,6 @@ const observe = new IntersectionObserver((entries) => {
     }
   });
 });
-
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
   hiddenElement.forEach((element) => {
@@ -34,32 +33,34 @@ onMounted(() => {
       :bgColor="route === '/' && themeStore.bgColor()"
       :shadow="false"
     >
-      <Card
-        class="cr parentCard hidden"
-        width="84rem"
-        height="87rem"
-        :bgColor="themeStore.parentBgColor()"
-      >
-        <div class="titleBox">
-          <Title
-            fontSize="3.4rem"
-            :color="themeStore.titleColor()"
-            text="Let me introduce myself"
-          />
-          <div>
-            <Toggle
-              :bgColor="themeStore.toggleColor()"
-              :theme="themeStore.theme"
-            />
-            <h3 class="text">Dev view</h3>
-          </div>
-        </div>
+      <div class="hidden">
         <Card
-          class="cr childCard"
-          :bgColor="themeStore.childBgColor()"
-          :shadow="false"
-        />
-      </Card>
+          class="cr parentCard"
+          width="84rem"
+          height="87rem"
+          :bgColor="themeStore.parentBgColor()"
+        >
+          <div class="titleBox">
+            <Title
+              fontSize="3.4rem"
+              :color="themeStore.titleColor()"
+              text="Let me introduce myself"
+            />
+            <div>
+              <Toggle
+                :bgColor="themeStore.toggleColor()"
+                :theme="themeStore.theme"
+              />
+              <h3 class="text">Dev view</h3>
+            </div>
+          </div>
+          <Card
+            class="cr childCard"
+            :bgColor="themeStore.childBgColor()"
+            :shadow="false"
+          />
+        </Card>
+      </div>
     </Card>
   </section>
 </template>

@@ -59,5 +59,10 @@ export const useThemeStore = defineStore("theme", {
     toggleColor() {
       return this.theme === "light" ? "rgb(253, 126, 20)" : "rgb(232, 89, 12)";
     },
+
+    //Spinner
+    spinnerBgColor() {
+      return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(20, 20, 20)";
+    },
   },
 });

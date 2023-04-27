@@ -26,9 +26,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section>
+  <section class="hidden">
     <Card
-      class="cr parentCard hidden"
+      class="cr parentCard"
       width="110rem"
       height="50rem"
       :bgColor="themeStore.parentBgColor()"
