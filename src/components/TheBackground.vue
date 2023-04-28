@@ -98,7 +98,7 @@ for (let i = 0; i < 260; i++) {
   background-color: #fff;
 }
 .dark-theme .container {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgb(26, 27, 30);
 }
 .shape {
   position: absolute;

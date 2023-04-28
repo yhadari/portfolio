@@ -3,6 +3,9 @@ import { useThemeStore } from "../stores/Theme";
 import { onMounted } from "vue";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
+import Input from "../components/Input.vue";
+import Label from "../components/Label.vue";
+import Button from "../components/Button.vue";
 
 const themeStore = useThemeStore();
 
@@ -29,20 +32,54 @@ onMounted(() => {
       <Card
         class="cr parentCard"
         width="72rem"
-        height="48rem"
+        height="44rem"
         :bgColor="themeStore.parentBgColor()"
       >
-        <Title
-          fontSize="3.4rem"
-          :color="themeStore.contactColor()"
-          text="Contact me"
-        />
+        <div>
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.contactColor()"
+            text="Contact me"
+          />
+          <div>
+            <p>Leave your email and we will get back to you within 24 hours</p>
+          </div>
+        </div>
         <Card
           class="cr childCard"
-          width="50%"
+          width="46%"
           :bgColor="themeStore.childBgColor()"
           :shadow="false"
-        ></Card>
+        >
+          <div>
+            <Label :color="themeStore.labelColor()">Email</Label>
+            <Input
+              color="#333"
+              :bgColor="themeStore.inputBgColor()"
+              placeholder="your@email.com"
+            />
+          </div>
+          <div>
+            <Label :color="themeStore.labelColor()">Name</Label>
+            <Input
+              color="#333"
+              :bgColor="themeStore.inputBgColor()"
+              placeholder="John Doe"
+            />
+          </div>
+          <div>
+            <Label :color="themeStore.labelColor()">Your message</Label>
+            <Input
+              color="#333"
+              :bgColor="themeStore.inputBgColor()"
+              height="12rem"
+              placeholder="I want to order your goods"
+            />
+          </div>
+          <Button position="right" class="btn" width="60%" height="4rem"
+            >Send message</Button
+          >
+        </Card>
       </Card>
     </div>
   </section>
@@ -56,6 +93,9 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -67,7 +107,12 @@ section {
 .cr.childCard {
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .hidden {
   opacity: 0;
   filter: blur(6px);
