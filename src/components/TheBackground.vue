@@ -92,7 +92,7 @@ for (let i = 0; i < 260; i++) {
   position: fixed;
   top: 0;
   left: 0;
-  /* z-index: -1; */
+  z-index: -1;
 }
 .light-theme .container {
   background-color: #fff;
@@ -109,29 +109,29 @@ for (let i = 0; i < 260; i++) {
 
 .light-theme .circle {
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .dark-theme .circle {
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .light-theme .square {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .dark-theme .square {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .light-theme .pentagon {
   border-style: solid;
   border-width: 0 6.25px 10px 6.25px;
-  border-color: transparent transparent rgba(0, 0, 0, 0.4) transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
 }
 .dark-theme .pentagon {
   border-style: solid;
   border-width: 0 6.25px 10px 6.25px;
-  border-color: transparent transparent rgba(255, 255, 255, 0.4) transparent;
+  border-color: transparent transparent rgba(255, 255, 255, 0.5) transparent;
 }
 
 @keyframes _circle {

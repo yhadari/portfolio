@@ -1,15 +1,15 @@
 <script setup>
-import { AtomSpinner } from "epic-spinners";
+import { FingerprintSpinner } from "epic-spinners";
 import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 </script>
 <template>
   <div class="spinnerBox">
-    <atom-spinner
+    <fingerprint-spinner
+      :animation-duration="1500"
+      :size="64"
+      :color="themeStore.spinnerColor()"
       class="spinner"
-      :animation-duration="1000"
-      :size="100"
-      color="#ff1d5e"
     />
   </div>
 </template>
@@ -17,7 +17,7 @@ const themeStore = useThemeStore();
 .spinnerBox {
   width: 100%;
   height: 100vh;
-  /* background-color: v-bind("themeStore.spinnerBgColor()"); */
+  background-color: v-bind("themeStore.spinnerBgColor()");
   display: flex;
 }
 .spinner {

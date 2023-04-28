@@ -61,8 +61,16 @@ export const useThemeStore = defineStore("theme", {
     },
 
     //Spinner
+    spinnerColor() {
+      return this.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
+    },
     spinnerBgColor() {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(20, 20, 20)";
+    },
+
+    //Contact
+    contactColor() {
+      return this.theme === "light" ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
     },
   },
 });

@@ -64,7 +64,7 @@ section {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(-100%);
-  transition: all 0.5s;
+  transition: all 0.8s;
 }
 .show {
   opacity: 1;

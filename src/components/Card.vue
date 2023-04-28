@@ -21,12 +21,17 @@ const props = defineProps({
   <div
     class="card"
     :style="{
-      width: props.width,
-      height: props.height,
-      backgroundColor: props.bgColor,
       boxShadow: props.shadow && '0 0 1rem rgba(0, 0, 0, 0.2)',
     }"
   >
     <slot></slot>
   </div>
 </template>
+
+<style scoped>
+.card {
+  width: v-bind("props.width");
+  height: v-bind("props.height");
+  background-color: v-bind("props.bgColor");
+}
+</style>

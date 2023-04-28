@@ -23,10 +23,7 @@ footer {
   align-items: center;
   justify-content: space-evenly;
   height: var(--footerHeight);
-  backdrop-filter: blur(0.6rem);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  backdrop-filter: blur(0.6rem);
-  opacity: 0.9;
 }
 h2 {
   font-weight: 700;
