@@ -11,6 +11,10 @@ const props = defineProps({
     type: String,
     default: "white",
   },
+  rows: {
+    type: String,
+    default: "5",
+  },
   size: {
     type: String,
     default: "1.4rem",
@@ -19,36 +23,32 @@ const props = defineProps({
     type: String,
     default: "100%",
   },
-  height: {
-    type: String,
-  },
   placeholder: {
     type: String,
   },
 });
 </script>
 <template>
-  <input type="text" :placeholder="props.placeholder" />
+  <textarea :rows="props.rows" :placeholder="props.placeholder" />
 </template>
 <style scoped>
-input {
+textarea {
   width: v-bind("props.width");
-  height: v-bind("props.height");
-  border: none;
   outline: none;
   background-color: v-bind("props.bgColor");
   font-size: v-bind("props.size");
   color: v-bind("props.color");
-  padding: 0 1rem;
+  padding: 1rem;
   margin-top: 0.4rem;
   border-radius: 0.6rem;
   border: 1px solid v-bind("themeStore.inputBorderColor()");
+  resize: none;
 }
-input::placeholder {
+textarea::placeholder {
   color: v-bind("themeStore.inputPlaceholderColor()");
   font-size: 1.2rem;
 }
-input:focus {
+textarea:focus {
   border: 1px solid v-bind("themeStore.buttonBgColor()");
 }
 </style>

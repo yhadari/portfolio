@@ -6,6 +6,7 @@ import Title from "../components/Title.vue";
 import Input from "../components/Input.vue";
 import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
+import Textarea from "../components/Textarea.vue";
 
 const themeStore = useThemeStore();
 
@@ -75,13 +76,13 @@ onMounted(() => {
             <Label class="label" :color="themeStore.labelColor()"
               >Your message</Label
             >
-            <Input
-              class="input"
+            <Textarea
+              class="textarea"
+              rows="6"
               :color="themeStore.inputColor()"
               :bgColor="themeStore.inputBgColor()"
-              height="12rem"
               placeholder="I want to order your goods"
-            />
+            ></Textarea>
           </div>
           <Button
             class="btn"
@@ -136,10 +137,6 @@ section {
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
-}
-
-.input {
-  margin-top: 0.3rem;
 }
 .btn {
   transition: all 0.2s;
