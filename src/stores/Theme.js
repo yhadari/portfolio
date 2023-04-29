@@ -42,7 +42,7 @@ export const useThemeStore = defineStore("theme", {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
     },
     childBgColor() {
-      return this.theme === "light" ? "rgb(248, 248, 248)" : "rgb(30, 30, 30)";
+      return this.theme === "light" ? "rgb(248, 248, 248)" : "rgb(26,27,30)";
     },
 
     //Title
@@ -72,16 +72,38 @@ export const useThemeStore = defineStore("theme", {
     contactColor() {
       return this.theme === "light" ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
     },
+
+    //Input
     labelColor() {
       return this.theme === "light"
         ? "rgb(20, 20, 20)"
         : "rgb(255, 255, 255, 0.8)";
     },
+    inputColor() {
+      return this.theme === "light" ? "rgb(20, 20, 20)" : "rgb(255, 255, 255)";
+    },
     inputBgColor() {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44,46,51)";
     },
     inputBorderColor() {
-      return this.theme === "light" ? "rgb(44,46,51)" : "rgb(255, 255, 255)";
+      return this.theme === "light"
+        ? "rgb(44,46,51, 0.2)"
+        : "rgb(255, 255, 255, 0.1)";
+    },
+    inputPlaceholderColor() {
+      return this.theme === "light"
+        ? "rgb(44,46,51, 0.5)"
+        : "rgb(255, 255, 255, 0.3)";
+    },
+
+    //Button
+    buttonColor() {
+      return this.theme === "light"
+        ? "rgb(255, 255, 255)"
+        : "rgb(255, 255, 255)";
+    },
+    buttonBgColor() {
+      return this.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
     },
   },
 });

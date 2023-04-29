@@ -21,7 +21,6 @@ const props = defineProps({
   },
   height: {
     type: String,
-    default: "100%",
   },
   placeholder: {
     type: String,
@@ -41,7 +40,14 @@ input {
   font-size: v-bind("props.size");
   color: v-bind("props.color");
   padding: 0 1rem;
-  border-radius: 0.4rem;
-  box-shadow: inset 0 0 0 0.2px v-bind("themeStore.inputBorderColor()");
+  border-radius: 0.6rem;
+  border: 1px solid v-bind("themeStore.inputBorderColor()");
+}
+input::placeholder {
+  color: v-bind("themeStore.inputPlaceholderColor()");
+  font-size: 1.2rem;
+}
+input:focus {
+  border: 1px solid v-bind("themeStore.buttonBgColor()");
 }
 </style>

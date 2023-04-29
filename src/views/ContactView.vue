@@ -42,7 +42,7 @@ onMounted(() => {
             text="Contact me"
           />
           <div>
-            <p>Leave your email and we will get back to you within 24 hours</p>
+            <!-- <p>Leave your email and we will get back to you within 24 hours</p> -->
           </div>
         </div>
         <Card
@@ -52,31 +52,44 @@ onMounted(() => {
           :shadow="false"
         >
           <div>
-            <Label :color="themeStore.labelColor()">Email</Label>
+            <Label class="label" :color="themeStore.labelColor()">Email</Label>
             <Input
-              color="#333"
+              class="input"
+              :color="themeStore.inputColor()"
               :bgColor="themeStore.inputBgColor()"
+              height="3.6rem"
               placeholder="your@email.com"
             />
           </div>
           <div>
-            <Label :color="themeStore.labelColor()">Name</Label>
+            <Label class="label" :color="themeStore.labelColor()">Name</Label>
             <Input
-              color="#333"
+              class="input"
+              :color="themeStore.inputColor()"
               :bgColor="themeStore.inputBgColor()"
+              height="3.6rem"
               placeholder="John Doe"
             />
           </div>
           <div>
-            <Label :color="themeStore.labelColor()">Your message</Label>
+            <Label class="label" :color="themeStore.labelColor()"
+              >Your message</Label
+            >
             <Input
-              color="#333"
+              class="input"
+              :color="themeStore.inputColor()"
               :bgColor="themeStore.inputBgColor()"
               height="12rem"
               placeholder="I want to order your goods"
             />
           </div>
-          <Button position="right" class="btn" width="60%" height="4rem"
+          <Button
+            class="btn"
+            position="right"
+            :bgColor="themeStore.buttonBgColor()"
+            :color="themeStore.buttonColor()"
+            width="50%"
+            height="3.6rem"
             >Send message</Button
           >
         </Card>
@@ -123,5 +136,15 @@ section {
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
+}
+
+.input {
+  margin-top: 0.3rem;
+}
+.btn {
+  transition: all 0.2s;
+}
+.btn:hover {
+  transform: scale(1.05);
 }
 </style>

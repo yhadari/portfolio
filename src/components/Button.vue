@@ -20,6 +20,10 @@ const props = defineProps({
   position: {
     type: String,
   },
+  size: {
+    type: String,
+    default: "1.4rem",
+  },
 });
 
 const computedStyles = computed(() => {
@@ -41,11 +45,11 @@ button {
   border: none;
   outline: none;
   background-color: v-bind("props.bgColor");
-  font-size: 1.4rem;
+  font-size: v-bind("props.size");
   color: v-bind("props.color");
   padding: 0 1rem;
   border-radius: 0.4rem;
-  box-shadow: inset 0 0 0 0.2px #333;
   cursor: pointer;
+  font-weight: bold;
 }
 </style>

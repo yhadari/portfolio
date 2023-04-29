@@ -31,7 +31,7 @@ onMounted(() => {
       <Card
         class="cr parentCard"
         width="110rem"
-        height="50rem"
+        height="46rem"
         :bgColor="themeStore.parentBgColor()"
       >
         <Title
