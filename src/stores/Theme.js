@@ -70,7 +70,9 @@ export const useThemeStore = defineStore("theme", {
 
     //Contact
     contactColor() {
-      return this.theme === "light" ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
+      return this.theme === "light"
+        ? "rgb(10, 10, 10)"
+        : "rgb(255, 255, 255, 0.8)";
     },
 
     //Input

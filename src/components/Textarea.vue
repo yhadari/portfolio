@@ -43,10 +43,11 @@ textarea {
   border-radius: 0.6rem;
   border: 1px solid v-bind("themeStore.inputBorderColor()");
   resize: none;
+  font-family: inherit;
 }
 textarea::placeholder {
   color: v-bind("themeStore.inputPlaceholderColor()");
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 textarea:focus {
   border: 1px solid v-bind("themeStore.buttonBgColor()");

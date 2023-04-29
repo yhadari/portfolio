@@ -21,7 +21,7 @@ const props = defineProps({
   <div
     class="card"
     :style="{
-      boxShadow: props.shadow && '0 0 1rem rgba(0, 0, 0, 0.2)',
+      boxShadow: props.shadow && '0 0 1rem rgba(0, 0, 0, 0.4)',
     }"
   >
     <slot></slot>
