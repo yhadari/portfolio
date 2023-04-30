@@ -17,7 +17,7 @@ import "prismjs/themes/prism.css";
 
 const themeStore = useThemeStore();
 const route = router.currentRoute.value.path;
-const toggleValue = ref(true);
+let toggleValue = ref(true);
 const code = `import Saad from "@saad/core"
 
 // -----------------------------------------------------------------------------
@@ -31,21 +31,21 @@ type Props = {
 
 export default function AboutMe(props: Props) {
   return (
-    <Saad 
+    <Saad
       🧔🏻 = { I'm Mrabet saâd, a 25 years old programmer, from Tangier Morocco 🇲🇦. },
       🧑🏼‍🎓 = { I got my bachelor's degree in Computer Engineering at 2021. },
       🎯 = {
               I enjoy being challenged and engaging with projects that require me to work outside
-              my comfort zone and knowledge set, as continuing to learn new languages and 
+              my comfort zone and knowledge set, as continuing to learn new languages and
               development techniques.
            },
       💻 = { I'm fluent in many programming languages, especially in Js/Ts & Python. },
       🔎 = {
-              My field of Interest are building new  Web Technologies and Products and also in 
+              My field of Interest are building new  Web Technologies and Products and also in
               areas related Mobile application and Natural Language Processing.
            },
       💭 = {
-              whenever possible, i also apply my passion for developing products with multiple 
+              whenever possible, i also apply my passion for developing products with multiple
               different frameworks and technologies, like Django, React, Angular, Vite, Redux,
               Node.js ...
            }
@@ -76,6 +76,22 @@ onMounted(() => {
   hiddenElement.forEach((element) => {
     observe.observe(element);
   });
+
+  const toggleBox = document.querySelector(".toggleBox");
+  let temp = true;
+  const myFunction = (x) => {
+    if (x.matches) {
+      temp = toggleValue.value;
+      toggleValue.value = false;
+      toggleBox.style.display = "none";
+    } else {
+      toggleValue.value = temp;
+      toggleBox.style.display = "flex";
+    }
+  };
+
+  const x = window.matchMedia("(max-width: 1000px)");
+  x.addListener(myFunction); // Attach listener function on state changes
 });
 </script>
 
@@ -90,7 +106,7 @@ onMounted(() => {
         <Card
           class="cr parentCard"
           :width="`${toggleValue ? '84rem' : '110rem'}`"
-          :height="`${toggleValue ? '87rem' : '44rem'}`"
+          :height="`${toggleValue ? '87rem' : '42rem'}`"
           :bgColor="themeStore.parentBgColor()"
         >
           <div class="titleBox">
@@ -99,7 +115,7 @@ onMounted(() => {
               :color="themeStore.titleColor()"
               text="Let me introduce myself"
             />
-            <div>
+            <div class="toggleBox">
               <Toggle
                 @onchange="handleToggle"
                 :bgColor="themeStore.toggleColor()"
@@ -121,7 +137,7 @@ onMounted(() => {
               :highlight="highlighter"
             />
           </Card>
-          <div class="cotainer" v-else>
+          <div class="container" v-else>
             <p>
               🧔🏻 I'm Mrabet saâd, a 25 years old programmer, from Tangier
               Morocco 🇲🇦.
@@ -205,12 +221,12 @@ section {
   color: v-bind("themeStore.textColor()");
 }
 
-.cotainer {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.6rem;
   padding: 0.4rem;
-  font-size: 1.8rem;
+  font-size: 1.68rem;
   font-weight: 400;
   color: v-bind("themeStore.textColor()");
 }

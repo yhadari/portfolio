@@ -31,7 +31,7 @@ const props = defineProps({
 <style scoped>
 .card {
   max-width: v-bind("props.width");
-  height: v-bind("props.height");
+  min-height: v-bind("props.height");
   background-color: v-bind("props.bgColor");
 }
 </style>

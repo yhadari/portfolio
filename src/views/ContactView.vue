@@ -127,7 +127,7 @@ onMounted(() => {
             position="right"
             :bgColor="themeStore.buttonBgColor()"
             :color="themeStore.buttonColor()"
-            width="50%"
+            width="55%"
             height="3.6rem"
             >Send message</Button
           >
@@ -232,15 +232,15 @@ ion-icon {
     margin: 18rem 0;
   }
   .cr.parentCard {
-    max-width: 42rem;
+    max-width: 40rem;
     flex-direction: column;
     align-items: center;
   }
   .cr.childCard {
-    width: 100%;
+    max-width: 100%;
   }
-  .container {
-    width: 100%;
+  .container{
+    max-width: 100%;
   }
 }
 </style>
