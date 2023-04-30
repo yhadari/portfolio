@@ -75,10 +75,12 @@ section {
   letter-spacing: 0.8px;
   overflow-x: hidden;
 }
+
 .cr.cardContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
   padding: 0 2.4rem;
 }
 .cr.parentCard {

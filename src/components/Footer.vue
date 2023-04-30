@@ -24,8 +24,17 @@ footer {
   justify-content: space-evenly;
   height: var(--footerHeight);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 1.6rem;
+  gap: 2rem;
 }
 h2 {
   font-weight: 700;
+}
+
+@media screen and (max-width: 650px) {
+  footer {
+    flex-direction: column;
+    height: auto;
+  }
 }
 </style>

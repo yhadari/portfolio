@@ -30,7 +30,11 @@ onMounted(() => {
 <template>
   <section>
     <div class="hidden">
-      <Card class="cr parentCard" :bgColor="themeStore.parentBgColor()">
+      <Card
+        class="cr parentCard"
+        :bgColor="themeStore.parentBgColor()"
+        width="72rem"
+      >
         <div class="container">
           <Title
             fontSize="3.4rem"
@@ -139,11 +143,12 @@ section {
   min-height: 74rem;
   letter-spacing: 0.8px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
   font-size: 1.4rem;
   font-weight: bold;
-  color: #333;
+  padding: 0 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -163,7 +168,7 @@ section {
 }
 
 .container {
-  max-width: 34rem;
+  width: 34rem;
   height: 41.4rem;
 }
 .btn {
@@ -224,11 +229,10 @@ ion-icon {
 
 @media screen and (max-width: 680px) {
   section {
-    margin-top: 20rem;
-    margin-bottom: 6rem;
+    margin: 18rem 0;
   }
   .cr.parentCard {
-    width: 42rem;
+    max-width: 42rem;
     flex-direction: column;
     align-items: center;
   }

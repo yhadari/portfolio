@@ -3,8 +3,10 @@ import { useThemeStore } from "../stores/Theme";
 import { onMounted } from "vue";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
+import router from "../router";
 
 const themeStore = useThemeStore();
+const route = router.currentRoute.value.path;
 
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -24,7 +26,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section>
+  <section :class="route === '/skills' && 'skillsPage'">
     <div class="hidden">
       <Card
         class="cr parentCard"
@@ -48,16 +50,20 @@ section {
   min-height: 64rem;
   letter-spacing: 0.8px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
   padding: 0 2.4rem;
+}
+
+.skillsPage {
+  margin: 10rem 0;
 }
 .cr.parentCard {
   padding: 2.6rem;
   border-radius: 1rem;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
 }
 
 .hidden {

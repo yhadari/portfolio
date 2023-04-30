@@ -4,12 +4,12 @@ import GithubView from "./GithubView.vue";
 </script>
 <template>
   <section>
-    <GithubView />
+    <GithubView class="github" />
     <ProjectsView />
   </section>
 </template>
 <style scoped>
-section {
-  margin-top: 6rem;
+.github {
+  margin-top: 10rem;
 }
 </style>

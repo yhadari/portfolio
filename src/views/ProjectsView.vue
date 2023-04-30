@@ -57,11 +57,12 @@ onMounted(() => {
 section {
   width: 100%;
   height: 100vh;
-  min-height: 58rem;
+  min-height: 54rem;
   letter-spacing: 0.8px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
   padding: 0 2.4rem;
 }
 .cr.parentCard {

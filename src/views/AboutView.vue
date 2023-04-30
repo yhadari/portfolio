@@ -73,12 +73,13 @@ section {
   overflow-x: hidden;
 }
 .aboutPage {
-  margin: 16rem 0 6rem 0;
+  margin: 10rem 0 6rem 0;
 }
 .cr.cardContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
   padding: 0 2.4rem;
 }
 .cr.parentCard {
