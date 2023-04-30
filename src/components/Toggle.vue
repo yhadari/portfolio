@@ -1,9 +1,5 @@
 <script setup>
 const props = defineProps({
-  // fontSize: {
-  //   type: String,
-  //   default: "1.6rem",
-  // },
   bgColor: {
     type: String,
     default: "rgb(255, 255, 255)",
@@ -12,17 +8,17 @@ const props = defineProps({
     type: String,
     default: "light",
   },
-  // onIcon: {
-  //   type: String,
-  // },
-  // offIcon: {
-  //   type: String,
-  // },
 });
+
+const emit = defineEmits(["onchange"]);
+
+const handleToggle = (e) => {
+  emit("onchange", e.target.checked);
+};
 </script>
 <template>
   <div>
-    <input class="input" type="checkbox" id="switch" />
+    <input class="input" type="checkbox" id="switch" :onchange="handleToggle" />
     <label
       for="switch"
       :class="props.theme"

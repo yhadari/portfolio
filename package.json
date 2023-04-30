@@ -15,9 +15,10 @@
     "pinia": "^2.0.32",
     "primeicons": "^6.0.1",
     "primevue": "^3.26.1",
+    "prismjs": "^1.29.0",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6",
-    "vuesax": "^4.0.1-alpha.25"
+    "vue-prism-editor": "^2.0.0-alpha.2",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

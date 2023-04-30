@@ -42,7 +42,7 @@ export const useThemeStore = defineStore("theme", {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
     },
     childBgColor() {
-      return this.theme === "light" ? "rgb(248, 248, 248)" : "rgb(26,27,30)";
+      return this.theme === "light" ? "rgb(246,248,250)" : "rgb(26,27,30)";
     },
 
     //Title

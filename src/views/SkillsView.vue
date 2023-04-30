@@ -57,7 +57,7 @@ section {
 }
 
 .skillsPage {
-  margin: 10rem 0;
+  margin: 6rem 0;
 }
 .cr.parentCard {
   padding: 2.6rem;
