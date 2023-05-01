@@ -30,8 +30,8 @@ onMounted(() => {
     <div class="hidden">
       <Card
         class="cr parentCard"
-        width="110rem"
-        height="56rem"
+        width="96rem"
+        height="50rem"
         :bgColor="themeStore.parentBgColor()"
       >
         <Title
@@ -96,6 +96,7 @@ onMounted(() => {
               src="../assets/nextjs-boilerplate-logo.png"
               alt="next.js logo"
             />
+            <img class="logo" src="../assets/nodejs.png" alt="node.js logo" />
             <img
               class="logo"
               src="../assets/expressjs.png"
@@ -110,10 +111,34 @@ onMounted(() => {
             text="Tools & services"
           />
           <div>
-            <img class="logo" src="../assets/js-09d567eb.webp" alt="js logo" />
-            <img class="logo" src="../assets/js-09d567eb.webp" alt="js logo" />
-            <img class="logo" src="../assets/js-09d567eb.webp" alt="js logo" />
-            <img class="logo" src="../assets/js-09d567eb.webp" alt="js logo" />
+            <img
+              class="logo"
+              src="../assets/postgresql-67a6ade0.webp"
+              alt="js logo"
+            />
+            <img class="logo" src="../assets/mongodb.png" alt="js logo" />
+            <img class="logo" src="../assets/git-56c9cb66.webp" alt="js logo" />
+            <img
+              class="logo"
+              src="../assets/github-2703d511.webp"
+              alt="js logo"
+            />
+            <img
+              class="logo"
+              src="../assets/netlify-975607fa.webp"
+              alt="js logo"
+            />
+            <img
+              class="logo"
+              src="../assets/docker-47f787cf.webp"
+              alt="js logo"
+            />
+            <img
+              class="logo"
+              src="../assets/vite-5c372a0c.webp"
+              alt="js logo"
+            />
+            <img class="logo" src="../assets/images.jpg" alt="js logo" />
           </div>
         </div>
       </Card>
@@ -143,16 +168,18 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .logo {
-  width: 7rem;
-  height: 7rem;
-  margin-right: 2rem;
+  width: 6.8rem;
+  height: 6.8rem;
+  margin: 1rem;
   border-radius: 1rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.2s;
   background-color: #fff;
+  padding: 0.4rem;
 }
 .logo:hover {
   transform: scale(1.32);
@@ -162,11 +189,11 @@ section {
 }
 .text {
   font-size: 1.6rem;
+  color: v-bind("themeStore.textColor()");
 }
 .box {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 .hidden {
   opacity: 0;
