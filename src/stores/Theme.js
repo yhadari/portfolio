@@ -52,7 +52,7 @@ export const useThemeStore = defineStore("theme", {
 
     //Text
     textColor() {
-      return this.theme === "light" ? "#333" : "#ddd";
+      return this.theme === "light" ? "#111" : "#eee";
     },
 
     //Toggle
@@ -106,6 +106,14 @@ export const useThemeStore = defineStore("theme", {
     },
     buttonBgColor() {
       return this.theme === "light" ? "rgb(255, 146, 43)" : "rgb(252, 196, 25)";
+    },
+
+    //prism editor
+    prismColor() {
+      return this.theme === "light" ? "rgb(0, 0, 0)" : "rgb(153,215,248)";
+    },
+    prismBgColor() {
+      return this.theme === "light" ? "rgb(246,248,250)" : "rgb(30,30,30)";
     },
   },
 });

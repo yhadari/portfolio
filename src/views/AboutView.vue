@@ -13,12 +13,12 @@ import "vue-prism-editor/dist/prismeditor.min.css"; // import the styles somewhe
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css";
+import "prismjs/themes/prism-solarizedlight.css";
 
 const themeStore = useThemeStore();
 const route = router.currentRoute.value.path;
 let toggleValue = ref(true);
-const code = `import Saad from "@saad/core"
+const code = `import Yacine from "@yacine/core"
 
 // -----------------------------------------------------------------------------
 
@@ -31,22 +31,24 @@ type Props = {
 
 export default function AboutMe(props: Props) {
   return (
-    <Saad
-      🧔🏻 = { I'm Mrabet saâd, a 25 years old programmer, from Tangier Morocco 🇲🇦. },
-      🧑🏼‍🎓 = { I got my bachelor's degree in Computer Engineering at 2021. },
+    <Yacine
+      🧔🏻 = { I'm Hadari yacine, a 25 years old programmer, from Oulad Teima Morocco 🇲🇦. },
+      🧑🏼‍🎓 = { 
+                I got my high-school diploma at 2016. And now I'm a SOFTWARE ENGINEERING 
+                student at 1337 Coding School. 
+              },
       🎯 = {
               I enjoy being challenged and engaging with projects that require me to work outside
               my comfort zone and knowledge set, as continuing to learn new languages and
               development techniques.
            },
-      💻 = { I'm fluent in many programming languages, especially in Js/Ts & Python. },
+      💻 = { I'm fluent in many programming languages, especially in Js/Ts & C , C++. },
       🔎 = {
-              My field of Interest are building new  Web Technologies and Products and also in
-              areas related Mobile application and Natural Language Processing.
+              My field of Interest are building new Web Technologies and Products.
            },
       💭 = {
               whenever possible, i also apply my passion for developing products with multiple
-              different frameworks and technologies, like Django, React, Angular, Vite, Redux,
+              different frameworks and technologies, like Vue.js, React, Next.js, Vite, express,
               Node.js ...
            }
     />
@@ -91,6 +93,7 @@ onMounted(() => {
   };
 
   const x = window.matchMedia("(max-width: 1000px)");
+  myFunction(x); // Call listener function at run time
   x.addListener(myFunction); // Attach listener function on state changes
 });
 </script>
@@ -106,7 +109,7 @@ onMounted(() => {
         <Card
           class="cr parentCard"
           :width="`${toggleValue ? '84rem' : '110rem'}`"
-          :height="`${toggleValue ? '87rem' : '42rem'}`"
+          :height="`${toggleValue ? '87rem' : '40rem'}`"
           :bgColor="themeStore.parentBgColor()"
         >
           <div class="titleBox">
@@ -139,12 +142,10 @@ onMounted(() => {
           </Card>
           <div class="container" v-else>
             <p>
-              🧔🏻 I'm Mrabet saâd, a 25 years old programmer, from Tangier
+              🧔🏻 I'm Hadari yacine, a 25 years old programmer, from Oulad Teima
               Morocco 🇲🇦.
             </p>
-            <p>
-              🧑🏼‍🎓 I got my bachelor's degree in Computer Engineering at 2021.
-            </p>
+            <p>🧑🏼‍🎓 I'm a SOFTWARE ENGINEERING student at 1337 Coding School.</p>
             <p>
               🎯 I enjoy being challenged and engaging with projects that
               require me to work outside my comfort zone and knowledge set, as
@@ -152,17 +153,16 @@ onMounted(() => {
             </p>
             <p>
               💻 I'm fluent in many programming languages, especially in Js/Ts &
-              Python.
+              C C++.
             </p>
             <p>
               🔎 My field of Interest are building new Web Technologies and
-              Products and also in areas related Mobile application and Natural
-              Language Processing.
+              Products.
             </p>
             <p>
               💭 whenever possible, i also apply my passion for developing
               products with multiple different frameworks and technologies, like
-              Django, React, Angular, Vite, Redux, Node.js ...
+              Vue.js, React, Next.js, Vite, express, Node.js ...
             </p>
           </div>
         </Card>
@@ -176,7 +176,7 @@ section {
   height: 100vh;
   min-height: 95rem;
   letter-spacing: 0.8px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .aboutPage {
   margin: 18rem 0 6rem 0;
@@ -224,9 +224,9 @@ section {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.4rem;
   padding: 0.4rem;
-  font-size: 1.68rem;
+  font-size: 1.8rem;
   font-weight: 400;
   color: v-bind("themeStore.textColor()");
 }
@@ -248,10 +248,10 @@ section {
   justify-content: center;
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
   font-size: 1.25rem;
-  line-height: 1.65;
-  padding: 0 2rem;
-  /* color: #fff;
-  background-color: #000; */
+  line-height: 1.6;
+  padding: 2rem;
+  color: v-bind("themeStore.prismColor()");
+  background-color: v-bind("themeStore.prismBgColor()");
   pointer-events: none;
 }
 </style>
