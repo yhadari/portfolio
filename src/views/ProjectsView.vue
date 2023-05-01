@@ -47,7 +47,8 @@ onMounted(() => {
             height="100%"
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
-          />
+          >
+          </Card>
         </div>
       </Card>
     </div>
