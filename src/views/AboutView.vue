@@ -194,13 +194,11 @@ section {
 }
 .cr.parentCard {
   padding: 2.6rem;
-  border-radius: 1rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 .cr.childCard {
-  border-radius: 1rem;
   overflow: hidden;
 }
 .titleBox {

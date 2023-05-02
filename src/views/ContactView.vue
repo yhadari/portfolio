@@ -152,14 +152,12 @@ section {
 }
 .cr.parentCard {
   padding: 2.6rem;
-  border-radius: 1rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   gap: 2.8rem;
 }
 .cr.childCard {
-  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 2.4rem;
   display: flex;

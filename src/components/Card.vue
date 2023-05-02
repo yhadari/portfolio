@@ -1,4 +1,6 @@
 <script setup>
+import { useThemeStore } from "../stores/Theme";
+const themeStore = useThemeStore();
 const props = defineProps({
   width: {
     type: String,
@@ -15,15 +17,14 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  borderRadius: {
+    type: String,
+    default: "0.8rem",
+  },
 });
 </script>
 <template>
-  <div
-    class="card"
-    :style="{
-      boxShadow: props.shadow && '0 0 1rem rgba(0, 0, 0, 0.4)',
-    }"
-  >
+  <div :class="`card ${props.shadow && 'boxShadow'}`">
     <slot></slot>
   </div>
 </template>
@@ -33,5 +34,9 @@ const props = defineProps({
   max-width: v-bind("props.width");
   min-height: v-bind("props.height");
   background-color: v-bind("props.bgColor");
+  border-radius: v-bind("props.borderRadius");
+}
+.boxShadow {
+  box-shadow: v-bind("themeStore.boxShadow()") 0 0 1rem;
 }
 </style>

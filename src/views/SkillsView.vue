@@ -163,7 +163,6 @@ section {
 }
 .cr.parentCard {
   padding: 2.6rem;
-  border-radius: 1rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -172,8 +171,8 @@ section {
 }
 
 .logo {
-  width: 6.8rem;
-  height: 6.8rem;
+  width: 7.2rem;
+  height: 7.2rem;
   margin: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

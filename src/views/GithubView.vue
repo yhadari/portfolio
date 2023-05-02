@@ -1,11 +1,13 @@
 <script setup>
 import { onMounted } from "vue";
 import { useThemeStore } from "../stores/Theme";
+import { useGithubStore } from "../stores/Github_Auth";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 import router from "../router";
 
 const themeStore = useThemeStore();
+const githubStore = useGithubStore();
 const route = router.currentRoute.value.path;
 
 const observe = new IntersectionObserver((entries) => {
@@ -18,11 +20,12 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-onMounted(() => {
+onMounted(async () => {
   const hiddenElement = document.querySelectorAll(".hidden");
   hiddenElement.forEach((element) => {
     observe.observe(element);
   });
+  await githubStore.auth();
 });
 </script>
 
@@ -45,12 +48,30 @@ onMounted(() => {
             :color="themeStore.titleColor()"
             text="GitHub profile details"
           />
-          <Card
-            class="cr childCard"
-            height="19.2rem"
-            :bgColor="themeStore.childBgColor()"
-            :shadow="false"
-          />
+          <a
+            class="github"
+            :href="`${githubStore.data?.html_url}`"
+            target="_blank"
+          >
+            <Card
+              class="cr childCard first"
+              height="19.2rem"
+              :bgColor="themeStore.childBgColor()"
+            >
+              <div class="imgBox">
+                <img
+                  :src="`${githubStore.data?.avatar_url}`"
+                  alt="user avatar"
+                />
+                <p>{{ githubStore.data?.followers }} followers</p>
+              </div>
+              <div class="textBox">
+                <p class="login">{{ githubStore.data?.login }}</p>
+                <p>{{ githubStore.data?.bio }}</p>
+                <p>My account curently has 888 commits.</p>
+              </div>
+            </Card>
+          </a>
           <Title
             fontSize="3.4rem"
             :color="themeStore.titleColor()"
@@ -60,7 +81,6 @@ onMounted(() => {
             class="cr childCard"
             height="22rem"
             :bgColor="themeStore.childBgColor()"
-            :shadow="false"
           />
         </Card>
       </div>
@@ -74,8 +94,8 @@ section {
   min-height: 74rem;
   letter-spacing: 0.8px;
   overflow-x: hidden;
+  line-height: 2.4rem;
 }
-
 .cr.cardContainer {
   display: flex;
   flex-direction: column;
@@ -85,17 +105,45 @@ section {
 }
 .cr.parentCard {
   padding: 2.6rem;
-  border-radius: 1rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 .cr.childCard {
-  border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2.4rem;
+  color: v-bind("themeStore.textColor()");
 }
 
+.github {
+  text-decoration: none;
+}
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.textBox .login {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.imgBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.imgBox img {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 1rem;
+}
 .hidden {
   opacity: 0;
   filter: blur(6px);

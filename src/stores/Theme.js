@@ -42,7 +42,12 @@ export const useThemeStore = defineStore("theme", {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(44, 46, 51)";
     },
     childBgColor() {
-      return this.theme === "light" ? "rgb(246,248,250)" : "rgb(26,27,30)";
+      return this.theme === "light" ? "rgb(248,249,250)" : "rgb(37,38,43)";
+    },
+    boxShadow() {
+      return this.theme === "light"
+        ? "rgb(0, 0, 0, 0.4)"
+        : "rgb(166, 166, 166)";
     },
 
     //Title
