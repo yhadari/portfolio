@@ -206,4 +206,11 @@ section {
   filter: blur(0);
   transform: translateX(0);
 }
+
+@media screen and (max-width: 680px) {
+  section,
+  .skillsPage {
+    margin: 24rem 0;
+  }
+}
 </style>

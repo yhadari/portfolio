@@ -229,7 +229,7 @@ ion-icon {
 
 @media screen and (max-width: 680px) {
   section {
-    margin: 18rem 0;
+    margin: 20rem 0;
   }
   .cr.parentCard {
     max-width: 40rem;
@@ -239,7 +239,7 @@ ion-icon {
   .cr.childCard {
     max-width: 100%;
   }
-  .container{
+  .container {
     max-width: 100%;
   }
 }

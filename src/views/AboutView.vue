@@ -179,7 +179,7 @@ section {
   overflow: hidden;
 }
 .aboutPage {
-  margin: 18rem 0 6rem 0;
+  margin: 12rem 0 6rem 0;
   justify-content: stretch;
 }
 .aboutPage .cr.cardContainer {
