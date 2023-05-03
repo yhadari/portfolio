@@ -7,6 +7,7 @@ export const useGithubStore = defineStore("github_auth", {
     return {
       data: null,
       contributionGraph: null,
+      allCommits: null,
     };
   },
 
@@ -28,7 +29,21 @@ export const useGithubStore = defineStore("github_auth", {
       const body = {
         query: `query {
             user(login: "${username}") {
-              name
+               repositories(first: 50) {
+                edges {
+                  node {
+                    defaultBranchRef {
+                      target {
+                        ... on Commit {
+                          history {
+                            totalCount
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               contributionsCollection {
                 contributionCalendar {
                   colors
@@ -36,11 +51,7 @@ export const useGithubStore = defineStore("github_auth", {
                   weeks {
                     contributionDays {
                       color
-                      contributionCount
-                      date
-                      weekday
                     }
-                    firstDay
                   }
                 }
               }
@@ -55,8 +66,11 @@ export const useGithubStore = defineStore("github_auth", {
       const { data } = await response.json();
       this.contributionGraph =
         data.user.contributionsCollection.contributionCalendar;
-      this.contributionGraph.colors.unshift("#eeeeee");
-      console.log(this.contributionGraph);
+      this.contributionGraph.colors.unshift("#ebedf0");
+      this.allCommits = data.user.repositories.edges.reduce((acc, { node }) => {
+        return acc + node.defaultBranchRef.target.history.totalCount;
+      }, 0);
+      console.log(this.contributionGraph.weeks);
     },
   },
 });
