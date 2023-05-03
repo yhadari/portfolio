@@ -25,7 +25,13 @@ onMounted(async () => {
   hiddenElement.forEach((element) => {
     observe.observe(element);
   });
+
   await githubStore.auth();
+
+  await githubStore.getContributions(
+    import.meta.env.VITE_GITHUB_TOKEN,
+    githubStore.data?.login
+  );
 });
 </script>
 
@@ -48,14 +54,10 @@ onMounted(async () => {
             :color="themeStore.titleColor()"
             text="GitHub profile details"
           />
-          <a
-            class="github"
-            :href="`${githubStore.data?.html_url}`"
-            target="_blank"
-          >
+          <a :href="`${githubStore.data?.html_url}`" target="_blank">
             <Card
               class="cr childCard first"
-              height="19.2rem"
+              height="20rem"
               :bgColor="themeStore.childBgColor()"
             >
               <div class="imgBox">
@@ -81,7 +83,29 @@ onMounted(async () => {
             class="cr childCard"
             height="22rem"
             :bgColor="themeStore.childBgColor()"
-          />
+          >
+            <div class="contributionBox">
+              <img
+                class="contributionGraph"
+                :src="`https://ghchart.rshah.org/30a14e/${githubStore.data?.login}`"
+                alt="Name Your Github chart"
+              />
+              <div class="bt">
+                <p>
+                  {{ githubStore.contributionGraph?.totalContributions }}
+                  contributions in the last year
+                </p>
+                <div class="btc">
+                  <p>Less</p>
+                  <span
+                    v-for="color in githubStore.contributionGraph?.colors"
+                    :style="{ backgroundColor: color }"
+                  ></span>
+                  <p>More</p>
+                </div>
+              </div>
+            </div>
+          </Card>
         </Card>
       </div>
     </Card>
@@ -119,8 +143,11 @@ section {
   color: v-bind("themeStore.textColor()");
 }
 
-.github {
+a {
   text-decoration: none;
+}
+a:hover > .childCard {
+  background-color: v-bind("themeStore.childHoverBgColor()");
 }
 .textBox {
   display: flex;
@@ -142,7 +169,32 @@ section {
 .imgBox img {
   width: 12.5rem;
   height: 12.5rem;
-  border-radius: 1rem;
+  border-radius: 1.6rem;
+  filter: brightness(1.3);
+}
+.contributionBox {
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
+}
+.contributionGraph {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.4rem;
+}
+.bt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btc {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btc span {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .hidden {
   opacity: 0;
