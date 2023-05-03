@@ -7,10 +7,9 @@
 }
 
 html {
-  --navHeight: 7rem;
+  --navHeight: 6.8rem;
   --footerHeight: 8rem;
-  --toggleSize: 2.8rem;
-  --viewHeight: 95rem;
+  --toggleSize: 2.6rem;
 
   font-size: 62.5%;
 }

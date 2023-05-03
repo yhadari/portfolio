@@ -15,12 +15,12 @@ const showSpinner = () => {
   if (document.readyState === "complete") {
     setTimeout(() => {
       spinner.value = false;
-    }, 1000);
+    }, 1500);
   } else {
     window.addEventListener("load", () => {
       setTimeout(() => {
         spinner.value = false;
-      }, 1000);
+      }, 1500);
     });
   }
   window.scrollTo({
@@ -43,9 +43,17 @@ showSpinner();
 <template>
   <div>
     <TheNavBar />
-    <TheBackground />
-    <Spinner v-if="spinner" />
-    <router-view v-else />
+    <div class="content">
+      <TheBackground />
+      <Spinner v-if="spinner" />
+      <router-view v-else />
+    </div>
     <Footer />
   </div>
 </template>
+
+<style scoped>
+.content {
+  min-height: 100vh;
+}
+</style>
