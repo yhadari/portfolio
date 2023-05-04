@@ -33,6 +33,7 @@ watch(
   () => router.currentRoute.value,
   () => {
     if (!paths.includes(router.currentRoute.value.path)) {
+      console.log(router.currentRoute.value.name);
       showSpinner();
     }
   }
@@ -42,13 +43,13 @@ showSpinner();
 </script>
 <template>
   <div>
-    <TheNavBar />
+    <TheNavBar v-if="router.currentRoute.value.name !== 'PNF'" />
     <div class="content">
-      <TheBackground />
+      <TheBackground v-if="router.currentRoute.value.name !== 'PNF'" />
       <Spinner v-if="spinner" />
       <router-view v-else />
     </div>
-    <Footer />
+    <Footer v-if="router.currentRoute.value.name !== 'PNF'" />
   </div>
 </template>
 

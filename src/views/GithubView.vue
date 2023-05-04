@@ -46,83 +46,63 @@ onMounted(async () => {
         <Card
           class="cr parentCard"
           width="110rem"
-          height="66rem"
           :bgColor="themeStore.parentBgColor()"
         >
-          <div>
-            <Title
-              class="title"
-              fontSize="3.4rem"
-              :color="themeStore.titleColor()"
-              text="GitHub profile details"
-            />
-            <a :href="`${githubStore.data?.html_url}`" target="_blank">
-              <Card
-                class="cr childCard first"
-                :bgColor="themeStore.childBgColor()"
-              >
-                <div class="imgBox">
-                  <img
-                    :src="`${githubStore.data?.avatar_url}`"
-                    alt="user avatar"
-                  />
-                  <p>{{ githubStore.data?.followers }} followers</p>
-                </div>
-                <div class="textBox">
-                  <p class="login">{{ githubStore.data?.login }}</p>
-                  <p>{{ githubStore.data?.bio }}</p>
-                  <p>
-                    My account curently has
-                    {{ githubStore.allCommits }} commits.
-                  </p>
-                </div>
-              </Card>
-            </a>
-          </div>
-          <div>
-            <Title
-              class="title"
-              fontSize="3.4rem"
-              :color="themeStore.titleColor()"
-              text="Contribution graph"
-            />
-            <Card class="cr childCard" :bgColor="themeStore.childBgColor()">
-              <div class="contributionBox">
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.titleColor()"
+            text="GitHub profile details"
+          />
+          <a :href="`${githubStore.data?.html_url}`" target="_blank">
+            <Card
+              class="cr childCard first"
+              :bgColor="themeStore.childBgColor()"
+            >
+              <div class="imgBox">
                 <img
-                  class="contributionGraph"
-                  :src="`https://ghchart.rshah.org/30a14e/${githubStore.data?.login}`"
-                  alt="Name Your Github chart"
+                  :src="`${githubStore.data?.avatar_url}`"
+                  alt="user avatar"
                 />
-
-                <!-- <div class="ct">
-                <div
-                  class="yy"
-                  v-for="item in githubStore.contributionGraph?.weeks"
-                  >
-                  <div
-                  class="ctc"
-                  v-for="ele in item.contributionDays"
-                  :style="{ backgroundColor: ele.color }"
-                  ></div>
-                </div>
-              </div> -->
-                <div class="bt">
-                  <p>
-                    {{ githubStore.contributionGraph?.totalContributions }}
-                    contributions in the last year
-                  </p>
-                  <div class="btc">
-                    <p>Less</p>
-                    <span
-                      v-for="color in githubStore.contributionGraph?.colors"
-                      :style="{ backgroundColor: color }"
-                    ></span>
-                    <p>More</p>
-                  </div>
-                </div>
+                <p>{{ githubStore.data?.followers }} followers</p>
+              </div>
+              <div class="textBox">
+                <p class="login">{{ githubStore.data?.login }}</p>
+                <p>{{ githubStore.data?.bio }}</p>
+                <p>
+                  My account curently has
+                  {{ githubStore.allCommits }} commits.
+                </p>
               </div>
             </Card>
-          </div>
+          </a>
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.titleColor()"
+            text="Contribution graph"
+          />
+          <Card class="cr childCard" :bgColor="themeStore.childBgColor()">
+            <div class="contributionBox">
+              <img
+                class="contributionGraph"
+                :src="`https://ghchart.rshah.org/30a14e/${githubStore.data?.login}`"
+                alt="Name Your Github chart"
+              />
+              <div class="bt">
+                <p>
+                  {{ githubStore.contributionGraph?.totalContributions }}
+                  contributions in the last year
+                </p>
+                <div class="btc">
+                  <p>Less</p>
+                  <span
+                    v-for="color in githubStore.contributionGraph?.colors"
+                    :style="{ backgroundColor: color }"
+                  ></span>
+                  <p>More</p>
+                </div>
+              </div>
+            </div>
+          </Card>
         </Card>
       </div>
     </Card>
@@ -135,7 +115,6 @@ section {
   min-height: 74rem;
   letter-spacing: 0.8px;
   overflow-x: hidden;
-  line-height: 2.4rem;
 }
 .cr.cardContainer {
   display: flex;
@@ -145,11 +124,11 @@ section {
   padding: 0 2.4rem;
 }
 .cr.parentCard {
-  padding: 2.6rem;
+  padding: 3rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 3rem;
 }
 .cr.childCard {
   font-size: 1.6rem;
@@ -160,9 +139,6 @@ section {
   color: v-bind("themeStore.textColor()");
 }
 
-.title {
-  margin-bottom: 2.4rem;
-}
 a {
   text-decoration: none;
 }
@@ -173,6 +149,7 @@ a:hover > .childCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  line-height: 2.4rem;
 }
 .textBox .login {
   font-size: 2rem;
@@ -202,25 +179,6 @@ a:hover > .childCard {
   height: 100%;
   margin-bottom: 0.4rem;
 }
-/* .ct {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 0.4rem;
-  margin-bottom: 1.4rem;
-}
-.yy {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.ctc {
-  width: inherit;
-  height: 1.5rem;
-  border-radius: 0.2rem;
-} */
 .bt {
   display: flex;
   justify-content: space-between;
@@ -253,11 +211,11 @@ a:hover > .childCard {
     align-items: center;
   }
   .contributionBox {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .btc span {
-    width: 1rem;
-    height: 1rem;
+    width: 0.8rem;
+    height: 0.8rem;
   }
 }
 </style>

@@ -29,6 +29,15 @@ const router = createRouter({
       name: "contact",
       component: () => import("../views/ContactView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
+    },
+    {
+      path: "/404",
+      name: "PNF",
+      component: () => import("../views/PNFView.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 };

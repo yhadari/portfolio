@@ -232,6 +232,10 @@ li:active {
   .dark-theme ul {
     background-color: rgb(0, 0, 0, 0.9);
   }
+  li:hover {
+    transform: scale(1);
+    transform: translateX(1.2rem);
+  }
 }
 
 @media screen and (max-width: 650px) {
