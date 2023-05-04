@@ -1,53 +1,56 @@
-<!-- <script setup>
-import { onMounted } from "vue";
-
-const scrollToElement = () => {
-  window.scrollTo(0, document.body.scrollHeight);
-};
-
-onMounted(() => {
-  scrollToElement();
-});
-</script> -->
-
 <template>
-  <div class="img">
+  <div class="container">
     <img src="../assets/404.jpg" alt="404 img" />
-    <!-- <router-link class="text" to="/">Go To Dashboard</router-link> -->
   </div>
+  <router-link class="home" to="/">Home Page</router-link>
 </template>
 
 <style scoped>
-.img {
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@900&display=swap");
+
+.container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
   background-color: rgb(226, 230, 233);
 }
 img {
-  max-width: 100rem;
-
-  /* transform: scale(0.6); */
+  width: 54%;
+  height: auto;
 }
-/* .text {
-  width: 50rem;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 4rem;
-  font-weight: bold;
-  color: rgb(93, 101, 104);
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-} */
 
-/* @media screen and (max-width: 960px) {
+.home {
+  font-family: "Maven Pro", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 0 1rem 1rem;
+  text-decoration: none;
+  color: rgb(93, 101, 104);
+  font-size: 3.4rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.home:hover {
+  font-size: 4rem;
+}
+
+@media screen and (max-width: 960px) {
   img {
-    transform: scale(0.5);
+    width: 100%;
+    height: auto;
   }
-} */
+  .home {
+    font-size: 2.2rem;
+  }
+  .home:hover {
+    font-size: 3rem;
+  }
+}
 </style>
