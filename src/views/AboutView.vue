@@ -103,6 +103,7 @@ onMounted(() => {
     <Card
       class="cr cardContainer"
       :bgColor="route === '/' && themeStore.bgColor()"
+      height="100vh"
       :shadow="false"
     >
       <div class="hidden">
@@ -171,13 +172,13 @@ onMounted(() => {
   </section>
 </template>
 <style scoped>
-section {
+/* section {
   width: 100%;
   height: 100vh;
   min-height: 95rem;
   letter-spacing: 0.8px;
   overflow: hidden;
-}
+} */
 .aboutPage {
   margin: 12rem 0 6rem 0;
   justify-content: stretch;

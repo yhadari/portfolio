@@ -159,7 +159,8 @@ section {
 }
 
 .skillsPage {
-  margin: 6rem 0;
+  margin-top: 20rem;
+  justify-content: stretch;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -206,10 +207,10 @@ section {
   transform: translateX(0);
 }
 
-@media screen and (max-width: 680px) {
+/* @media screen and (max-width: 680px) {
   section,
   .skillsPage {
     margin: 24rem 0;
   }
-}
+} */
 </style>
