@@ -26,141 +26,154 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section :class="route === '/skills' && 'skillsPage'">
-    <div class="hidden">
-      <Card
-        class="cr parentCard"
-        width="96rem"
-        height="50rem"
-        :bgColor="themeStore.parentBgColor()"
-      >
-        <Title
-          fontSize="3.4rem"
-          :color="themeStore.titleColor()"
-          text="Technologies & Tools"
-        />
-        <div class="text">
-          <p>
-            For me, those are some of the tech & tools that i like to use on my
-            daily work, and which I really enjoy using them on the different
-            projects either personal or professional.
-          </p>
-        </div>
-        <div class="box">
+  <section>
+    <Card
+      height="100vh"
+      :shadow="false"
+      :class="`cr cardContainer ${route === '/skills' && 'skillsPage'}`"
+    >
+      <div class="hidden">
+        <Card
+          class="cr parentCard"
+          width="96rem"
+          :bgColor="themeStore.parentBgColor()"
+        >
           <Title
-            fontSize="2rem"
+            fontSize="3.4rem"
             :color="themeStore.titleColor()"
-            text="Programming languages"
+            text="Technologies & Tools"
           />
-          <div>
-            <img class="logo" src="../assets/js-09d567eb.webp" alt="js logo" />
-            <img
-              class="logo"
-              src="../assets/typescript-8ad9dfe7.webp"
-              alt="ts logo"
-            />
-            <img
-              class="logo"
-              src="../assets/html-3640299.png"
-              alt="html logo"
-            />
-            <img class="logo" src="../assets/css3-3640300.png" alt="css logo" />
-            <img
-              class="logo"
-              src="../assets/bash-350f77f2.webp"
-              alt="bash logo"
-            />
-            <img class="logo" src="../assets/c-logo.png" alt="c logo" />
-            <img class="logo" src="../assets/c++logo.png" alt="c++ logo" />
+          <div class="text">
+            <p>
+              For me, those are some of the tech & tools that i like to use on
+              my daily work, and which I really enjoy using them on the
+              different projects either personal or professional.
+            </p>
           </div>
-        </div>
-        <div class="box">
-          <Title
-            fontSize="2rem"
-            :color="themeStore.titleColor()"
-            text="Frameworks & libraries"
-          />
-          <div>
-            <img
-              class="logo"
-              src="../assets/vuejs-3640297.png"
-              alt="vue.js logo"
+          <div class="box">
+            <Title
+              fontSize="2rem"
+              :color="themeStore.titleColor()"
+              text="Programming languages"
             />
-            <img
-              class="logo"
-              src="../assets/react-4695757.png"
-              alt="react logo"
-            />
-            <img
-              class="logo"
-              src="../assets/nextjs-boilerplate-logo.png"
-              alt="next.js logo"
-            />
-            <img class="logo" src="../assets/nodejs.png" alt="node.js logo" />
-            <img
-              class="logo"
-              src="../assets/expressjs.png"
-              alt="express.js logo"
-            />
+            <div>
+              <img
+                class="logo"
+                src="../assets/js-09d567eb.webp"
+                alt="js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/typescript-8ad9dfe7.webp"
+                alt="ts logo"
+              />
+              <img
+                class="logo"
+                src="../assets/html-3640299.png"
+                alt="html logo"
+              />
+              <img
+                class="logo"
+                src="../assets/css3-3640300.png"
+                alt="css logo"
+              />
+              <img
+                class="logo"
+                src="../assets/bash-350f77f2.webp"
+                alt="bash logo"
+              />
+              <img class="logo" src="../assets/c-logo.png" alt="c logo" />
+              <img class="logo" src="../assets/c++logo.png" alt="c++ logo" />
+            </div>
           </div>
-        </div>
-        <div class="box">
-          <Title
-            fontSize="2rem"
-            :color="themeStore.titleColor()"
-            text="Tools & services"
-          />
-          <div>
-            <img
-              class="logo"
-              src="../assets/postgresql-67a6ade0.webp"
-              alt="js logo"
+          <div class="box">
+            <Title
+              fontSize="2rem"
+              :color="themeStore.titleColor()"
+              text="Frameworks & libraries"
             />
-            <img class="logo" src="../assets/mongodb.png" alt="js logo" />
-            <img class="logo" src="../assets/git-56c9cb66.webp" alt="js logo" />
-            <img
-              class="logo"
-              src="../assets/github-2703d511.webp"
-              alt="js logo"
-            />
-            <img
-              class="logo"
-              src="../assets/netlify-975607fa.webp"
-              alt="js logo"
-            />
-            <img
-              class="logo"
-              src="../assets/docker-47f787cf.webp"
-              alt="js logo"
-            />
-            <img
-              class="logo"
-              src="../assets/vite-5c372a0c.webp"
-              alt="js logo"
-            />
-            <img class="logo" src="../assets/images.jpg" alt="js logo" />
+            <div>
+              <img
+                class="logo"
+                src="../assets/vuejs-3640297.png"
+                alt="vue.js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/react-4695757.png"
+                alt="react logo"
+              />
+              <img
+                class="logo"
+                src="../assets/nextjs-boilerplate-logo.png"
+                alt="next.js logo"
+              />
+              <img class="logo" src="../assets/nodejs.png" alt="node.js logo" />
+              <img
+                class="logo"
+                src="../assets/expressjs.png"
+                alt="express.js logo"
+              />
+            </div>
           </div>
-        </div>
-      </Card>
-    </div>
+          <div class="box">
+            <Title
+              fontSize="2rem"
+              :color="themeStore.titleColor()"
+              text="Tools & services"
+            />
+            <div>
+              <img
+                class="logo"
+                src="../assets/postgresql-67a6ade0.webp"
+                alt="js logo"
+              />
+              <img class="logo" src="../assets/mongodb.png" alt="js logo" />
+              <img
+                class="logo"
+                src="../assets/git-56c9cb66.webp"
+                alt="js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/github-2703d511.webp"
+                alt="js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/netlify-975607fa.webp"
+                alt="js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/docker-47f787cf.webp"
+                alt="js logo"
+              />
+              <img
+                class="logo"
+                src="../assets/vite-5c372a0c.webp"
+                alt="js logo"
+              />
+              <img class="logo" src="../assets/images.jpg" alt="js logo" />
+            </div>
+          </div>
+        </Card>
+      </div>
+    </Card>
   </section>
 </template>
 <style scoped>
-section {
-  width: 100%;
-  height: 100vh;
-  min-height: 64rem;
-  letter-spacing: 0.8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
+.cr.cardContainer.skillsPage {
   padding: 0 2.4rem;
+  padding-top: 20rem;
+  padding-bottom: 8rem;
+  align-items: start;
 }
-
-.skillsPage {
-  margin-top: 20rem;
-  justify-content: stretch;
+.cr.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -169,6 +182,7 @@ section {
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+  letter-spacing: 0.8px;
 }
 
 .logo {
@@ -206,11 +220,4 @@ section {
   filter: blur(0);
   transform: translateX(0);
 }
-
-/* @media screen and (max-width: 680px) {
-  section,
-  .skillsPage {
-    margin: 24rem 0;
-  }
-} */
 </style>

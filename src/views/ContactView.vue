@@ -29,126 +29,125 @@ onMounted(() => {
 </script>
 <template>
   <section>
-    <div class="hidden">
-      <Card
-        class="cr parentCard"
-        :bgColor="themeStore.parentBgColor()"
-        width="72rem"
-      >
-        <div class="container">
-          <Title
-            fontSize="3.4rem"
-            :color="themeStore.contactColor()"
-            text="Contact me"
-          />
-          <div>
-            <p class="title">
-              Leave your email and we will get back to you within 24 hours
-            </p>
-          </div>
-          <div class="box">
-            <div class="img_box">
-              <ion-icon name="mail"></ion-icon>
-            </div>
-            <div>
-              <p class="name">Email</p>
-              <p class="text">hadariyassine1@gmail.com</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img_box">
-              <ion-icon name="logo-github"></ion-icon>
-            </div>
-            <div>
-              <p class="name">Github</p>
-              <p class="text">yhadari</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img_box">
-              <ion-icon name="home"></ion-icon>
-            </div>
-            <div>
-              <p class="name">Address</p>
-              <p class="text">Oulad teima - Agadir - Morocco</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img_box">
-              <ion-icon name="time"></ion-icon>
-            </div>
-            <div>
-              <p class="name">Working hours</p>
-              <p class="text">8 a.m. - 11 p.m.</p>
-            </div>
-          </div>
-        </div>
+    <Card class="cr cardContainer" height="100vh" :shadow="false">
+      <div class="hidden">
         <Card
-          class="cr childCard"
-          width="30rem"
-          height="41.4rem"
-          :bgColor="themeStore.childBgColor()"
-          :shadow="false"
+          class="cr parentCard"
+          :bgColor="themeStore.parentBgColor()"
+          width="72rem"
         >
-          <div>
-            <Label class="label" :color="themeStore.labelColor()">Email</Label>
-            <Input
-              class="input"
-              :color="themeStore.inputColor()"
-              :bgColor="themeStore.inputBgColor()"
-              height="3.6rem"
-              placeholder="your@email.com"
+          <div class="container">
+            <Title
+              fontSize="3.4rem"
+              :color="themeStore.contactColor()"
+              text="Contact me"
             />
+            <div>
+              <p class="title">
+                Leave your email and we will get back to you within 24 hours
+              </p>
+            </div>
+            <div class="box">
+              <div class="img_box">
+                <ion-icon name="mail"></ion-icon>
+              </div>
+              <div>
+                <p class="name">Email</p>
+                <p class="text">hadariyassine1@gmail.com</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img_box">
+                <ion-icon name="logo-github"></ion-icon>
+              </div>
+              <div>
+                <p class="name">Github</p>
+                <p class="text">yhadari</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img_box">
+                <ion-icon name="home"></ion-icon>
+              </div>
+              <div>
+                <p class="name">Address</p>
+                <p class="text">Oulad teima - Agadir - Morocco</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img_box">
+                <ion-icon name="time"></ion-icon>
+              </div>
+              <div>
+                <p class="name">Working hours</p>
+                <p class="text">8 a.m. - 11 p.m.</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <Label class="label" :color="themeStore.labelColor()">Name</Label>
-            <Input
-              class="input"
-              :color="themeStore.inputColor()"
-              :bgColor="themeStore.inputBgColor()"
-              height="3.6rem"
-              placeholder="John Doe"
-            />
-          </div>
-          <div>
-            <Label class="label" :color="themeStore.labelColor()"
-              >Your message</Label
-            >
-            <Textarea
-              class="textarea"
-              rows="6"
-              :color="themeStore.inputColor()"
-              :bgColor="themeStore.inputBgColor()"
-              placeholder="I want to order your goods"
-            ></Textarea>
-          </div>
-          <Button
-            class="btn"
-            position="right"
-            :bgColor="themeStore.buttonBgColor()"
-            :color="themeStore.buttonColor()"
-            width="55%"
-            height="3.6rem"
-            >Send message</Button
+          <Card
+            class="cr childCard"
+            width="30rem"
+            height="41.4rem"
+            :bgColor="themeStore.childBgColor()"
+            :shadow="false"
           >
+            <div>
+              <Label class="label" :color="themeStore.labelColor()"
+                >Email</Label
+              >
+              <Input
+                class="input"
+                :color="themeStore.inputColor()"
+                :bgColor="themeStore.inputBgColor()"
+                height="3.6rem"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <Label class="label" :color="themeStore.labelColor()">Name</Label>
+              <Input
+                class="input"
+                :color="themeStore.inputColor()"
+                :bgColor="themeStore.inputBgColor()"
+                height="3.6rem"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <Label class="label" :color="themeStore.labelColor()"
+                >Your message</Label
+              >
+              <Textarea
+                class="textarea"
+                rows="6"
+                :color="themeStore.inputColor()"
+                :bgColor="themeStore.inputBgColor()"
+                placeholder="I want to order your goods"
+              ></Textarea>
+            </div>
+            <Button
+              class="btn"
+              position="right"
+              :bgColor="themeStore.buttonBgColor()"
+              :color="themeStore.buttonColor()"
+              width="55%"
+              height="3.6rem"
+              >Send message</Button
+            >
+          </Card>
         </Card>
-      </Card>
-    </div>
+      </div>
+    </Card>
   </section>
 </template>
 <style scoped>
-section {
-  width: 100%;
-  height: 100vh;
-  min-height: 74rem;
-  letter-spacing: 0.8px;
+.cr.cardContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 1.4rem;
-  font-weight: bold;
   padding: 0 2.4rem;
+  padding-top: 20rem;
+  padding-bottom: 8rem;
+  overflow: hidden;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -226,17 +225,12 @@ ion-icon {
 }
 
 @media screen and (max-width: 680px) {
-  section {
-    margin: 20rem 0;
-  }
   .cr.parentCard {
     max-width: 40rem;
     flex-direction: column;
     align-items: center;
   }
-  .cr.childCard {
-    max-width: 100%;
-  }
+  .cr.childCard,
   .container {
     max-width: 100%;
   }

@@ -110,7 +110,6 @@ onMounted(() => {
         <Card
           class="cr parentCard"
           :width="`${toggleValue ? '84rem' : '110rem'}`"
-          :height="`${toggleValue ? '87rem' : '40rem'}`"
           :bgColor="themeStore.parentBgColor()"
         >
           <div class="titleBox">
@@ -172,35 +171,26 @@ onMounted(() => {
   </section>
 </template>
 <style scoped>
-/* section {
-  width: 100%;
-  height: 100vh;
-  min-height: 95rem;
-  letter-spacing: 0.8px;
+section {
   overflow: hidden;
-} */
+}
 .aboutPage {
-  margin: 12rem 0 6rem 0;
-  justify-content: stretch;
+  padding: 0 2.4rem;
+  padding-top: 20rem;
+  padding-bottom: 8rem;
 }
 .aboutPage .cr.cardContainer {
-  justify-content: stretch;
+  align-items: start;
+  padding: 0;
 }
 .cr.cardContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
+  align-items: center;
   padding: 2.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-.cr.childCard {
-  overflow: hidden;
 }
 .titleBox {
   display: flex;
@@ -246,7 +236,7 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
-  font-size: 1.25rem;
+  font-size: 1.32rem;
   line-height: 1.6;
   padding: 2rem;
   color: v-bind("themeStore.prismColor()");
