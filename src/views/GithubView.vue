@@ -36,10 +36,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section>
+  <section :class="route === '/projects' && 'projectPage'">
     <Card
       class="cr cardContainer"
       :bgColor="route === '/' && themeStore.bgColor()"
+      height="100vh"
       :shadow="false"
     >
       <div class="hidden">
@@ -110,18 +111,22 @@ onMounted(async () => {
 </template>
 <style scoped>
 section {
-  width: 100%;
-  height: 100vh;
-  min-height: 74rem;
-  letter-spacing: 0.8px;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+.projectPage {
+  padding: 0 2.4rem;
+  padding-top: 20rem;
+  padding-bottom: 8rem;
+}
+.projectPage .cr.cardContainer {
+  align-items: start;
+  padding: 0;
 }
 .cr.cardContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  padding: 0 2.4rem;
+  align-items: center;
+  padding: 2.4rem;
 }
 .cr.parentCard {
   padding: 3rem;
@@ -197,7 +202,7 @@ a:hover > .childCard {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(100%);
-  transition: all 0.8s;
+  transition: all 0.6s;
 }
 .show {
   opacity: 1;

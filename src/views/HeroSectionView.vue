@@ -31,14 +31,14 @@ onMounted(() => {
     observe.observe(element);
   });
   // i want to update the current text index every 6 seconds
-  setInterval(updateText, 6000);
+  setInterval(updateText, 5000);
 });
 </script>
 
 <template>
   <section class="hidden">
     <div class="textBox">
-      <h2>Hello, I'm</h2>
+      <h2 class="hello">Hello, I'm</h2>
       <h2 class="animate-charcter">Yacine Hadari</h2>
       <div class="typewriter">{{ currentText() }}</div>
       <div class="previewBtn">
@@ -51,6 +51,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@900&display=swap");
 section {
   width: 100%;
   height: calc(100vh - var(--navHeight));
@@ -59,17 +60,16 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2.4rem;
-  padding: 2rem 4rem;
+  gap: 4rem;
+  padding: 2rem;
+  font-family: "Maven Pro", sans-serif;
 }
 
 .textBox {
-  width: 52rem;
-  height: 52rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2.4rem;
+  gap: 3rem;
 }
 .avatarBox {
   width: 40rem;
@@ -78,9 +78,9 @@ section {
   border-radius: 1rem;
   opacity: 0.5;
 }
-h2 {
-  color: rgb(255, 169, 65);
-  font-size: 4.6rem;
+.hello {
+  color: v-bind("themeStore.textColor()");
+  font-size: 4rem;
 }
 
 .animate-charcter {
@@ -94,7 +94,14 @@ h2 {
   animation: textclip 4s linear infinite;
   display: inline-block;
   font-size: 7.8rem;
-  background-image: v-bind("themeStore.heroBgColor()");
+  letter-spacing: -5px;
+  background-image: linear-gradient(
+    -225deg,
+    rgb(255, 146, 43, 0.9) 0%,
+    rgb(255, 146, 43, 0.9) 29%,
+    rgb(252, 196, 25, 0.9) 67%,
+    rgb(252, 196, 25, 0.9) 100%
+  );
 }
 
 @keyframes textclip {
@@ -104,7 +111,7 @@ h2 {
 }
 
 .typewriter {
-  font-size: 4rem;
+  font-size: 3.2rem;
   font-weight: bold;
   width: 35rem;
   white-space: nowrap;
@@ -114,7 +121,7 @@ h2 {
 
   /* you need to change in the Interval ft if you change in text time*/
   animation: cursor 10s step-start infinite,
-    text 3s steps(40) alternate infinite;
+    text 2.5s steps(40) alternate infinite;
 }
 
 @keyframes cursor {
@@ -168,7 +175,7 @@ h2 {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(-100%);
-  transition: all 0.8s;
+  transition: all 0.6s;
 }
 .show {
   opacity: 1;
@@ -176,13 +183,48 @@ h2 {
   transform: translateX(0);
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   section {
     flex-direction: column;
     height: 110vh;
+    gap: 6rem;
+    padding-top: 8rem;
   }
+}
+
+@media screen and (max-width: 650px) {
   .textBox {
-    gap: 1.6rem;
+    gap: 2.4rem;
+  }
+  .hello {
+    font-size: 3.4rem;
+  }
+  .animate-charcter {
+    font-size: 5.2rem;
+    letter-spacing: -3px;
+  }
+  .typewriter {
+    font-size: 3rem;
+  }
+  .previewBtn {
+    font-size: 1.4rem;
+    padding: 0.5rem 1.8rem;
+  }
+  .avatarBox {
+    transform: scale(0.7);
+  }
+
+  .typewriter {
+    width: 25rem;
+  }
+
+  @keyframes text {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 25rem;
+    }
   }
 }
 </style>

@@ -65,4 +65,11 @@ const btnUp = () => {
   color: #fff;
   transition: all 0.3s;
 }
+
+@media screen and (max-width: 1000px) {
+  .btnUp {
+    bottom: 3rem;
+    right: 6rem;
+  }
+}
 </style>

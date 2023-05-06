@@ -216,7 +216,7 @@ ion-icon {
   opacity: 0;
   filter: blur(6px);
   transform: translateX(-100%);
-  transition: all 0.8s;
+  transition: all 0.6s;
 }
 .show {
   opacity: 1;
