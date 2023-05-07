@@ -227,10 +227,10 @@ li:active {
     display: none;
   }
   .light-theme ul {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255);
   }
   .dark-theme ul {
-    background-color: rgb(0, 0, 0, 0.9);
+    background-color: rgb(0, 0, 0);
   }
   li:hover {
     transform: scale(1);

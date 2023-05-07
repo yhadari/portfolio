@@ -33,60 +33,57 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="hidden">
-      <Card
-        class="cr parentCard"
-        width="110rem"
-        :bgColor="themeStore.parentBgColor()"
-      >
-        <Title
-          fontSize="3.4rem"
-          :color="themeStore.titleColor()"
-          text="Projects"
-        />
-        <div class="cardBox">
-          <Card
-            v-for="item in githubStore.projects?.slice(0, 6)"
-            :key="item"
-            class="cr childCard"
-            height="15rem"
-            :bgColor="themeStore.childBgColor()"
-            :shadow="false"
-            @click="projectClick(item.url)"
-          >
-            <div class="content">
-              <img
-                class="githubLogo"
-                src="../assets/github-2703d511.webp"
-                alt="github logo"
-              />
-              <h2>{{ item.name }}</h2>
-            </div>
-            <h2>{{ item.description }}</h2>
-          </Card>
-        </div>
-      </Card>
-    </div>
+    <Card height="100vh" :shadow="false" class="cr cardContainer">
+      <div class="hidden">
+        <Card
+          class="cr parentCard"
+          width="110rem"
+          :bgColor="themeStore.parentBgColor()"
+        >
+          <Title
+            fontSize="3.4rem"
+            :color="themeStore.titleColor()"
+            text="Projects"
+          />
+          <div class="cardBox">
+            <Card
+              v-for="item in githubStore.projects?.slice(0, 6)"
+              :key="item"
+              class="cr childCard"
+              height="15rem"
+              :bgColor="themeStore.childBgColor()"
+              :shadow="false"
+              @click="projectClick(item.url)"
+            >
+              <div class="content">
+                <img
+                  class="githubLogo"
+                  src="../assets/github-2703d511.webp"
+                  alt="github logo"
+                />
+                <h2>{{ item.name }}</h2>
+              </div>
+              <h2>{{ item.description }}</h2>
+            </Card>
+          </div>
+        </Card>
+      </div>
+    </Card>
   </section>
 </template>
 <style scoped>
-section {
-  width: 100%;
-  height: 100vh;
-  min-height: 54rem;
-  letter-spacing: 0.8px;
+.cr.cardContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  padding: 0 2.4rem;
+  padding: 12rem 2.6rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  margin: 0 auto;
 }
 .cardBox {
   width: 100%;
@@ -103,10 +100,12 @@ section {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 1.2rem;
   cursor: pointer;
-  transition: all 0.3s;
+  background-color: v-bind("themeStore.projectBgColor()");
+  color: v-bind("themeStore.projectColor()");
 }
 .cr.childCard:hover {
-  transform: scale(1.06);
+  transition: all 0.3s;
+  transform: scale(1.04);
 }
 
 .githubLogo {
@@ -136,6 +135,12 @@ section {
 @media screen and (max-width: 1200px) {
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 </style>

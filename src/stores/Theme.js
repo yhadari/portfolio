@@ -125,5 +125,13 @@ export const useThemeStore = defineStore("theme", {
     prismBgColor() {
       return this.theme === "light" ? "rgb(246,248,250)" : "rgb(30,30,30)";
     },
+
+    //projects
+    projectColor() {
+      return this.theme === "light" ? "rgb(0, 0, 0)" : "rgb(255,255,255)";
+    },
+    projectBgColor() {
+      return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(26,27,30)";
+    },
   },
 });

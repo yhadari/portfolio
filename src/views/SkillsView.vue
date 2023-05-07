@@ -173,7 +173,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.4rem;
+  padding: 12rem 2.6rem;
 }
 .cr.parentCard {
   padding: 2.6rem;

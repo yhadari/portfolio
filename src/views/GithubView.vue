@@ -38,8 +38,9 @@ onMounted(async () => {
     <Card
       class="cr cardContainer"
       :bgColor="route === '/' && themeStore.bgColor()"
-      height="100vh"
+      :height="route === '/projects' ? '75vh' : '100vh'"
       :shadow="false"
+      borderRadius="0"
     >
       <div class="hidden">
         <Card
@@ -114,6 +115,7 @@ section {
 .projectPage {
   padding: 0 2.4rem;
   padding-top: 20rem;
+  padding-bottom: 8rem;
 }
 .projectPage .cr.cardContainer {
   align-items: start;
@@ -123,7 +125,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.4rem;
+  padding: 3.4rem;
 }
 .cr.parentCard {
   padding: 3rem;
@@ -213,11 +215,15 @@ a:hover > .childCard {
     align-items: center;
   }
   .contributionBox {
-    font-size: 0.8rem;
+    font-size: 0.86rem;
+  }
+  .btc {
+    gap: 0.25rem;
   }
   .btc span {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
   }
 }
 </style>

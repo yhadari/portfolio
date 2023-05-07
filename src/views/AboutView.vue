@@ -105,6 +105,7 @@ onMounted(() => {
       :bgColor="route === '/' && themeStore.bgColor()"
       height="100vh"
       :shadow="false"
+      borderRadius="0"
     >
       <div class="hidden">
         <Card
@@ -187,7 +188,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.4rem;
+  padding: 3.4rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
