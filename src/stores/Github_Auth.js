@@ -8,6 +8,8 @@ export const useGithubStore = defineStore("github_auth", {
       data: null,
       contributionGraph: null,
       allCommits: null,
+      projects: null,
+      octokit: null,
     };
   },
 
@@ -19,7 +21,23 @@ export const useGithubStore = defineStore("github_auth", {
 
       const { data } = await octokit.request("/user");
       this.data = data;
-      console.log(data);
+      this.octokit = octokit;
+    },
+
+    async getProjects() {
+      const response = await this.octokit.rest.repos.listForUser({
+        username: this.data.login,
+      });
+      this.projects = response.data.map((project) => {
+        return {
+          name: project.name,
+          description: project.description,
+          url: project.html_url,
+          stars: project.stargazers_count,
+          forks: project.forks_count,
+          created: project.created_at,
+        };
+      });
     },
 
     async getContributions(token, username) {
@@ -70,7 +88,6 @@ export const useGithubStore = defineStore("github_auth", {
       this.allCommits = data.user.repositories.edges.reduce((acc, { node }) => {
         return acc + node.defaultBranchRef.target.history.totalCount;
       }, 0);
-      console.log(this.contributionGraph.weeks);
     },
   },
 });

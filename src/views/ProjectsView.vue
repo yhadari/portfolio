@@ -1,11 +1,12 @@
 <script setup>
 import { onMounted } from "vue";
 import { useThemeStore } from "../stores/Theme";
+import { useGithubStore } from "../stores/Github_Auth";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 
-const projectNumber = 6;
 const themeStore = useThemeStore();
+const githubStore = useGithubStore();
 
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -17,11 +18,16 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-onMounted(() => {
+const projectClick = (url) => {
+  window.open(url, "_blank");
+};
+
+onMounted(async () => {
   const hiddenElement = document.querySelectorAll(".hidden");
   hiddenElement.forEach((element) => {
     observe.observe(element);
   });
+  await githubStore.getProjects();
 });
 </script>
 
@@ -31,7 +37,6 @@ onMounted(() => {
       <Card
         class="cr parentCard"
         width="110rem"
-        height="46rem"
         :bgColor="themeStore.parentBgColor()"
       >
         <Title
@@ -41,13 +46,23 @@ onMounted(() => {
         />
         <div class="cardBox">
           <Card
-            v-for="i in projectNumber"
-            :key="i"
+            v-for="item in githubStore.projects?.slice(0, 6)"
+            :key="item"
             class="cr childCard"
-            height="100%"
+            height="15rem"
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
+            @click="projectClick(item.url)"
           >
+            <div class="content">
+              <img
+                class="githubLogo"
+                src="../assets/github-2703d511.webp"
+                alt="github logo"
+              />
+              <h2>{{ item.name }}</h2>
+            </div>
+            <h2>{{ item.description }}</h2>
           </Card>
         </div>
       </Card>
@@ -81,8 +96,29 @@ section {
   gap: 2rem;
 }
 .cr.childCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.cr.childCard:hover {
+  transform: scale(1.06);
+}
+
+.githubLogo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .hidden {

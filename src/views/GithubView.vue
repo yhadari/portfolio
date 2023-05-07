@@ -26,8 +26,6 @@ onMounted(async () => {
     observe.observe(element);
   });
 
-  await githubStore.auth();
-
   await githubStore.getContributions(
     import.meta.env.VITE_GITHUB_TOKEN,
     githubStore.data?.login
@@ -54,7 +52,7 @@ onMounted(async () => {
             :color="themeStore.titleColor()"
             text="GitHub profile details"
           />
-          <a :href="`${githubStore.data?.html_url}`" target="_blank">
+          <a :href="githubStore.data?.html_url" target="_blank">
             <Card
               class="cr childCard first"
               :bgColor="themeStore.childBgColor()"
@@ -116,7 +114,6 @@ section {
 .projectPage {
   padding: 0 2.4rem;
   padding-top: 20rem;
-  padding-bottom: 8rem;
 }
 .projectPage .cr.cardContainer {
   align-items: start;
