@@ -9,11 +9,11 @@ import Topic from "../components/Topic.vue";
 const themeStore = useThemeStore();
 const githubStore = useGithubStore();
 const projects = [
+  "portfolio",
   "ft_transcendence",
   "Omnifood-website",
   "TMDB_full_project",
   "webserver",
-  "minishell",
   "cpp",
 ];
 
@@ -74,10 +74,10 @@ onMounted(async () => {
                 />
                 <h2>{{ item.name }}</h2>
               </div>
+              <h3>{{ item.description }}</h3>
               <div class="topics">
                 <Topic v-for="topic in item.topics" :topic="topic" />
               </div>
-              <h3>{{ item.description }}</h3>
             </Card>
           </div>
         </Card>
@@ -91,7 +91,7 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   padding: 12rem 2.6rem;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -110,7 +110,7 @@ onMounted(async () => {
 .cr.childCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 1.2rem 1.6rem;
@@ -124,8 +124,8 @@ onMounted(async () => {
 }
 
 .githubLogo {
-  width: 3rem;
-  height: 3rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
 }
 

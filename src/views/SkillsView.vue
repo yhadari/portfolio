@@ -98,6 +98,7 @@ onMounted(() => {
                 src="../assets/vuejs-3640297.png"
                 alt="vue.js logo"
               />
+              <img class="logo" src="../assets/pinia.svg" alt="pinia logo" />
               <img
                 class="logo"
                 src="../assets/react-4695757.png"

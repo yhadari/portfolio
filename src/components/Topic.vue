@@ -13,7 +13,7 @@ const props = defineProps({
 p {
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.8rem;
   border-radius: 1.2rem;
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ p {
   color: #fff;
   background-color: rgb(13, 64, 133);
 }
-.express-js {
+.expressjs {
   color: #fff;
   background-color: rgb(0, 0, 0);
 }
