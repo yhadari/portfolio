@@ -4,9 +4,18 @@ import { useThemeStore } from "../stores/Theme";
 import { useGithubStore } from "../stores/Github_Auth";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
+import Topic from "../components/Topic.vue";
 
 const themeStore = useThemeStore();
 const githubStore = useGithubStore();
+const projects = [
+  "ft_transcendence",
+  "Omnifood-website",
+  "TMDB_full_project",
+  "webserver",
+  "minishell",
+  "cpp",
+];
 
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -47,10 +56,12 @@ onMounted(async () => {
           />
           <div class="cardBox">
             <Card
-              v-for="item in githubStore.projects?.slice(0, 6)"
+              v-for="item in githubStore.projects?.filter((item) =>
+                projects.includes(item.name)
+              )"
               :key="item"
               class="cr childCard"
-              height="15rem"
+              height="16rem"
               :bgColor="themeStore.childBgColor()"
               :shadow="false"
               @click="projectClick(item.url)"
@@ -63,7 +74,10 @@ onMounted(async () => {
                 />
                 <h2>{{ item.name }}</h2>
               </div>
-              <h2>{{ item.description }}</h2>
+              <div class="topics">
+                <Topic v-for="topic in item.topics" :topic="topic" />
+              </div>
+              <h3>{{ item.description }}</h3>
             </Card>
           </div>
         </Card>
@@ -77,6 +91,7 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   padding: 12rem 2.6rem;
+  letter-spacing: 0.4px;
 }
 .cr.parentCard {
   padding: 2.6rem;
@@ -95,10 +110,10 @@ onMounted(async () => {
 .cr.childCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  padding: 1.2rem;
+  padding: 1.2rem 1.6rem;
   cursor: pointer;
   background-color: v-bind("themeStore.projectBgColor()");
   color: v-bind("themeStore.projectColor()");
@@ -120,6 +135,12 @@ onMounted(async () => {
   gap: 1.2rem;
 }
 
+.topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: fit-content;
+}
 .hidden {
   opacity: 0;
   filter: blur(6px);

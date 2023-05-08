@@ -29,9 +29,11 @@ export const useGithubStore = defineStore("github_auth", {
         username: this.data.login,
       });
       this.projects = response.data.map((project) => {
+        console.log(project.name);
         return {
           name: project.name,
           description: project.description,
+          topics: project.topics,
           url: project.html_url,
           stars: project.stargazers_count,
           forks: project.forks_count,
