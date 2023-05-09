@@ -15,6 +15,10 @@ const currentText = () => {
   return texts[currentIndex.value % texts.length];
 };
 
+const previewClick = (url) => {
+  window.open(url, "_blank");
+};
+
 const observe = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -42,7 +46,9 @@ onMounted(() => {
       <h2 class="animate-charcter">Yacine Hadari</h2>
       <div class="typewriter">{{ currentText() }}</div>
       <div class="previewBtn">
-        <p>Preview on Github</p>
+        <p @click="previewClick('https://github.com/yhadari/portfolio')">
+          Preview on Github
+        </p>
         <ion-icon name="star" class="star"></ion-icon>
       </div>
     </div>
@@ -113,7 +119,7 @@ section {
 .typewriter {
   font-size: 3.2rem;
   font-weight: bold;
-  width: 35rem;
+  width: 32rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.4rem solid rgb(255, 169, 65);
@@ -136,7 +142,7 @@ section {
     width: 0;
   }
   100% {
-    width: 35rem;
+    width: 32rem;
   }
 }
 
