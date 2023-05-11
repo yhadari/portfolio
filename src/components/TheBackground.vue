@@ -1,19 +1,11 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useThemeStore } from "../stores/Theme";
 
 const themeStore = useThemeStore();
 
 const shapes = ref([]);
-let ele = ref(200);
-
-const myFunction = (x) => {
-  if (x.matches) {
-    ele.value = 0;
-  } else {
-    ele.value = 200;
-  }
-};
+let ele = ref(180);
 
 const scaleUp = (shape) => {
   shape.size *= 2.2;
@@ -27,51 +19,64 @@ const generateDelay = () => {
   return Math.floor(Math.random() * 10) / 10;
 };
 
-for (let i = 0; i <= ele.value; i++) {
-  const shapeType = Math.floor(Math.random() * 3);
-  const shapeSize = Math.floor(Math.random() * 8) + 5;
-  const x = Math.floor(Math.random() * 96);
-  const y = Math.floor(Math.random() * 96);
-  const delay = generateDelay();
+const draw = () => {
+  for (let i = 0; i < ele.value; i++) {
+    const shapeType = Math.floor(Math.random() * 3);
+    const shapeSize = Math.floor(Math.random() * 8) + 5;
+    const x = Math.floor(Math.random() * 96);
+    const y = Math.floor(Math.random() * 96);
+    const delay = generateDelay();
 
-  let shape;
-  switch (shapeType) {
-    case 0:
-      shape = {
-        type: "circle",
-        size: shapeSize,
-        x,
-        y,
-        delay,
-      };
-      break;
-    case 1:
-      shape = {
-        type: "square",
-        size: shapeSize,
-        x,
-        y,
-        delay,
-      };
-      break;
-    case 2:
-      shape = {
-        type: "pentagon",
-        size: shapeSize,
-        x,
-        y,
-        delay,
-      };
-      break;
-    default:
-      break;
+    let shape;
+    switch (shapeType) {
+      case 0:
+        shape = {
+          type: "circle",
+          size: shapeSize,
+          x,
+          y,
+          delay,
+        };
+        break;
+      case 1:
+        shape = {
+          type: "square",
+          size: shapeSize,
+          x,
+          y,
+          delay,
+        };
+        break;
+      case 2:
+        shape = {
+          type: "pentagon",
+          size: shapeSize,
+          x,
+          y,
+          delay,
+        };
+        break;
+      default:
+        break;
+    }
+
+    shapes.value.push(shape);
   }
+};
 
-  shapes.value.push(shape);
-}
-const x = window.matchMedia("(max-width: 650px)");
-myFunction(x); // Call listener function at run time
-x.addListener(myFunction); // Attach listener function on state changes
+onMounted(() => {
+  const myFunction = (x) => {
+    if (x.matches) ele.value = 100;
+    else ele.value = 180;
+
+    shapes.value = [];
+    draw();
+  };
+
+  const x = window.matchMedia("(max-width: 650px)");
+  myFunction(x); // Call listener function at run time
+  x.addListener(myFunction); // Attach listener function on state changes
+});
 </script>
 
 <template>
@@ -216,14 +221,14 @@ x.addListener(myFunction); // Attach listener function on state changes
 }
 .circle {
   animation-name: _circle;
-  animation-duration: 4s;
+  animation-duration: 8s;
 }
 .square {
   animation-name: _square;
-  animation-duration: 2.6s;
+  animation-duration: 5s;
 }
 .pentagon {
   animation-name: _pentagon;
-  animation-duration: 2.6s;
+  animation-duration: 5s;
 }
 </style>
