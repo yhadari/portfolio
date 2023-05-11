@@ -5,20 +5,29 @@ import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 
 const shapes = ref([]);
+let ele = ref(200);
 
-function scaleUp(shape) {
+const myFunction = (x) => {
+  if (x.matches) {
+    ele.value = 0;
+  } else {
+    ele.value = 200;
+  }
+};
+
+const scaleUp = (shape) => {
   shape.size *= 2.2;
-}
+};
 
-function scaleDown(shape) {
+const scaleDown = (shape) => {
   shape.size /= 2.2;
-}
+};
 
-function generateDelay() {
+const generateDelay = () => {
   return Math.floor(Math.random() * 10) / 10;
-}
+};
 
-for (let i = 0; i < 260; i++) {
+for (let i = 0; i <= ele.value; i++) {
   const shapeType = Math.floor(Math.random() * 3);
   const shapeSize = Math.floor(Math.random() * 8) + 5;
   const x = Math.floor(Math.random() * 96);
@@ -60,6 +69,9 @@ for (let i = 0; i < 260; i++) {
 
   shapes.value.push(shape);
 }
+const x = window.matchMedia("(max-width: 650px)");
+myFunction(x); // Call listener function at run time
+x.addListener(myFunction); // Attach listener function on state changes
 </script>
 
 <template>
