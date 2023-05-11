@@ -210,6 +210,9 @@ a:hover > .childCard {
 }
 
 @media screen and (max-width: 650px) {
+  .cr.cardContainer {
+    padding: 0;
+  }
   .first {
     flex-direction: column;
     align-items: center;

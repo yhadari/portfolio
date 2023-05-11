@@ -244,4 +244,10 @@ section {
   background-color: v-bind("themeStore.prismBgColor()");
   pointer-events: none;
 }
+
+@media screen and (max-width: 650px) {
+  .cr.cardContainer {
+    padding: 0rem;
+  }
+}
 </style>

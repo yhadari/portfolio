@@ -153,13 +153,13 @@ onMounted(async () => {
   transform: translateX(0);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 800px) {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
