@@ -90,7 +90,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12rem 2.6rem;
+  padding: 12rem 1.6rem;
   letter-spacing: 0.5px;
 }
 .cr.parentCard {

@@ -144,7 +144,7 @@ onMounted(() => {
 .cr.cardContainer {
   display: flex;
   flex-direction: column;
-  padding: 0 2.4rem;
+  padding: 0 1.6rem;
   padding-top: 20rem;
   padding-bottom: 8rem;
   overflow: hidden;

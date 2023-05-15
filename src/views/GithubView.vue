@@ -113,7 +113,7 @@ section {
   overflow: hidden;
 }
 .projectPage {
-  padding: 0 2.4rem;
+  padding: 0 1.6rem;
   padding-top: 20rem;
   padding-bottom: 8rem;
 }
@@ -211,7 +211,7 @@ a:hover > .childCard {
 
 @media screen and (max-width: 650px) {
   .cr.cardContainer {
-    padding: 0;
+    padding: 1.6rem;
   }
   .first {
     flex-direction: column;

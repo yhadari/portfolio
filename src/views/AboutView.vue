@@ -247,7 +247,7 @@ section {
 
 @media screen and (max-width: 650px) {
   .cr.cardContainer {
-    padding: 0rem;
+    padding: 1.6rem;
   }
 }
 </style>

@@ -52,7 +52,7 @@ onMounted(() => {
         <ion-icon name="star" class="star"></ion-icon>
       </div>
     </div>
-    <div class="avatarBox"></div>
+    <!-- <div class="avatarBox"></div> -->
   </section>
 </template>
 

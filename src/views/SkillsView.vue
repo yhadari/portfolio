@@ -165,7 +165,7 @@ onMounted(() => {
 </template>
 <style scoped>
 .cr.cardContainer.skillsPage {
-  padding: 0 2.4rem;
+  padding: 0 1.6rem;
   padding-top: 20rem;
   padding-bottom: 8rem;
   align-items: start;
@@ -174,7 +174,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12rem 2.6rem;
+  padding: 12rem 1.6rem;
 }
 .cr.parentCard {
   padding: 2.6rem;
