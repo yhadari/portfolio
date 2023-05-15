@@ -133,5 +133,10 @@ export const useThemeStore = defineStore("theme", {
     projectBgColor() {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(26,27,30)";
     },
+
+    //skeleton
+    skeletonColor() {
+      return this.theme === "light" ? "rgb(224, 224, 224)" : "rgb(44,46,51)";
+    },
   },
 });

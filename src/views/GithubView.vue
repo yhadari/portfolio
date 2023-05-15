@@ -58,20 +58,26 @@ onMounted(async () => {
               class="cr childCard first"
               :bgColor="themeStore.childBgColor()"
             >
-              <div class="imgBox">
+              <div class="imgBox" v-if="githubStore.allCommits">
                 <img
                   :src="`${githubStore.data?.avatar_url}`"
                   alt="user avatar"
                 />
                 <p>{{ githubStore.data?.followers }} followers</p>
               </div>
-              <div class="textBox">
+              <div class="skeleton imgBox" v-else></div>
+              <div class="textBox" v-if="githubStore.allCommits">
                 <p class="login">{{ githubStore.data?.login }}</p>
                 <p>{{ githubStore.data?.bio }}</p>
                 <p>
                   My account curently has
                   {{ githubStore.allCommits }} commits.
                 </p>
+              </div>
+              <div class="skeleton textBox" v-else>
+                <p class="login"></p>
+                <p></p>
+                <p></p>
               </div>
             </Card>
           </a>
@@ -81,7 +87,10 @@ onMounted(async () => {
             text="Contribution graph"
           />
           <Card class="cr childCard" :bgColor="themeStore.childBgColor()">
-            <div class="contributionBox">
+            <div
+              class="contributionBox"
+              v-if="githubStore.contributionGraph?.totalContributions"
+            >
               <img
                 class="contributionGraph"
                 :src="`https://ghchart.rshah.org/30a14e/${githubStore.data?.login}`"
@@ -100,6 +109,13 @@ onMounted(async () => {
                   ></span>
                   <p>More</p>
                 </div>
+              </div>
+            </div>
+            <div class="skeleton contributionBox" v-else>
+              <div class="contributionGraph"></div>
+              <div class="bt">
+                <span></span>
+                <span></span>
               </div>
             </div>
           </Card>
@@ -160,12 +176,33 @@ a:hover > .childCard {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+.skeleton.textBox {
+  width: 100%;
+  gap: 0.8rem;
+}
+.skeleton.textBox p {
+  width: 100%;
+  height: 2.4rem;
+  border-radius: 0.8rem;
+  background-color: v-bind("themeStore.skeletonColor()");
+  animation: skeleton 1s linear infinite;
+}
+.skeleton.textBox .login {
+  width: 50%;
+}
 .imgBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+}
+.skeleton.imgBox {
+  min-width: 10rem;
+  min-height: 10rem;
+  border-radius: 50%;
+  background-color: v-bind("themeStore.skeletonColor()");
+  animation: skeleton 1s linear infinite;
 }
 .imgBox img {
   width: 12.5rem;
@@ -182,6 +219,19 @@ a:hover > .childCard {
   width: 100%;
   height: 100%;
   margin-bottom: 0.4rem;
+}
+.skeleton .contributionGraph {
+  height: 14rem;
+  background-color: v-bind("themeStore.skeletonColor()");
+  border-radius: 0.6rem;
+  animation: skeleton 1s linear infinite;
+}
+.skeleton.contributionBox span {
+  width: 30%;
+  height: 1.5rem;
+  border-radius: 0.6rem;
+  background-color: v-bind("themeStore.skeletonColor()");
+  animation: skeleton 1s linear infinite;
 }
 .bt {
   display: flex;
@@ -209,6 +259,17 @@ a:hover > .childCard {
   transform: translateX(0);
 }
 
+@keyframes skeleton {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
 @media screen and (max-width: 650px) {
   .cr.cardContainer {
     padding: 1.6rem;
