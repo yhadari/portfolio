@@ -134,6 +134,14 @@ export const useThemeStore = defineStore("theme", {
       return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(26,27,30)";
     },
 
+    //topic
+    topicBgColor() {
+      return this.theme === "light" ? "rgb(0, 0, 0)" : "rgb(255,255,255)";
+    },
+    topicColor() {
+      return this.theme === "light" ? "rgb(255, 255, 255)" : "rgb(0,0,0)";
+    },
+
     //skeleton
     skeletonColor() {
       return this.theme === "light" ? "rgb(224, 224, 224)" : "rgb(44,46,51)";

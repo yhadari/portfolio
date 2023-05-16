@@ -1,4 +1,7 @@
 <script setup>
+import { useThemeStore } from "../stores/Theme";
+
+const themeStore = useThemeStore();
 const props = defineProps({
   topic: {
     type: String,
@@ -7,13 +10,15 @@ const props = defineProps({
 });
 </script>
 <template>
-  <p :class="props.topic">{{ props.topic.toLocaleUpperCase() }}</p>
+  <p class="default" :class="props.topic">
+    {{ props.topic.toLocaleUpperCase() }}
+  </p>
 </template>
 <style scoped>
 p {
-  font-size: 1.2rem;
+  font-size: 1.28rem;
   font-weight: bold;
-  padding: 0.2rem 0.8rem;
+  padding: 0.2rem 1rem;
   border-radius: 1.2rem;
   display: flex;
   align-items: center;
@@ -21,6 +26,10 @@ p {
   opacity: 0.9;
 }
 
+.default {
+  color: v-bind("themeStore.topicColor()");
+  background-color: v-bind("themeStore.topicBgColor()");
+}
 .javascript {
   color: #000;
   background-color: rgb(247, 224, 29);
@@ -37,10 +46,6 @@ p {
   color: #fff;
   background-color: rgb(122, 120, 255);
 }
-.nextjs {
-  color: #fff;
-  background-color: rgb(0, 0, 0);
-}
 .html {
   color: #fff;
   background-color: rgb(227, 76, 38);
@@ -52,17 +57,5 @@ p {
 .docker {
   color: #fff;
   background-color: rgb(13, 64, 133);
-}
-.expressjs {
-  color: #fff;
-  background-color: rgb(0, 0, 0);
-}
-.c {
-  color: #fff;
-  background-color: rgb(0, 0, 0);
-}
-.cpp {
-  color: #fff;
-  background-color: rgb(0, 0, 0);
 }
 </style>

@@ -12,8 +12,8 @@ const projects = [
   "portfolio",
   "ft_transcendence",
   "Omnifood-website",
+  "cub3D-1337-project",
   "TMDB_full_project",
-  "webserver",
   "cpp",
 ];
 
@@ -117,9 +117,9 @@ onMounted(async () => {
   cursor: pointer;
   background-color: v-bind("themeStore.projectBgColor()");
   color: v-bind("themeStore.projectColor()");
+  transition: all 0.2s;
 }
 .cr.childCard:hover {
-  transition: all 0.3s;
   transform: scale(1.04);
 }
 
