@@ -20,8 +20,17 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+const handleSubmit = (event) => {
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString(),
+  })
+    .then(() => console.log("Form successfully submitted"))
+    .catch((error) => alert(error));
 };
 
 onMounted(() => {
@@ -96,8 +105,8 @@ onMounted(() => {
             :shadow="false"
           >
             <form
+              @submit.prevent="handleSubmit"
               method="POST"
-              data-netlify="true"
               class="form"
               name="contact"
               netlify
