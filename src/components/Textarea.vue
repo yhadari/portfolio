@@ -3,6 +3,9 @@ import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 
 const props = defineProps({
+  name: {
+    type: String,
+  },
   color: {
     type: String,
     default: "black",
@@ -29,7 +32,11 @@ const props = defineProps({
 });
 </script>
 <template>
-  <textarea :rows="props.rows" :placeholder="props.placeholder" />
+  <textarea
+    :name="props.name"
+    :rows="props.rows"
+    :placeholder="props.placeholder"
+  />
 </template>
 <style scoped>
 textarea {

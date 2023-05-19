@@ -7,6 +7,9 @@ const props = defineProps({
     type: String,
     default: "text",
   },
+  name: {
+    type: String,
+  },
   color: {
     type: String,
     default: "black",
@@ -32,7 +35,11 @@ const props = defineProps({
 });
 </script>
 <template>
-  <input :type="props.type" :placeholder="props.placeholder" />
+  <input
+    :type="props.type"
+    :name="props.name"
+    :placeholder="props.placeholder"
+  />
 </template>
 <style scoped>
 input {

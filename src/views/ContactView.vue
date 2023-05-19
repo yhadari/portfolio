@@ -97,6 +97,7 @@ onMounted(() => {
                   >Email</Label
                 >
                 <Input
+                  name="email"
                   class="input"
                   type="email"
                   :color="themeStore.inputColor()"
@@ -110,6 +111,7 @@ onMounted(() => {
                   >Name</Label
                 >
                 <Input
+                  name="name"
                   class="input"
                   :color="themeStore.inputColor()"
                   :bgColor="themeStore.inputBgColor()"
@@ -122,6 +124,7 @@ onMounted(() => {
                   >Your message</Label
                 >
                 <Textarea
+                  name="message"
                   class="textarea"
                   rows="6"
                   :color="themeStore.inputColor()"
@@ -131,7 +134,6 @@ onMounted(() => {
               </div>
               <Button
                 class="btn"
-                type="submit"
                 position="right"
                 :bgColor="themeStore.buttonBgColor()"
                 :color="themeStore.buttonColor()"
