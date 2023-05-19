@@ -131,6 +131,7 @@ onMounted(() => {
               </div>
               <Button
                 class="btn"
+                tyep="submit"
                 position="right"
                 :bgColor="themeStore.buttonBgColor()"
                 :color="themeStore.buttonColor()"
