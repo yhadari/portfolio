@@ -39,6 +39,7 @@ const props = defineProps({
     :type="props.type"
     :name="props.name"
     :placeholder="props.placeholder"
+    required
   />
 </template>
 <style scoped>

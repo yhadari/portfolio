@@ -93,7 +93,10 @@ onMounted(() => {
           >
             <form class="form" name="contact" netlify>
               <div>
-                <Label class="label" :color="themeStore.labelColor()"
+                <Label
+                  for="email"
+                  class="label"
+                  :color="themeStore.labelColor()"
                   >Email</Label
                 >
                 <Input
@@ -107,7 +110,7 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <Label class="label" :color="themeStore.labelColor()"
+                <Label for="name" class="label" :color="themeStore.labelColor()"
                   >Name</Label
                 >
                 <Input
@@ -120,7 +123,10 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <Label class="label" :color="themeStore.labelColor()"
+                <Label
+                  for="message"
+                  class="label"
+                  :color="themeStore.labelColor()"
                   >Your message</Label
                 >
                 <Textarea
