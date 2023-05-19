@@ -87,53 +87,57 @@ onMounted(() => {
           <Card
             class="cr childCard"
             width="30rem"
-            height="41.4rem"
+            height="36.8rem"
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <div>
-              <Label class="label" :color="themeStore.labelColor()"
-                >Email</Label
-              >
-              <Input
-                class="input"
-                :color="themeStore.inputColor()"
-                :bgColor="themeStore.inputBgColor()"
+            <form class="form" netlify>
+              <div>
+                <Label class="label" :color="themeStore.labelColor()"
+                  >Email</Label
+                >
+                <Input
+                  class="input"
+                  :color="themeStore.inputColor()"
+                  :bgColor="themeStore.inputBgColor()"
+                  height="3.6rem"
+                  placeholder="your@email.com"
+                />
+              </div>
+              <div>
+                <Label class="label" :color="themeStore.labelColor()"
+                  >Name</Label
+                >
+                <Input
+                  class="input"
+                  :color="themeStore.inputColor()"
+                  :bgColor="themeStore.inputBgColor()"
+                  height="3.6rem"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <Label class="label" :color="themeStore.labelColor()"
+                  >Your message</Label
+                >
+                <Textarea
+                  class="textarea"
+                  rows="6"
+                  :color="themeStore.inputColor()"
+                  :bgColor="themeStore.inputBgColor()"
+                  placeholder="I want to order your goods"
+                ></Textarea>
+              </div>
+              <Button
+                class="btn"
+                position="right"
+                :bgColor="themeStore.buttonBgColor()"
+                :color="themeStore.buttonColor()"
+                width="55%"
                 height="3.6rem"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <Label class="label" :color="themeStore.labelColor()">Name</Label>
-              <Input
-                class="input"
-                :color="themeStore.inputColor()"
-                :bgColor="themeStore.inputBgColor()"
-                height="3.6rem"
-                placeholder="John Doe"
-              />
-            </div>
-            <div>
-              <Label class="label" :color="themeStore.labelColor()"
-                >Your message</Label
+                >Send message</Button
               >
-              <Textarea
-                class="textarea"
-                rows="6"
-                :color="themeStore.inputColor()"
-                :bgColor="themeStore.inputBgColor()"
-                placeholder="I want to order your goods"
-              ></Textarea>
-            </div>
-            <Button
-              class="btn"
-              position="right"
-              :bgColor="themeStore.buttonBgColor()"
-              :color="themeStore.buttonColor()"
-              width="55%"
-              height="3.6rem"
-              >Send message</Button
-            >
+            </form>
           </Card>
         </Card>
       </div>
@@ -159,11 +163,13 @@ onMounted(() => {
 .cr.childCard {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 2.4rem;
+}
+.form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: inherit;
 }
-
 .container {
   width: 34rem;
   height: 41.4rem;
@@ -230,9 +236,8 @@ ion-icon {
     flex-direction: column;
     align-items: center;
   }
-  .cr.childCard,
   .container {
-    max-width: 100%;
+    width: 100%;
   }
 }
 </style>
