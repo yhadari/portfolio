@@ -20,6 +20,10 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+};
+
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
   hiddenElement.forEach((element) => {
@@ -91,7 +95,7 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form class="form" name="contact" netlify>
+            <form method="POST" class="form" name="contact" netlify>
               <div>
                 <Label
                   for="email"
