@@ -3,6 +3,10 @@ import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 
 const props = defineProps({
+  type: {
+    type: String,
+    default: "text",
+  },
   color: {
     type: String,
     default: "black",
@@ -28,7 +32,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <input type="text" :placeholder="props.placeholder" />
+  <input :type="props.type" :placeholder="props.placeholder" />
 </template>
 <style scoped>
 input {

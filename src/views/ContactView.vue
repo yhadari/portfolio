@@ -98,6 +98,7 @@ onMounted(() => {
                 >
                 <Input
                   class="input"
+                  type="email"
                   :color="themeStore.inputColor()"
                   :bgColor="themeStore.inputBgColor()"
                   height="3.6rem"
