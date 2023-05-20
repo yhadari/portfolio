@@ -40,7 +40,7 @@ const handleSubmit = () => {
   };
   axios
     .post(
-      "/contact",
+      "/",
       encode({
         "form-name": "contact",
         ...formData,
