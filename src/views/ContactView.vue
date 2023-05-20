@@ -29,7 +29,7 @@ const observe = new IntersectionObserver((entries) => {
 const submitForm = (event) => {
   event.preventDefault();
   const form = event.target;
-  fetch("/", {
+  fetch("/contact", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString(),
