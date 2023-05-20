@@ -26,7 +26,7 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-const submitForm = () => {
+const submitForm = (event) => {
   event.preventDefault();
 
   fetch("/", {
@@ -109,7 +109,13 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form @submit="submitForm" netlify class="form" name="contact">
+            <form
+              method="post"
+              @submit="submitForm"
+              netlify
+              class="form"
+              name="contact"
+            >
               <div>
                 <Label
                   for="email"
