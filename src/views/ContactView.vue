@@ -38,7 +38,7 @@ const handleSubmit = () => {
     header: { "Content-Type": "application/x-www-form-urlencoded" },
   };
   axios.post(
-    "/",
+    "/contact",
     encode({
       "form-name": "contact",
       ...formData,
