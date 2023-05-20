@@ -116,6 +116,7 @@ onMounted(() => {
             :shadow="false"
           >
             <form
+              data-netlify-honeypot="bot-field"
               netlify
               class="form"
               name="contact"
