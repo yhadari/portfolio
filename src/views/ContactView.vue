@@ -8,6 +8,7 @@ import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
 import axios from "axios";
+import route from "vue-router";
 
 const formData = reactive({
   name: "",
@@ -37,14 +38,21 @@ const handleSubmit = () => {
   const axiosConfig = {
     header: { "Content-Type": "application/x-www-form-urlencoded" },
   };
-  axios.post(
-    "/contact",
-    encode({
-      "form-name": "contact",
-      ...formData,
-    }),
-    axiosConfig
-  );
+  axios
+    .post(
+      "/contact",
+      encode({
+        "form-name": "contact",
+        ...formData,
+      }),
+      axiosConfig
+    )
+    .then(() => {
+      route.push("/");
+    })
+    .catch(() => {
+      route.push("/404");
+    });
 };
 
 onMounted(() => {
