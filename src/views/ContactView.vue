@@ -26,19 +26,19 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-const submitForm = (event) => {
-  event.preventDefault();
-  const form = event.target;
-  fetch("/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => {
-      form.reset();
-    })
-    .catch((error) => alert(error));
-};
+// const submitForm = (event) => {
+//   event.preventDefault();
+//   const form = event.target;
+//   fetch("/contact", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: new URLSearchParams(formData).toString(),
+//   })
+//     .then(() => {
+//       form.reset();
+//     })
+//     .catch((error) => alert(error));
+// };
 
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
@@ -111,7 +111,7 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form method="post" netlify class="form" name="contact">
+            <form netlify class="form" name="contact">
               <div>
                 <Label
                   for="email"
