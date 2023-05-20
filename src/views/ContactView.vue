@@ -1,12 +1,18 @@
 <script setup>
 import { useThemeStore } from "../stores/Theme";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 import Card from "../components/Card.vue";
 import Title from "../components/Title.vue";
 import Input from "../components/Input.vue";
 import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
+
+const formData = reactive({
+  name: "",
+  email: "",
+  message: "",
+});
 
 const themeStore = useThemeStore();
 
@@ -20,9 +26,8 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-const handleSubmit = (event) => {
-  const myForm = event.target;
-  const formData = new FormData(myForm);
+const submitForm = () => {
+  event.preventDefault();
 
   fetch("/", {
     method: "POST",
@@ -104,13 +109,7 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form
-              @submit.prevent="handleSubmit"
-              method="POST"
-              class="form"
-              name="contact"
-              netlify
-            >
+            <form @submit="submitForm" netlify class="form" name="contact">
               <div>
                 <Label
                   for="email"
@@ -119,6 +118,8 @@ onMounted(() => {
                   >Email</Label
                 >
                 <Input
+                  :modelValue="formData.email"
+                  @update:modelValue="(newValue) => (formData.email = newValue)"
                   name="email"
                   class="input"
                   type="email"
@@ -133,6 +134,8 @@ onMounted(() => {
                   >Name</Label
                 >
                 <Input
+                  :modelValue="formData.name"
+                  @update:modelValue="(newValue) => (formData.name = newValue)"
                   name="name"
                   class="input"
                   :color="themeStore.inputColor()"
@@ -149,6 +152,10 @@ onMounted(() => {
                   >Your message</Label
                 >
                 <Textarea
+                  :modelValue="formData.message"
+                  @update:modelValue="
+                    (newValue) => (formData.message = newValue)
+                  "
                   name="message"
                   class="textarea"
                   rows="6"

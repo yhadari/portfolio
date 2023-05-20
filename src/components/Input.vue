@@ -2,7 +2,12 @@
 import { useThemeStore } from "../stores/Theme";
 const themeStore = useThemeStore();
 
+defineEmits(["update:modelValue"]);
 const props = defineProps({
+  modelValue: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     default: "text",
@@ -36,6 +41,8 @@ const props = defineProps({
 </script>
 <template>
   <input
+    :value="props.modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
     :type="props.type"
     :name="props.name"
     :placeholder="props.placeholder"
