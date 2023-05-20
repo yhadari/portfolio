@@ -26,23 +26,23 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+// const encode = (data) => {
+//   return Object.keys(data)
+//     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+//     .join("&");
+// };
 
-const handleSubmit = () => {
-  fetch("/contact", {
-    method: "post",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: encode({ "form-name": "contact", ...formData }),
-  })
-    .then(() => {
-      console.log("Form successfully submitted");
-    })
-    .catch((error) => console.log(error));
-};
+// const handleSubmit = () => {
+//   fetch("/contact", {
+//     method: "post",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: encode({ "form-name": "contact", ...formData }),
+//   })
+//     .then(() => {
+//       console.log("Form successfully submitted");
+//     })
+//     .catch((error) => console.log(error));
+// };
 
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
@@ -116,13 +116,13 @@ onMounted(() => {
             :shadow="false"
           >
             <form
-              data-netlify-honeypot="bot-field"
-              netlify
-              class="form"
               name="contact"
-              method="POST"
-              @submit.prevent="handleSubmit"
+              method="post"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              class="form"
             >
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <Label
                   for="email"
