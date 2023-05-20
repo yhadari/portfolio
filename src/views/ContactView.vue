@@ -162,6 +162,7 @@ onMounted(() => {
                 :color="themeStore.buttonColor()"
                 width="55%"
                 height="3.6rem"
+                disabled="true"
                 >Send message</Button
               >
             </form>

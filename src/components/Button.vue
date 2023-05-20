@@ -1,6 +1,10 @@
 <script setup>
 import { computed } from "vue";
 const props = defineProps({
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   color: {
     type: String,
     default: "#333",
@@ -34,7 +38,7 @@ const computedStyles = computed(() => {
 });
 </script>
 <template>
-  <button :style="computedStyles">
+  <button :disabled="props.disabled" :style="computedStyles">
     <slot />
   </button>
 </template>
