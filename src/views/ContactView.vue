@@ -8,7 +8,7 @@ import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
 import axios from "axios";
-import route from "vue-router";
+import router from "../router";
 
 const formData = reactive({
   name: "",
@@ -48,10 +48,10 @@ const handleSubmit = () => {
       axiosConfig
     )
     .then(() => {
-      route.push("/");
+      router.push("/");
     })
     .catch(() => {
-      route.push("/404");
+      router.push("/404");
     });
 };
 
