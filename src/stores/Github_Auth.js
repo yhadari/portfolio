@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
-// import axios from "axios";
+import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+import { restEndpointMethods } from "https://cdn.skypack.dev/@octokit/plugin-rest-endpoint-methods";
 
 export const useGithubStore = defineStore("github_auth", {
   state: () => {
@@ -15,7 +15,8 @@ export const useGithubStore = defineStore("github_auth", {
 
   actions: {
     async auth() {
-      const octokit = new Octokit({
+      const MyOctokit = Octokit.plugin(restEndpointMethods);
+      const octokit = new MyOctokit({
         auth: import.meta.env.VITE_GITHUB_TOKEN,
       });
 
