@@ -7,6 +7,7 @@ import Input from "../components/Input.vue";
 import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
+import axios from "axios";
 
 const formData = reactive({
   name: "",
@@ -26,23 +27,25 @@ const observe = new IntersectionObserver((entries) => {
   });
 });
 
-// const encode = (data) => {
-//   return Object.keys(data)
-//     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-//     .join("&");
-// };
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+};
 
-// const handleSubmit = () => {
-//   fetch("/contact", {
-//     method: "post",
-//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//     body: encode({ "form-name": "contact", ...formData }),
-//   })
-//     .then(() => {
-//       console.log("Form successfully submitted");
-//     })
-//     .catch((error) => console.log(error));
-// };
+const handleSubmit = () => {
+  const axiosConfig = {
+    header: { "Content-Type": "application/x-www-form-urlencoded" },
+  };
+  axios.post(
+    "/",
+    encode({
+      "form-name": "contact",
+      ...formData,
+    }),
+    axiosConfig
+  );
+};
 
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
@@ -120,6 +123,7 @@ onMounted(() => {
               method="post"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
+              @submit.prevent="handleSubmit"
               class="form"
             >
               <input type="hidden" name="form-name" value="contact" />
