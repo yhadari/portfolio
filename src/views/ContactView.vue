@@ -33,7 +33,7 @@ const encode = (data) => {
 };
 
 const handleSubmit = () => {
-  fetch("/", {
+  fetch("/contact", {
     method: "post",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: encode({ "form-name": "contact", ...formData }),
