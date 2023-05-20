@@ -7,6 +7,7 @@ import Input from "../components/Input.vue";
 import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
+import axios from "axios";
 
 const formData = reactive({
   name: "",
@@ -29,11 +30,17 @@ const observe = new IntersectionObserver((entries) => {
 const submitForm = (event) => {
   event.preventDefault();
 
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
+  // fetch("/", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //   body: new URLSearchParams(formData).toString(),
+  // })
+  //   .then(() => console.log("Form successfully submitted"))
+  //   .catch((error) => alert(error));
+  axios
+    .post("/", new URLSearchParams(formData).toString(), {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    })
     .then(() => console.log("Form successfully submitted"))
     .catch((error) => alert(error));
 };
