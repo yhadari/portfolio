@@ -111,13 +111,7 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form
-              method="post"
-              @submit="submitForm"
-              netlify
-              class="form"
-              name="contact"
-            >
+            <form method="post" netlify class="form" name="contact">
               <div>
                 <Label
                   for="email"
