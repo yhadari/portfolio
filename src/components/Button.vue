@@ -34,7 +34,7 @@ const computedStyles = computed(() => {
 });
 </script>
 <template>
-  <button :style="computedStyles">
+  <button type="submit" :style="computedStyles">
     <slot />
   </button>
 </template>
