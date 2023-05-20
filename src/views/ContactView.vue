@@ -7,8 +7,6 @@ import Input from "../components/Input.vue";
 import Label from "../components/Label.vue";
 import Button from "../components/Button.vue";
 import Textarea from "../components/Textarea.vue";
-import axios from "axios";
-import router from "../router";
 
 const formData = reactive({
   name: "",
@@ -27,33 +25,6 @@ const observe = new IntersectionObserver((entries) => {
     }
   });
 });
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join("&");
-};
-
-const handleSubmit = () => {
-  const axiosConfig = {
-    header: { "Content-Type": "application/x-www-form-urlencoded" },
-  };
-  axios
-    .post(
-      "/",
-      encode({
-        "form-name": "contact",
-        ...formData,
-      }),
-      axiosConfig
-    )
-    .then(() => {
-      router.push("/");
-    })
-    .catch(() => {
-      router.push("/404");
-    });
-};
 
 onMounted(() => {
   const hiddenElement = document.querySelectorAll(".hidden");
@@ -126,15 +97,7 @@ onMounted(() => {
             :bgColor="themeStore.childBgColor()"
             :shadow="false"
           >
-            <form
-              name="contact"
-              method="post"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              @submit.prevent="handleSubmit"
-              class="form"
-            >
-              <input type="hidden" name="form-name" value="contact" />
+            <form class="form">
               <div>
                 <Label
                   for="email"
@@ -152,6 +115,7 @@ onMounted(() => {
                   :bgColor="themeStore.inputBgColor()"
                   height="3.6rem"
                   placeholder="your@email.com"
+                  disabled="true"
                 />
               </div>
               <div>
@@ -167,6 +131,7 @@ onMounted(() => {
                   :bgColor="themeStore.inputBgColor()"
                   height="3.6rem"
                   placeholder="John Doe"
+                  disabled="true"
                 />
               </div>
               <div>
@@ -187,6 +152,7 @@ onMounted(() => {
                   :color="themeStore.inputColor()"
                   :bgColor="themeStore.inputBgColor()"
                   placeholder="I want to order your goods"
+                  disabled="true"
                 ></Textarea>
               </div>
               <Button

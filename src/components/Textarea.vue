@@ -4,6 +4,10 @@ const themeStore = useThemeStore();
 
 defineEmits(["update:modelValue"]);
 const props = defineProps({
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   modelValue: {
     type: String,
     default: "",
@@ -38,6 +42,7 @@ const props = defineProps({
 </script>
 <template>
   <textarea
+    :disabled="props.disabled"
     :value="props.modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     :name="props.name"
