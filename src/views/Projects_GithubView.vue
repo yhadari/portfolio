@@ -5,6 +5,6 @@ import GithubView from "./GithubView.vue";
 <template>
   <section>
     <GithubView />
-    <ProjectsView />
+    <!-- <ProjectsView /> -->
   </section>
 </template>

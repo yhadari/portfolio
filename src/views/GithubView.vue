@@ -31,6 +31,13 @@ onMounted(async () => {
     githubStore.data?.login
   );
 });
+
+console.log("htmlurl: ", githubStore.data.html_url);
+console.log("allCommit: ", githubStore.allCommits);
+console.log("avatar: ", githubStore.data.avatar_url);
+console.log("folo: ", githubStore.data.followers);
+console.log("login: ", githubStore.data.login);
+console.log("bio: ", githubStore.data.bio);
 </script>
 
 <template>
@@ -58,7 +65,7 @@ onMounted(async () => {
               class="cr childCard first"
               :bgColor="themeStore.childBgColor()"
             >
-              <div class="imgBox" v-if="githubStore.allCommits">
+              <div class="imgBox" v-if="githubStore">
                 <img
                   :src="`${githubStore.data?.avatar_url}`"
                   alt="user avatar"
@@ -66,13 +73,13 @@ onMounted(async () => {
                 <p>{{ githubStore.data?.followers }} followers</p>
               </div>
               <div class="skeleton imgBox" v-else></div>
-              <div class="textBox" v-if="githubStore.allCommits">
+              <div class="textBox" v-if="githubStore">
                 <p class="login">{{ githubStore.data?.login }}</p>
                 <p>{{ githubStore.data?.bio }}</p>
-                <p>
+                <!-- <p>
                   My account curently has
                   {{ githubStore.allCommits }} commits.
-                </p>
+                </p> -->
               </div>
               <div class="skeleton textBox" v-else>
                 <p class="login"></p>

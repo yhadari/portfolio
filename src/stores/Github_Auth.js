@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+import { Octokit } from "https://esm.sh/@octokit/rest";
 import { restEndpointMethods } from "https://cdn.skypack.dev/@octokit/plugin-rest-endpoint-methods";
 
 export const useGithubStore = defineStore("github_auth", {
